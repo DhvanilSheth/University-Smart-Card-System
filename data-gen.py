@@ -4,7 +4,7 @@ import csv
 fake = Faker()
 
 def generate_hostel_data(num_records):
-    with open('hostel_data.csv', mode='w', newline='') as file:
+    with open('./Data/hostel_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sr. No", "Room Type", "Floor", "Room No", "Student Name", "Roll No", "Course Type", "Year", "Email ID", "Fees", "Security Amt", "Bank ID", "Contact", "Remarks", "From", "To", "Sharing", "Name", "Roll No", "Course", "Year", "Email ID"])  # header
         for i in range(num_records):
@@ -13,7 +13,7 @@ def generate_hostel_data(num_records):
 # Call the function with the number of records you want to generate
 
 def generate_mess_data(num_records):
-    with open('mess_data.csv', mode='w', newline='') as file:
+    with open('./Data/mess_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         # header
         writer.writerow(["Sale ID", "Sale Date", "Coupon Type", "Name", "Phone Number", "Roll NO", "Paytm", "Cash", "Total Amount"])
@@ -22,7 +22,7 @@ def generate_mess_data(num_records):
 
 
 def generate_bms_hk_visitor_data(num_records):
-    with open('bms_hk_visitor_data.csv', mode='w', newline='') as file:
+    with open('./Data/bms_hk_visitor_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         # header
         writer.writerow(["Date", "Name", "Contact", "Department", "Purpose", "Room and Floor No", "Time In", "Time Out", "Signature", "Security Signature"])
@@ -31,7 +31,7 @@ def generate_bms_hk_visitor_data(num_records):
 
 
 def generate_package_collection_data(num_records):
-    with open('package_collection_data.csv', mode='w', newline='') as file:
+    with open('./Data/package_collection_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         # header
         writer.writerow(["Date", "Name", "Room", "Delivery driver name", "Driver Contact", "Company", "Quantity", "Student Who Picks it", "Above person number", "Signature", "Security Signature"])
@@ -40,7 +40,7 @@ def generate_package_collection_data(num_records):
 
 
 def generate_home_leave_data(num_records):
-    with open('home_leave_data.csv', mode='w', newline='') as file:
+    with open('./Data/home_leave_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         # header
         writer.writerow(["Date", "Name", "Contact", "Out Time", "Roll No", "Room No", "To Address", "Return Time", "Return Date", "Signature", "Security Signature"])
@@ -49,7 +49,7 @@ def generate_home_leave_data(num_records):
 
 
 def generate_medicine_data(num_records):
-    with open('medicine_data.csv', mode='w', newline='') as file:
+    with open('./Data/medicine_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         # header
         writer.writerow(["Date", "Name", "Contact", "Medicine Name", "Quantity", "Room No", "Time", "Roll No", "Signature", "Purpose", "Security Signature"])
@@ -58,20 +58,20 @@ def generate_medicine_data(num_records):
 
 
 def generate_sports_data(num_records):
-    with open('sports_data.csv', mode='w', newline='') as file:
+    with open('./Data/sports_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         # header
         writer.writerow(["Date", "Name", "Contact", "Sport", "Equipment", "Room No", "Time", "Roll No", "Signature", "Security Signature"])
         for i in range(num_records):
             writer.writerow([fake.date(), fake.name(), fake.phone_number(), fake.word(), fake.word(), f"A-{fake.random_number(digits=3)}", fake.time(), fake.random_number(digits=6), fake.name(), fake.name()])
 
-# generate_hostel_data(100)
-# generate_mess_data(100)
-# generate_bms_hk_visitor_data(100)
-# generate_package_collection_data(100)
-# generate_home_leave_data(100)
-# generate_medicine_data(100)
-# generate_sports_data(100)
+generate_hostel_data(100)
+generate_mess_data(100)
+generate_bms_hk_visitor_data(100)
+generate_package_collection_data(100)
+generate_home_leave_data(100)
+generate_medicine_data(100)
+generate_sports_data(100)
 
 
 
