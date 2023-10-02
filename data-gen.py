@@ -48,22 +48,25 @@ def generate_package_collection_data(num_records):
 
 
 def generate_home_leave_data(num_records):
+    roll_numbers = generate_roll_numbers()
     with open('./Data/home_leave_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Contact", "Out Time", "Roll No", "Room No", "To Address", "Return Time", "Return Date", "Signature", "Security Signature"])
         for i in range(num_records):
-            writer.writerow([fake.date(), fake.name(), fake.phone_number(), fake.time(), fake.random_number(digits=6), f"A-{fake.random_number(digits=3)}", fake.address(), fake.time(), fake.date(), fake.name(), fake.name()])
+            writer.writerow([fake.date(), fake.name(), fake.phone_number(), fake.time(), random.choice(roll_numbers), f"A-{fake.random_number(digits=3)}", fake.address(), fake.time(), fake.date(), fake.name(), fake.name()])
 
 
 def generate_medicine_data(num_records):
+    roll_numbers = generate_roll_numbers()
     with open('./Data/medicine_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Contact", "Medicine Name", "Quantity", "Room No", "Time", "Roll No", "Signature", "Purpose", "Security Signature"])
         for i in range(num_records):
-            writer.writerow([fake.date(), fake.name(), fake.phone_number(), fake.word(), fake.random_number(digits=2), f"A-{fake.random_number(digits=3)}", fake.time(), fake.random_number(digits=6), fake.name(), fake.sentence(), fake.name()])
+            writer.writerow([fake.date(), fake.name(), fake.phone_number(), fake.word(), fake.random_number(digits=2), f"A-{fake.random_number(digits=3)}", fake.time(), random.choice(roll_numbers), fake.name(), fake.sentence(), fake.name()])
 
 
 def generate_sports_data(num_records):
+    roll_numbers = generate_roll_numbers()
     with open('./Data/sports_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Contact", "Sport", "Equipment", "Room No", "Time", "Roll No", "Signature", "Security Signature"])
