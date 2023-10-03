@@ -1,9 +1,9 @@
 # pip install Flask pandas mysql-connector-python
 
-
 from flask import Flask, request, jsonify
 import pandas as pd
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
@@ -20,24 +20,48 @@ def upload_file():
     table_name = request.form['table_name']
     
     if uploaded_file.filename != '':
+        # Check if the uploaded file is a CSV file
+        if uploaded_file.filename.split('.')[-1].lower() != 'csv':
+            return jsonify({'message': 'Invalid file format. Only CSV files are allowed.'}), 400
+        
         data = pd.read_csv(uploaded_file)
+        
+        # Get database credentials from environment variables
+        host = os.environ.get('DB_HOST')
+        user = os.environ.get('DB_USER')
+        password = os.environ.get('DB_PASSWORD')
+        database = os.environ.get('DB_DATABASE')
+        
+        if not all([host, user, password, database]):
+            return jsonify({'message': 'Database credentials not found.'}), 500
+        
         conn = mysql.connector.connect(
-            host='your_host',
-            user='your_username',
-            password='your_password',
-            database='IIITD_DB'
+            host=host,
+            user=user,
+            password=password,
+            database=database
         )
+        
         cursor = conn.cursor()
         
-        for index, row in data.iterrows():
-            query = get_insert_query(table_name, row)
-            cursor.execute(query, tuple(row))
+        # Check if the table exists in the database
+        cursor.execute(f"SHOW TABLES LIKE '{table_name}'")
+        result = cursor.fetchone()
+        if not result:
+            return jsonify({'message': f"Table '{table_name}' does not exist."}), 400
         
-        conn.commit()
-        cursor.close()
-        conn.close()
-        
-        return jsonify({'message': 'Data uploaded successfully!'}), 200
+        try:
+            for index, row in data.iterrows():
+                query = get_insert_query(table_name, row)
+                cursor.execute(query, tuple(row))
+            
+            conn.commit()
+            cursor.close()
+            conn.close()
+            
+            return jsonify({'message': 'Data uploaded successfully!'}), 200
+        except Exception as e:
+            return jsonify({'message': f"Error uploading data: {str(e)}"}), 500
     else:
         return jsonify({'message': 'Invalid file'}), 400
 
