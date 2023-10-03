@@ -241,6 +241,26 @@ def generate_equipment_loss(num_records):
             mobile = roll_no_mobile_mapping[roll_number]
             writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.time(), fake.sentence()])
 
+def generate_gym(num_records):
+    with open('./Data/gym.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "In", "Out", "Signature"])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            mobile = roll_no_mobile_mapping[roll_number]
+            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.time() , fake.time(), name])
+
+def generate_pool(num_records):
+    with open('./Data/gym.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Sr No", "Card Number", "Roll No", "Room No", "Contact", "In", "Out", "Signature"])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            mobile = roll_no_mobile_mapping[roll_number]
+            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.time() , fake.time(), name])
+
 def run():
     generate_hostel_data(100)
     generate_mess_1_data(100)
@@ -249,5 +269,7 @@ def run():
     generate_home_leave_data(100)
     generate_medicine_data(100)
     generate_equipment_loss(100)
+    generate_gym(100)
+    generate_pool(100)
     
 run()
