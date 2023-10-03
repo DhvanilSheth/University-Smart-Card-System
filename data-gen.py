@@ -167,7 +167,7 @@ def generate_hostel_data(num_records):
 def generate_mess_1_data(num_records):
     with open('./Data/mess_1_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Sale ID", "Sale Date", "Coupon Type", "Name", "Phone Number", "Roll NO", "Paytm", "Cash", "Total Amount"])
+        writer.writerow(["Sr No", "Name", "Phone Number", "Roll No", "Cash", "PayTM", "Total", "Date of Purchase", "Breakfast", "Lunch", "Snack", "Dinner"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
@@ -176,9 +176,9 @@ def generate_mess_1_data(num_records):
             cost = mess_price_ranges[type]
             mobile_number = roll_no_mobile_mapping[roll_number]
             if choice_of_payment:
-                writer.writerow([i + 1, fake.date_time(), type, name, mobile_number, roll_number, cost, 0, cost])
+                writer.writerow([i + 1, name, mobile_number, roll_number, cost, 0, cost, fake.date(), fake.random_number(digits=2), fake.random_number(digits=2),fake.random_number(digits=2),fake.random_number(digits=2)])
             else:
-                writer.writerow([i + 1, fake.date_time(), type, name, mobile_number, roll_number, 0, cost, cost])
+                writer.writerow([i + 1, name, mobile_number, roll_number, 0, cost, cost, fake.date(), fake.random_number(digits=2), fake.random_number(digits=2),fake.random_number(digits=2),fake.random_number(digits=2)])
 
 def generate_mess_2_data(num_records):
     with open('./Data/mess_2_data.csv', mode='w', newline='') as file:
@@ -252,14 +252,65 @@ def generate_gym(num_records):
             writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.time() , fake.time(), name])
 
 def generate_pool(num_records):
-    with open('./Data/gym.csv', mode='w', newline='') as file:
+    with open('./Data/pool.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Sr No", "Card Number", "Roll No", "Room No", "Contact", "In", "Out", "Signature"])
+        writer.writerow(["Sr No", "Card Number", "Membership Expiry", "Name", "Roll No", "Sex", "Department", "Presence"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             mobile = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.time() , fake.time(), name])
+            course = roll_no_course_mapping[roll_number]
+            present = random.choice([True, False])
+            writer.writerow([i+1, fake.random_number(digits=3), fake.date(), name, roll_number, fake.random.choice(['Male', 'Female']) , course , present])
+
+def generate_equipment_requests(num_records):
+    with open('./Data/equipment_requests.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "Equipment Issued", "Quantity", "In", "Out", "Signature", "Remarks"])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            mobile = roll_no_mobile_mapping[roll_number]
+            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.random_number(digits=1), fake.time(), fake.time(), name, fake.sentence()])
+
+def generate_sports_visitor(num_records):
+    with open('./Data/sports_visitor.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Date", "Name", "Mobile No", "Department", "Purpose", "In", "Out", "Signature", "Staff"])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            mobile = roll_no_mobile_mapping[roll_number]
+            course = roll_no_course_mapping[roll_number]
+            writer.writerow([fake.date(), name, mobile, course, fake.word(), fake.time(), fake.time() , name, fake.name()])
+
+def generate_gym_coach(num_records):
+    with open('./Data/gym_coach.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Sr No", "Name", "Roll No", "Time In", "Time Out", "Signature",])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            writer.writerow([fake.date(), name, roll_number, fake.time(), fake.time() , name])
+
+def generate_medicine_sports(num_records):
+    with open('./Data/medicine_sport.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Date", "Time", "Name", "Contact No", "Quanity", "Medicine Name", "Student Sign", "Security Sign"])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            mobile = roll_no_mobile_mapping[roll_number]
+            writer.writerow([fake.date(), fake.time(), name, roll_number, fake.random_number(digits=1), fake.word() , name, fake.name()])
+
+def generate_pool_non_membership(num_records):
+    with open('./Data/pool_non_membership.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Date", "Name", "Tax ID", "Payment", "Roll No", "In", "Sign"])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            writer.writerow([fake.date(), name, fake.random_number(digits=4), fake.random_number(digits=3), roll_number, fake.time(), name])
 
 def run():
     generate_hostel_data(100)
@@ -271,5 +322,10 @@ def run():
     generate_equipment_loss(100)
     generate_gym(100)
     generate_pool(100)
+    generate_equipment_requests(100)
+    generate_sports_visitor(100)
+    generate_gym_coach(100)
+    generate_medicine_sports(100)
+    generate_pool_non_membership(100)
     
 run()
