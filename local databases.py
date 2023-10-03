@@ -5,7 +5,8 @@ import mysql.connector
 
 # MySQL connection parameters
 db_params = {
-    'host': 'Saggitarius',
+    'host': 'localhost',
+    'port': 3306,
     'user': 'root' ,
     'password': 'root'
 }
@@ -40,13 +41,18 @@ cursor = conn.cursor()
 
 # Loop through each database, table, and file
 for db, tables_files in db_table_files.items():
+
+    # If the database doesn't exist, create it
+    cursor.execute(f'CREATE DATABASE IF NOT EXISTS {db};')
     # Use the appropriate database
     cursor.execute(f'USE {db};')
-    
+    cursor.execute(f'CREATE TABLE IF NOT EXISTS equipment_loss(Date      DATE  NOT NULL PRIMARY KEY,Name      VARCHAR(255) NOT NUL,Roll_No   INTEGER  NOT NULL,Room_No   VARCHAR(5) NOT NULL,Contact   VARCHAR(10) NOT NULL,Equipment VARCHAR(255) NOT NULL,Time      VARCHAR(5) NOT NULL,Remarks   VARCHAR(255) NOT NULL);')
+    cursor.execute(f'CREATE TABLE IF NOT EXISTS equipment_requests(Date             DATE  NOT NULL PRIMARY KEY,Name             VARCHAR(255) NOT NULL,Roll_No          INTEGER  NOT NULL,Room_No          VARCHAR(5) NOT NULL,Contact          VARCHAR(10) NOT NULL,Equipment_Issued VARCHAR(12) NOT NULL,Quantity         INTEGER  NOT NULL,In               VARCHAR(5) NOT NULL,Out              VARCHAR(5) NOT NULL,Signature        VARCHAR(25) NOT NULL,Remarks          VARCHAR(255) NOT NULL);')
+    # cursor.execute(f'')
     # Loop through each table and file
     for table, file in tables_files:
-        # Read the CSV file into a DataFrame
-        df = pd.read_csv(file)
+        # Read the CSV file into a DataFrame, skipping the first row
+        df = pd.read_csv(file, skiprows=1)
         
         # Convert DataFrame columns to a format suitable for MySQL insertion
         columns_str = ', '.join(df.columns)

@@ -218,7 +218,7 @@ def generate_home_leave_data(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             number = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), name, number, fake.time(), random.choice(roll_numbers), f"A-{fake.random_number(digits=3)}", fake.address(), fake.time(), fake.date(), name, fake.name()])
+            writer.writerow([fake.date(), name, number, fake.time()[:-3], random.choice(roll_numbers), f"A-{fake.random_number(digits=3)}", fake.address(), fake.time()[:-3], fake.date(), name, fake.name()])
 
 
 def generate_medicine_data(num_records):
@@ -229,7 +229,7 @@ def generate_medicine_data(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             mobile = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), name, mobile, fake.word(), fake.random_number(digits=2), f"A-{fake.random_number(digits=3)}", fake.time(), roll_number, name, fake.sentence(), fake.name()])
+            writer.writerow([fake.date(), name, mobile, fake.word(), fake.random_number(digits=2), f"A-{fake.random_number(digits=3)}", fake.time()[:-3], roll_number, name, fake.sentence(), fake.name()])
 
 def generate_equipment_loss(num_records):
     with open('./Data/equipment_loss.csv', mode='w', newline='') as file:
@@ -239,7 +239,7 @@ def generate_equipment_loss(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             mobile = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.time(), fake.sentence()])
+            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.time()[:-3], fake.sentence()])
 
 def generate_gym(num_records):
     with open('./Data/gym.csv', mode='w', newline='') as file:
@@ -249,7 +249,7 @@ def generate_gym(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             mobile = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.time() , fake.time(), name])
+            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.time()[:-3] , fake.time()[:-3], name])
 
 def generate_pool(num_records):
     with open('./Data/pool.csv', mode='w', newline='') as file:
@@ -271,7 +271,7 @@ def generate_equipment_requests(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             mobile = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.random_number(digits=1), fake.time(), fake.time(), name, fake.sentence()])
+            writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.random_number(digits=1), fake.time()[:-3], fake.time()[:-3], name, fake.sentence()])
 
 def generate_medicine_sports(num_records):
     with open('./Data/medicine_sport.csv', mode='w', newline='') as file:
@@ -281,7 +281,7 @@ def generate_medicine_sports(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             mobile = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), fake.time(), name, roll_number, fake.random_number(digits=1), fake.word() , name, fake.name()])
+            writer.writerow([fake.date(), fake.time()[:-3], name, roll_number, fake.random_number(digits=1), fake.word() , name, fake.name()])
 
 def generate_pool_non_membership(num_records):
     with open('./Data/pool_non_membership.csv', mode='w', newline='') as file:
@@ -290,7 +290,7 @@ def generate_pool_non_membership(num_records):
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
-            writer.writerow([fake.date(), name, fake.random_number(digits=4), fake.random_number(digits=3), roll_number, fake.time(), name])
+            writer.writerow([fake.date(), name, fake.random_number(digits=4), fake.random_number(digits=3), roll_number, fake.time()[:-3], name])
 
 def run():
     generate_hostel_data(100)
