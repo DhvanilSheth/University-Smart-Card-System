@@ -5,26 +5,31 @@ import mysql.connector
 
 # MySQL connection parameters
 db_params = {
-    'host': 'localhost',
-    'user': 'your_username',
-    'password': 'your_password'
+    'host': 'Saggitarius',
+    'user': 'root' ,
+    'password': 'root'
 }
 
 # A dictionary mapping databases to their respective tables and CSV files
 db_table_files = {
     'Sports': [
-        ('equipment_loss', '/mnt/data/equipment_loss.csv'),
-        # add other tables and files
+        ('equipment_loss', 'Data/equipment_loss.csv'),
+        ('equipment_requests', 'Data/equipment_requests.csv'),
+        ('gym', 'Data/gym.csv'),
+        ('pool', 'Data/pool.csv'),
+        ('pool_non_membership', 'Data/pool_non_membership.csv'),
+        ('medicine_sport', 'Data/medicine_sport.csv')
     ],
     'Mess': [
-        ('mess_1', '/mnt/data/mess_1_data.csv'),
-        # add other tables and files
+        ('mess_1', 'Data/mess_1.csv'),
+        ('mess_2', 'Data/mess_2.csv')
     ],
     'Hostel': [
-        ('home_leave_data', '/mnt/data/home_leave_data.csv'),
-        # add other tables and files
-    ],
-    # add other databases
+        ('home_leave_data', 'Data/home_leave_data.csv'),
+        ('hostel_data', 'Data/hostel_data.csv'),
+        ('medicine_data', 'Data/medicine_data.csv'),
+        ('package_collection_data', 'Data/package_collection_data.csv')
+    ]
 }
 
 # Connect to MySQL
