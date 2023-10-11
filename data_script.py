@@ -1,5 +1,5 @@
 # pip install pandas mysql-connector-python
-
+import pandas as pd
 import mysql.connector
 
 def makeSportsDB(host, user, password):
@@ -95,12 +95,12 @@ def makeSportsDB(host, user, password):
     
     # Insert data from CSV files into tables
     csv_files = [
-        "./data/pool_non_membership.csv",
-        "./data/pool.csv",
-        "./data/gym.csv",
-        "./data/equipment_requests.csv",
-        "./data/equipment_loss.csv",
-        "./data/medicine_sport.csv"
+        "./Data/pool_non_membership.csv",
+        "./Data/pool.csv",
+        "./Data/gym.csv",
+        "./Data/equipment_requests.csv",
+        "./Data/equipment_loss.csv",
+        "./Data/medicine_sport.csv"
     ]
     
     for csv_file in csv_files:
@@ -120,4 +120,4 @@ def makeSportsDB(host, user, password):
     
     return "SportsDB and tables created successfully and data inserted!"
 
-makeSportsDB(host='192.168.32.187', user='sa', password='wasd456fgA')
+makeSportsDB(host='localhost', user='root', password='hanoon2002')
