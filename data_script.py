@@ -53,6 +53,7 @@ import pandas as pd
 
 def insert_data_from_csv(table_name, csv_path, connection):
     df = pd.read_csv(csv_path)
+    df.columns = [col.replace(" ", "_") for col in df.columns]
     data_columns_escaped = ", ".join([f"`{col}`" for col in df.columns])
     values = [tuple(row) for row in df.values]
     placeholders = ", ".join(["%s"] * len(df.columns))

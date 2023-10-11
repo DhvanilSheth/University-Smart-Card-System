@@ -244,7 +244,7 @@ def generate_equipment_loss(num_records):
 def generate_gym(num_records):
     with open('./Data/gym.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "In", "Out", "Signature"])
+        writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "In_Time", "Out_Time", "Signature"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
@@ -266,7 +266,7 @@ def generate_pool(num_records):
 def generate_equipment_requests(num_records):
     with open('./Data/equipment_requests.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "Equipment Issued", "Quantity", "In", "Out", "Signature", "Remarks"])
+        writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "Equipment Issued", "Quantity", "In_Time", "Out_Time", "Signature", "Remarks"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
@@ -276,7 +276,7 @@ def generate_equipment_requests(num_records):
 def generate_medicine_sports(num_records):
     with open('./Data/medicine_sport.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Time", "Name", "Contact No", "Quanity", "Medicine Name", "Student Sign", "Security Sign"])
+        writer.writerow(["Date", "Time", "Name", "Contact No", "Quantity", "Medicine Name", "Student Sign", "Security Sign"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
@@ -286,7 +286,7 @@ def generate_medicine_sports(num_records):
 def generate_pool_non_membership(num_records):
     with open('./Data/pool_non_membership.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Name", "Tax ID", "Payment", "Roll No", "In", "Sign"])
+        writer.writerow(["Date", "Name", "Tax ID", "Payment", "Roll No", "In_Time", "Sign"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]

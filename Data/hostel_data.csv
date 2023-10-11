@@ -1,101 +1,101 @@
 Sr. No,Room Type,Floor,Room No,Student Name,Roll No,Course Type,Year,Email ID,Fees,Security Amt,Bank ID,Contact,Remarks,From,To,Name,Roll No,Course,Year,Email ID
-1,Married,Two,A-901,Roberta Carter,2024009,PhD,2024,roberta24009@iiitd.ac.in,40000,4000,72474,2147685307,Property Damage,2003-11-13,1989-05-29,Adam Carroll,2021042,PhD,2021,adam21042@iiitd.ac.in
-2,Married,Eight,A-11,Mrs. Heather Richmond DDS,2023099,PhD,2023,mrs.23099@iiitd.ac.in,35000,3500,51306,5275168409,No Remarks,1981-11-07,2010-12-10,Joseph Lee,2019012,PhD,2019,joseph19012@iiitd.ac.in
-3,Single,One,A-373,Casey White,2019046,BTech,2019,casey19046@iiitd.ac.in,35000,3500,78136,7839540186,No Remarks,2007-11-13,2009-08-05,Roberta Carter,2024009,PhD,2024,roberta24009@iiitd.ac.in
-4,Double,Ground,A-792,Justin Mcdonald,2024049,BTech,2024,justin24049@iiitd.ac.in,30000,3000,12413,9978525542,Late Fees,1974-05-31,1984-12-25,Null,Null,Null,Null,Null
-5,Double,Seven,A-383,Roberta Carter,2024009,PhD,2024,roberta24009@iiitd.ac.in,30000,3000,40669,2147685307,Health Issues,1999-12-18,2018-12-18,Null,Null,Null,Null,Null
-6,Double,Six,A-471,Brian Wise,2019003,PhD,2019,brian19003@iiitd.ac.in,40000,4000,69610,5437500399,Late Fees,2019-01-07,1992-05-21,Alexandra Harrison,2019080,Mtech,2019,alexandra19080@iiitd.ac.in
-7,Married,Nine,A-435,James Parsons,2024060,PhD,2024,james24060@iiitd.ac.in,30000,3000,8393,5167167175,No Remarks,2015-03-27,1998-10-12,Roberta Carter,2024009,PhD,2024,roberta24009@iiitd.ac.in
-8,Married,One,A-536,Joy Cummings,2020087,PhD,2020,joy20087@iiitd.ac.in,40000,4000,44159,4503496010,Property Damage,1971-10-27,1996-08-15,John Brewer,2021082,BTech,2021,john21082@iiitd.ac.in
-9,Single,Ground,A-652,Randall Ferguson,2020057,PhD,2020,randall20057@iiitd.ac.in,40000,4000,48681,6590582758,Health Issues,1990-06-08,1994-04-24,Null,Null,Null,Null,Null
-10,Married,Seven,A-94,Randall Ferguson,2020057,PhD,2020,randall20057@iiitd.ac.in,30000,3000,37453,6590582758,Health Issues,1990-08-17,1975-11-05,Jeffrey Morris,2024084,PhD,2024,jeffrey24084@iiitd.ac.in
-11,Married,Ground,A-180,John Brewer,2021082,BTech,2021,john21082@iiitd.ac.in,30000,3000,72821,7428638452,Health Issues,2014-12-15,1972-06-26,Jaime Johnson,2023044,Mtech,2023,jaime23044@iiitd.ac.in
-12,Double,Six,A-719,Teresa Butler,2022050,Mtech,2022,teresa22050@iiitd.ac.in,35000,3500,93659,4033504082,Health Issues,2019-06-21,1997-01-25,Null,Null,Null,Null,Null
-13,Single,Four,A-759,Luis Morales,2021037,BTech,2021,luis21037@iiitd.ac.in,35000,3500,64943,2779339280,Late Fees,2018-08-13,1972-07-15,Null,Null,Null,Null,Null
-14,Married,Eight,A-609,Lisa Collins,2019055,BTech,2019,lisa19055@iiitd.ac.in,35000,3500,30050,296255969,Late Fees,1982-01-11,2006-06-08,Null,Null,Null,Null,Null
-15,Double,Eight,A-341,Ricky Wood,2022067,BTech,2022,ricky22067@iiitd.ac.in,35000,3500,71829,3820366689,Property Damage,1997-08-05,2002-03-23,Null,Null,Null,Null,Null
-16,Single,Ten,A-505,Roberta Carter,2024009,PhD,2024,roberta24009@iiitd.ac.in,40000,4000,22852,2147685307,Late Fees,1979-03-21,1995-01-29,Null,Null,Null,Null,Null
-17,Double,Five,A-250,Jessica Hunter,2021020,Mtech,2021,jessica21020@iiitd.ac.in,30000,3000,87222,7375443865,Property Damage,1990-09-11,1978-08-21,Null,Null,Null,Null,Null
-18,Married,Seven,A-231,Casey White,2019046,BTech,2019,casey19046@iiitd.ac.in,30000,3000,10059,7839540186,Health Issues,2002-08-07,2010-08-05,Null,Null,Null,Null,Null
-19,Single,Three,A-133,Thomas Harris DDS,2018081,PhD,2018,thomas18081@iiitd.ac.in,40000,4000,31332,3307190698,Health Issues,2023-04-08,1971-12-26,Null,Null,Null,Null,Null
-20,Double,Eight,A-457,Daniel Anderson,2019072,PhD,2019,daniel19072@iiitd.ac.in,35000,3500,60623,9424313336,Health Issues,1994-05-31,1997-04-05,Null,Null,Null,Null,Null
-21,Married,Three,A-644,Todd Archer,2023018,PhD,2023,todd23018@iiitd.ac.in,30000,3000,87285,3709463999,Late Fees,1997-04-24,1971-11-17,Null,Null,Null,Null,Null
-22,Married,Ground,A-773,Antonio Harper,2023052,BTech,2023,antonio23052@iiitd.ac.in,35000,3500,65938,5569442360,Health Issues,2021-06-30,1975-01-14,Todd Archer,2023018,PhD,2023,todd23018@iiitd.ac.in
-23,Married,Ground,A-987,Yvette Newman,2021010,BTech,2021,yvette21010@iiitd.ac.in,40000,4000,31668,1157603648,Late Fees,1986-01-27,1987-09-05,Randall Ferguson,2020057,PhD,2020,randall20057@iiitd.ac.in
-24,Married,Five,A-50,Bruce Haley,2019090,PhD,2019,bruce19090@iiitd.ac.in,40000,4000,45022,3333626697,Health Issues,1972-01-10,2001-10-08,Null,Null,Null,Null,Null
-25,Single,One,A-50,Mrs. Heather Richmond DDS,2023099,PhD,2023,mrs.23099@iiitd.ac.in,30000,3000,39792,5275168409,Property Damage,1982-03-08,1979-08-08,Null,Null,Null,Null,Null
-26,Single,Three,A-112,Michael Williams,2023048,PhD,2023,michael23048@iiitd.ac.in,35000,3500,20530,4254452672,No Remarks,1996-07-30,1993-09-30,Joanne Ramirez MD,2019091,BTech,2019,joanne19091@iiitd.ac.in
-27,Married,Four,A-671,Thomas Hall,2018066,PhD,2018,thomas18066@iiitd.ac.in,40000,4000,64153,1939469598,Late Fees,1995-07-28,2017-03-05,Daniel Anderson,2019072,PhD,2019,daniel19072@iiitd.ac.in
-28,Double,Six,A-522,Yvette Newman,2021010,BTech,2021,yvette21010@iiitd.ac.in,30000,3000,6637,1157603648,No Remarks,1989-10-14,1984-12-11,Null,Null,Null,Null,Null
-29,Married,Four,A-29,Debra Harper,2021088,BTech,2021,debra21088@iiitd.ac.in,35000,3500,99829,2175010825,No Remarks,1992-03-09,1973-12-28,Ricky Wood,2022067,BTech,2022,ricky22067@iiitd.ac.in
-30,Double,Three,A-123,Brian Wise,2019003,PhD,2019,brian19003@iiitd.ac.in,30000,3000,9927,5437500399,Late Fees,1970-05-29,1983-02-08,Null,Null,Null,Null,Null
-31,Single,Ten,A-239,James Parsons,2024060,PhD,2024,james24060@iiitd.ac.in,40000,4000,41557,5167167175,Property Damage,1979-07-23,1985-08-26,Null,Null,Null,Null,Null
-32,Single,Ten,A-294,Richard Hunt,2022075,PhD,2022,richard22075@iiitd.ac.in,35000,3500,41976,2625256681,Health Issues,1998-09-20,1982-04-14,Null,Null,Null,Null,Null
-33,Married,Ten,A-765,John Brewer,2021082,BTech,2021,john21082@iiitd.ac.in,35000,3500,79570,7428638452,No Remarks,1979-10-14,2001-12-20,Null,Null,Null,Null,Null
-34,Married,Four,A-121,Donna Wilson,2022022,BTech,2022,donna22022@iiitd.ac.in,30000,3000,52092,2993989350,Health Issues,1979-03-16,1971-10-26,Lisa Hughes,2023014,Mtech,2023,lisa23014@iiitd.ac.in
-35,Single,Four,A-763,Jaime Johnson,2023044,Mtech,2023,jaime23044@iiitd.ac.in,35000,3500,43833,9637827807,Health Issues,2019-07-14,2015-06-28,Luis Morales,2021037,BTech,2021,luis21037@iiitd.ac.in
-36,Double,Ten,A-845,Casey White,2019046,BTech,2019,casey19046@iiitd.ac.in,30000,3000,78536,7839540186,No Remarks,2013-08-15,2009-03-10,Null,Null,Null,Null,Null
-37,Single,Ten,A-787,Lisa Lambert,2023076,BTech,2023,lisa23076@iiitd.ac.in,30000,3000,53669,9069073589,Health Issues,1984-11-24,1971-11-29,Null,Null,Null,Null,Null
-38,Single,Four,A-71,Michelle Harris,2020027,PhD,2020,michelle20027@iiitd.ac.in,35000,3500,37255,3891630331,No Remarks,1980-08-22,1986-06-17,Carrie Thomas,2018028,BTech,2018,carrie18028@iiitd.ac.in
-39,Married,One,A-615,Kenneth Blevins,2021071,Mtech,2021,kenneth21071@iiitd.ac.in,40000,4000,18853,1477999284,Property Damage,1973-06-20,2002-02-16,Null,Null,Null,Null,Null
-40,Married,Three,A-52,Carrie Thomas,2018028,BTech,2018,carrie18028@iiitd.ac.in,40000,4000,16348,9414488797,Property Damage,1982-12-13,2010-12-02,Null,Null,Null,Null,Null
-41,Married,Six,A-584,Stephanie Cabrera,2020079,BTech,2020,stephanie20079@iiitd.ac.in,35000,3500,65058,654492244,Late Fees,2015-09-06,2012-01-11,Lisa Hughes,2023014,Mtech,2023,lisa23014@iiitd.ac.in
-42,Double,Five,A-457,Thomas Hall,2018066,PhD,2018,thomas18066@iiitd.ac.in,40000,4000,34403,1939469598,Late Fees,1992-08-14,1997-05-01,Null,Null,Null,Null,Null
-43,Single,Ten,A-265,Lisa Nguyen,2019032,Mtech,2019,lisa19032@iiitd.ac.in,40000,4000,63752,5489159342,Health Issues,2002-10-20,1988-10-29,Null,Null,Null,Null,Null
-44,Double,Six,A-387,Casey White,2019046,BTech,2019,casey19046@iiitd.ac.in,40000,4000,81772,7839540186,Health Issues,2002-02-06,2017-09-21,Christina Rojas,2022064,BTech,2022,christina22064@iiitd.ac.in
-45,Double,Ten,A-728,Jose Mora,2018073,BTech,2018,jose18073@iiitd.ac.in,30000,3000,87951,6551394794,No Remarks,1971-11-10,1978-03-03,Null,Null,Null,Null,Null
-46,Single,One,A-156,Kenneth Blevins,2021071,Mtech,2021,kenneth21071@iiitd.ac.in,40000,4000,76214,1477999284,Property Damage,2020-11-01,2019-11-21,Kathryn Martin,2021085,BTech,2021,kathryn21085@iiitd.ac.in
-47,Single,Two,A-215,Curtis Moran,2024040,BTech,2024,curtis24040@iiitd.ac.in,35000,3500,27476,6386814573,No Remarks,2016-02-05,2022-06-09,Curtis Moran,2024040,BTech,2024,curtis24040@iiitd.ac.in
-48,Double,Ground,A-52,Justin Mcdonald,2024049,BTech,2024,justin24049@iiitd.ac.in,35000,3500,76998,9978525542,Property Damage,1980-08-08,2003-04-17,Null,Null,Null,Null,Null
-49,Double,Seven,A-820,Michael Coffey,2022031,BTech,2022,michael22031@iiitd.ac.in,35000,3500,92875,9151938495,No Remarks,2003-06-24,1973-02-17,Null,Null,Null,Null,Null
-50,Double,Four,A-97,Jasmine Daugherty,2018019,BTech,2018,jasmine18019@iiitd.ac.in,30000,3000,88589,1271144859,Health Issues,1984-01-06,1978-10-05,Null,Null,Null,Null,Null
-51,Married,Seven,A-289,Amy Bradshaw,2023021,PhD,2023,amy23021@iiitd.ac.in,35000,3500,16,1782986782,Health Issues,2007-11-28,1982-07-19,Christina Rojas,2022064,BTech,2022,christina22064@iiitd.ac.in
-52,Double,Ground,A-349,Sally James,2018015,PhD,2018,sally18015@iiitd.ac.in,40000,4000,52073,8831396549,No Remarks,1982-05-16,1995-08-19,Jasmine Daugherty,2018019,BTech,2018,jasmine18019@iiitd.ac.in
-53,Single,Four,A-707,Adam Bradley,2022074,Mtech,2022,adam22074@iiitd.ac.in,40000,4000,79956,1730439239,Property Damage,1988-09-17,1981-03-10,James Mcknight,2018029,Mtech,2018,james18029@iiitd.ac.in
-54,Married,Ground,A-464,Claudia Terry,2023059,Mtech,2023,claudia23059@iiitd.ac.in,30000,3000,75197,5989284661,Health Issues,2002-11-15,1975-04-08,Jennifer Miller,2022038,Mtech,2022,jennifer22038@iiitd.ac.in
-55,Double,Seven,A-932,Nathan Carroll,2023033,PhD,2023,nathan23033@iiitd.ac.in,30000,3000,71058,7708320536,Property Damage,1979-09-24,2006-07-14,Null,Null,Null,Null,Null
-56,Single,Ground,A-255,Thomas Harris DDS,2018081,PhD,2018,thomas18081@iiitd.ac.in,30000,3000,25726,3307190698,Health Issues,2009-01-27,1971-04-12,Daniel Anderson,2019072,PhD,2019,daniel19072@iiitd.ac.in
-57,Single,Four,A-529,Dennis Graham,2020054,PhD,2020,dennis20054@iiitd.ac.in,35000,3500,6742,631640363,Health Issues,2016-05-20,1999-02-19,Todd Archer,2023018,PhD,2023,todd23018@iiitd.ac.in
-58,Married,Seven,A-352,Amy Norton,2018083,Mtech,2018,amy18083@iiitd.ac.in,35000,3500,7087,86606964,Property Damage,2018-01-13,2004-11-16,James Parsons,2024060,PhD,2024,james24060@iiitd.ac.in
-59,Single,Five,A-546,Christina Rojas,2022064,BTech,2022,christina22064@iiitd.ac.in,30000,3000,91505,2608367057,Health Issues,1989-01-30,2023-03-03,Brian Wise,2019003,PhD,2019,brian19003@iiitd.ac.in
-60,Double,Seven,A-907,Stephen Myers,2019094,BTech,2019,stephen19094@iiitd.ac.in,35000,3500,33896,5826618210,Property Damage,1994-09-26,1983-07-17,Null,Null,Null,Null,Null
-61,Double,Five,A-735,Mrs. Rebecca Reeves,2023045,PhD,2023,mrs.23045@iiitd.ac.in,35000,3500,10147,8918757108,Health Issues,2015-01-25,2008-07-10,Null,Null,Null,Null,Null
-62,Double,Ground,A-28,Shane Johnson,2018026,Mtech,2018,shane18026@iiitd.ac.in,40000,4000,94497,6109289458,Late Fees,2015-09-21,2016-05-11,Jasmine Daugherty,2018019,BTech,2018,jasmine18019@iiitd.ac.in
-63,Single,One,A-174,Jose Mora,2018073,BTech,2018,jose18073@iiitd.ac.in,40000,4000,69777,6551394794,Property Damage,2008-01-13,1998-01-21,Null,Null,Null,Null,Null
-64,Single,Ground,A-625,Jennifer Velasquez,2020008,Mtech,2020,jennifer20008@iiitd.ac.in,35000,3500,82608,4968430335,Health Issues,1979-06-30,1982-07-27,Sherry Rogers,2023023,Mtech,2023,sherry23023@iiitd.ac.in
-65,Single,Seven,A-642,Eric Houston,2023017,Mtech,2023,eric23017@iiitd.ac.in,35000,3500,6441,1454271514,Property Damage,1992-05-27,1970-09-25,Null,Null,Null,Null,Null
-66,Single,Eight,A-635,Roberta Carter,2024009,PhD,2024,roberta24009@iiitd.ac.in,40000,4000,54807,2147685307,Property Damage,1991-05-13,2018-01-09,Null,Null,Null,Null,Null
-67,Married,One,A-419,Shane Johnson,2018026,Mtech,2018,shane18026@iiitd.ac.in,30000,3000,78745,6109289458,Property Damage,2015-05-13,2004-01-14,Null,Null,Null,Null,Null
-68,Single,Five,A-879,Ashley Christensen,2022011,Mtech,2022,ashley22011@iiitd.ac.in,30000,3000,47043,6564014062,No Remarks,2012-09-20,1993-06-19,Null,Null,Null,Null,Null
-69,Double,Eight,A-157,Luis Morales,2021037,BTech,2021,luis21037@iiitd.ac.in,40000,4000,17426,2779339280,Property Damage,2022-02-01,1991-12-08,Null,Null,Null,Null,Null
-70,Married,Two,A-610,Jeffrey Morris,2024084,PhD,2024,jeffrey24084@iiitd.ac.in,30000,3000,2058,4005518282,No Remarks,1979-10-07,2016-12-13,Null,Null,Null,Null,Null
-71,Double,Five,A-425,James Parsons,2024060,PhD,2024,james24060@iiitd.ac.in,40000,4000,8117,5167167175,No Remarks,2014-01-09,2008-01-24,Mrs. Heather Richmond DDS,2023099,PhD,2023,mrs.23099@iiitd.ac.in
-72,Married,Eight,A-759,Rebecca Cabrera,2023006,PhD,2023,rebecca23006@iiitd.ac.in,35000,3500,6302,2697732304,Late Fees,1984-09-07,2020-09-12,Sally James,2018015,PhD,2018,sally18015@iiitd.ac.in
-73,Double,Eight,A-332,Carlos Reyes,2021095,Mtech,2021,carlos21095@iiitd.ac.in,40000,4000,82527,7724967805,No Remarks,1998-11-12,1995-09-30,Reginald Silva,2021093,PhD,2021,reginald21093@iiitd.ac.in
-74,Single,Ground,A-937,Christopher Dillon,2018097,BTech,2018,christopher18097@iiitd.ac.in,35000,3500,29862,2353123511,Late Fees,2023-09-14,1998-11-05,Ashley Christensen,2022011,Mtech,2022,ashley22011@iiitd.ac.in
-75,Single,Two,A-304,Reginald Silva,2021093,PhD,2021,reginald21093@iiitd.ac.in,35000,3500,5205,2160101171,Late Fees,1998-10-31,1999-11-01,Jeffrey Morris,2024084,PhD,2024,jeffrey24084@iiitd.ac.in
-76,Married,Seven,A-492,Lisa Gibson,2020086,Mtech,2020,lisa20086@iiitd.ac.in,40000,4000,65531,6115755102,Late Fees,1998-11-04,1980-07-14,Null,Null,Null,Null,Null
-77,Married,Three,A-492,Curtis Moran,2024040,BTech,2024,curtis24040@iiitd.ac.in,35000,3500,29350,6386814573,Property Damage,1984-10-05,1996-12-01,Carrie Thomas,2018028,BTech,2018,carrie18028@iiitd.ac.in
-78,Married,Ground,A-245,Alexandra Harrison,2019080,Mtech,2019,alexandra19080@iiitd.ac.in,40000,4000,90322,3978187240,Late Fees,1991-09-19,2001-12-26,Null,Null,Null,Null,Null
-79,Double,Seven,A-85,Lisa Lambert,2023076,BTech,2023,lisa23076@iiitd.ac.in,30000,3000,86078,9069073589,Health Issues,1982-06-04,2001-01-13,Jeffrey Morris,2024084,PhD,2024,jeffrey24084@iiitd.ac.in
-80,Single,Three,A-456,Mrs. Martha Meyer,2023002,Mtech,2023,mrs.23002@iiitd.ac.in,35000,3500,1926,7785712237,Property Damage,2008-06-04,1970-04-21,Thomas Harris DDS,2018081,PhD,2018,thomas18081@iiitd.ac.in
-81,Married,One,A-372,Mrs. Martha Meyer,2023002,Mtech,2023,mrs.23002@iiitd.ac.in,40000,4000,63169,7785712237,Late Fees,1973-02-03,2006-01-02,Null,Null,Null,Null,Null
-82,Double,Ground,A-759,Michael Williams,2023048,PhD,2023,michael23048@iiitd.ac.in,30000,3000,33702,4254452672,Health Issues,1995-09-07,1979-12-01,Null,Null,Null,Null,Null
-83,Double,Two,A-359,Jessica Perkins MD,2021047,Mtech,2021,jessica21047@iiitd.ac.in,30000,3000,83400,1875363336,Health Issues,1978-05-14,2021-01-02,Null,Null,Null,Null,Null
-84,Double,Three,A-736,Luis Morales,2021037,BTech,2021,luis21037@iiitd.ac.in,35000,3500,3976,2779339280,Health Issues,2011-07-07,2011-01-01,Ashley Christensen,2022011,Mtech,2022,ashley22011@iiitd.ac.in
-85,Married,Seven,A-551,Patrick Jarvis IV,2023096,PhD,2023,patrick23096@iiitd.ac.in,35000,3500,84161,1368597919,No Remarks,1994-07-29,2008-04-13,Mrs. Heather Richmond DDS,2023099,PhD,2023,mrs.23099@iiitd.ac.in
-86,Double,Nine,A-303,Lisa Hughes,2023014,Mtech,2023,lisa23014@iiitd.ac.in,40000,4000,53594,9039446539,Health Issues,1995-03-29,1973-10-13,Anna Davis,2022051,PhD,2022,anna22051@iiitd.ac.in
-87,Double,Ground,A-324,Lauren Simpson,2024016,BTech,2024,lauren24016@iiitd.ac.in,35000,3500,32727,4382663586,Health Issues,1970-08-25,2001-04-15,Richard Hunt,2022075,PhD,2022,richard22075@iiitd.ac.in
-88,Single,Nine,A-112,Michael Coffey,2022031,BTech,2022,michael22031@iiitd.ac.in,30000,3000,62905,9151938495,Late Fees,2017-10-14,1985-03-14,Null,Null,Null,Null,Null
-89,Married,Six,A-136,Jordan Palmer,2021061,BTech,2021,jordan21061@iiitd.ac.in,30000,3000,41569,2829673945,Property Damage,1985-06-04,1978-07-31,Nathan Carroll,2023033,PhD,2023,nathan23033@iiitd.ac.in
-90,Married,Four,A-431,Stephen Myers,2019094,BTech,2019,stephen19094@iiitd.ac.in,35000,3500,54496,5826618210,Late Fees,1975-06-06,1980-07-27,Null,Null,Null,Null,Null
-91,Married,Ground,A-543,Jeffrey Morris,2024084,PhD,2024,jeffrey24084@iiitd.ac.in,30000,3000,21281,4005518282,Health Issues,1995-08-25,1978-03-29,Michael Williams,2023048,PhD,2023,michael23048@iiitd.ac.in
-92,Single,Eight,A-597,Teresa Butler,2022050,Mtech,2022,teresa22050@iiitd.ac.in,30000,3000,54566,4033504082,Health Issues,2014-03-17,1981-01-16,Null,Null,Null,Null,Null
-93,Married,Eight,A-841,Robert Conner,2022004,BTech,2022,robert22004@iiitd.ac.in,30000,3000,71673,9893760754,No Remarks,1976-03-18,2014-10-09,John Brewer,2021082,BTech,2021,john21082@iiitd.ac.in
-94,Double,Two,A-899,Antonio Harper,2023052,BTech,2023,antonio23052@iiitd.ac.in,35000,3500,5383,5569442360,Health Issues,1983-07-19,1988-04-07,Null,Null,Null,Null,Null
-95,Double,Eight,A-64,George Castro,2018098,Mtech,2018,george18098@iiitd.ac.in,40000,4000,75159,3883848956,Late Fees,1989-11-12,2015-05-08,Walter Morales,2024007,BTech,2024,walter24007@iiitd.ac.in
-96,Single,Two,A-609,Kenneth Blevins,2021071,Mtech,2021,kenneth21071@iiitd.ac.in,30000,3000,90133,1477999284,No Remarks,2009-01-12,1976-12-29,Yvette Newman,2021010,BTech,2021,yvette21010@iiitd.ac.in
-97,Married,Ground,A-743,Benjamin Walker,2020034,BTech,2020,benjamin20034@iiitd.ac.in,40000,4000,99999,3026835385,No Remarks,1978-11-14,2020-10-10,Null,Null,Null,Null,Null
-98,Single,One,A-113,Ashley Christensen,2022011,Mtech,2022,ashley22011@iiitd.ac.in,35000,3500,20055,6564014062,No Remarks,2019-05-31,1989-07-05,Null,Null,Null,Null,Null
-99,Double,Ten,A-391,Stephanie Cabrera,2020079,BTech,2020,stephanie20079@iiitd.ac.in,30000,3000,49007,654492244,Health Issues,2014-10-09,1991-03-03,Shane Johnson,2018026,Mtech,2018,shane18026@iiitd.ac.in
-100,Double,Ten,A-120,Amy Norton,2018083,Mtech,2018,amy18083@iiitd.ac.in,35000,3500,9768,86606964,No Remarks,1987-01-12,2004-05-28,Erika Miller,2019077,Mtech,2019,erika19077@iiitd.ac.in
+1,Single,Nine,A-315,Glenda Hunter,2020039,PhD,2020,glenda20039@iiitd.ac.in,35000,3500,31820,9108567112,No Remarks,1973-12-04,1997-05-06,Null,Null,Null,Null,Null
+2,Single,Nine,A-577,Deborah Moore,2022089,Mtech,2022,deborah22089@iiitd.ac.in,40000,4000,99604,9926289967,Property Damage,1978-09-07,1973-08-28,Null,Null,Null,Null,Null
+3,Double,Ten,A-896,Amy Wood,2021048,PhD,2021,amy21048@iiitd.ac.in,35000,3500,46645,8722256337,Health Issues,2006-03-26,2019-12-19,Null,Null,Null,Null,Null
+4,Married,Four,A-354,Megan Sullivan,2019034,BTech,2019,megan19034@iiitd.ac.in,40000,4000,31749,9751420485,No Remarks,2021-05-28,1983-01-21,Kyle Mcknight,2018066,PhD,2018,kyle18066@iiitd.ac.in
+5,Single,Eight,A-944,Aaron Wheeler,2018096,PhD,2018,aaron18096@iiitd.ac.in,30000,3000,14849,496841294,Health Issues,1971-01-14,2016-02-22,Amy Potts,2021049,BTech,2021,amy21049@iiitd.ac.in
+6,Married,Two,A-358,Virginia Kramer,2019024,PhD,2019,virginia19024@iiitd.ac.in,35000,3500,89185,9360505252,Late Fees,1980-11-27,2015-08-06,Hector Marquez,2021009,PhD,2021,hector21009@iiitd.ac.in
+7,Married,Seven,A-553,Ricky Rodriguez,2018070,BTech,2018,ricky18070@iiitd.ac.in,35000,3500,7013,8598873797,Late Fees,2007-09-08,2022-10-10,Null,Null,Null,Null,Null
+8,Single,Nine,A-845,Mark Mccarty,2023060,PhD,2023,mark23060@iiitd.ac.in,35000,3500,73844,8143675656,No Remarks,2007-12-26,2003-10-22,Jason Rosario,2023074,Mtech,2023,jason23074@iiitd.ac.in
+9,Single,Ten,A-987,Jeffrey Kirby,2023046,BTech,2023,jeffrey23046@iiitd.ac.in,40000,4000,26187,822442320,Property Damage,1979-06-10,1989-09-25,Theresa Torres,2018099,PhD,2018,theresa18099@iiitd.ac.in
+10,Married,Three,A-680,Nancy Reyes,2024037,BTech,2024,nancy24037@iiitd.ac.in,35000,3500,27470,6352151831,No Remarks,2001-12-24,2004-10-26,David Williams,2023008,Mtech,2023,david23008@iiitd.ac.in
+11,Married,One,A-344,Karen Maynard,2021010,BTech,2021,karen21010@iiitd.ac.in,30000,3000,58282,1769794625,No Remarks,1971-03-31,1973-06-10,Carlos Cook,2022047,Mtech,2022,carlos22047@iiitd.ac.in
+12,Married,Eight,A-202,Katelyn Clark,2023072,PhD,2023,katelyn23072@iiitd.ac.in,35000,3500,13413,8927991892,Property Damage,1991-10-21,1984-11-07,Null,Null,Null,Null,Null
+13,Married,Ten,A-496,Sara Norman,2019002,Mtech,2019,sara19002@iiitd.ac.in,35000,3500,36299,2890166156,No Remarks,2019-03-28,2003-11-08,Null,Null,Null,Null,Null
+14,Single,Ground,A-570,Catherine Hawkins,2024061,BTech,2024,catherine24061@iiitd.ac.in,40000,4000,39797,1848286711,Late Fees,1997-01-26,1976-09-18,Kristin Johnson,2024057,PhD,2024,kristin24057@iiitd.ac.in
+15,Single,Three,A-169,Kyle Mcknight,2018066,PhD,2018,kyle18066@iiitd.ac.in,35000,3500,19956,4033178251,Health Issues,2020-07-30,2007-08-11,Null,Null,Null,Null,Null
+16,Married,Four,A-794,William Meza,2020080,Mtech,2020,william20080@iiitd.ac.in,30000,3000,27965,7301680588,Property Damage,2008-10-17,1987-02-16,Null,Null,Null,Null,Null
+17,Married,Four,A-539,Megan Sullivan,2019034,BTech,2019,megan19034@iiitd.ac.in,30000,3000,93764,9751420485,Property Damage,1998-12-12,1973-08-20,Null,Null,Null,Null,Null
+18,Single,Three,A-361,Gabriella Gonzalez,2021077,Mtech,2021,gabriella21077@iiitd.ac.in,35000,3500,83370,6080092552,Late Fees,1981-09-05,1974-11-25,Maurice Meyers,2020022,BTech,2020,maurice20022@iiitd.ac.in
+19,Single,Ten,A-593,Manuel Nichols,2019026,Mtech,2019,manuel19026@iiitd.ac.in,30000,3000,95161,9399295772,Health Issues,1991-07-11,1982-02-02,Null,Null,Null,Null,Null
+20,Married,Seven,A-438,Sarah Hill,2020003,PhD,2020,sarah20003@iiitd.ac.in,40000,4000,91060,5158267780,Health Issues,1989-07-01,1980-01-01,Null,Null,Null,Null,Null
+21,Double,Seven,A-189,Michelle Jones,2019015,PhD,2019,michelle19015@iiitd.ac.in,35000,3500,23838,4955637918,Property Damage,1973-05-25,1971-01-02,Gabriella Gonzalez,2021077,Mtech,2021,gabriella21077@iiitd.ac.in
+22,Double,Four,A-949,Jason Rosario,2023074,Mtech,2023,jason23074@iiitd.ac.in,40000,4000,75507,327406950,No Remarks,1976-09-10,1986-01-21,Null,Null,Null,Null,Null
+23,Married,Five,A-869,Monica Pruitt,2022063,PhD,2022,monica22063@iiitd.ac.in,30000,3000,14592,4481377554,Property Damage,2018-08-12,2007-06-18,Null,Null,Null,Null,Null
+24,Double,Four,A-0,Christina Villanueva,2019088,BTech,2019,christina19088@iiitd.ac.in,30000,3000,29314,9362948915,No Remarks,1996-08-20,1985-09-24,Elizabeth Walker,2019094,BTech,2019,elizabeth19094@iiitd.ac.in
+25,Double,Four,A-225,Harold Crawford,2019045,PhD,2019,harold19045@iiitd.ac.in,35000,3500,33922,5084016830,Property Damage,1993-05-30,2023-05-31,Null,Null,Null,Null,Null
+26,Single,Two,A-304,Joseph Ryan,2019059,Mtech,2019,joseph19059@iiitd.ac.in,30000,3000,1076,5684402914,Property Damage,1979-06-30,2007-12-09,Null,Null,Null,Null,Null
+27,Single,Six,A-780,Caitlyn Jordan,2024044,Mtech,2024,caitlyn24044@iiitd.ac.in,40000,4000,7890,7819462351,Late Fees,1985-10-29,1975-09-27,Sarah Webb,2018069,PhD,2018,sarah18069@iiitd.ac.in
+28,Single,One,A-315,Nancy Reyes,2024037,BTech,2024,nancy24037@iiitd.ac.in,40000,4000,43839,6352151831,Health Issues,1992-01-06,1970-12-02,Caroline Cooper,2019005,Mtech,2019,caroline19005@iiitd.ac.in
+29,Married,Three,A-34,Amy Wood,2021048,PhD,2021,amy21048@iiitd.ac.in,35000,3500,37675,8722256337,Property Damage,2005-10-24,2002-01-22,Null,Null,Null,Null,Null
+30,Double,Three,A-891,Lindsey Moss,2023018,PhD,2023,lindsey23018@iiitd.ac.in,35000,3500,19856,8438450075,Late Fees,1990-05-06,1976-02-08,Null,Null,Null,Null,Null
+31,Single,Eight,A-456,Ryan Wagner,2024032,Mtech,2024,ryan24032@iiitd.ac.in,30000,3000,15079,342738430,Late Fees,2016-06-06,1995-08-31,Bradley Harris,2023086,Mtech,2023,bradley23086@iiitd.ac.in
+32,Double,Six,A-207,James Wolf,2020052,BTech,2020,james20052@iiitd.ac.in,40000,4000,87701,1380413189,Late Fees,2008-04-04,1992-09-25,Warren Ware,2021006,PhD,2021,warren21006@iiitd.ac.in
+33,Double,Three,A-540,Mark Mccarty,2023060,PhD,2023,mark23060@iiitd.ac.in,30000,3000,89795,8143675656,Late Fees,1972-05-14,2023-02-09,Scott Ferguson,2022019,BTech,2022,scott22019@iiitd.ac.in
+34,Single,Five,A-32,Dakota Young,2022097,BTech,2022,dakota22097@iiitd.ac.in,35000,3500,53344,1455534085,Property Damage,1989-11-25,2010-09-06,Geoffrey Berg,2019067,BTech,2019,geoffrey19067@iiitd.ac.in
+35,Double,Nine,A-922,Willie Graham,2020038,Mtech,2020,willie20038@iiitd.ac.in,30000,3000,32533,7129095045,No Remarks,2003-02-10,2010-12-08,Null,Null,Null,Null,Null
+36,Double,Eight,A-860,Rachael Houston,2024085,BTech,2024,rachael24085@iiitd.ac.in,40000,4000,54201,8695177334,No Remarks,2008-01-24,1986-02-26,Nancy Reyes,2024037,BTech,2024,nancy24037@iiitd.ac.in
+37,Double,Nine,A-696,Hector Marquez,2021009,PhD,2021,hector21009@iiitd.ac.in,30000,3000,6328,4474677621,Property Damage,1998-09-10,2018-06-19,Null,Null,Null,Null,Null
+38,Single,Ground,A-195,Maurice Meyers,2020022,BTech,2020,maurice20022@iiitd.ac.in,30000,3000,44884,639918015,Property Damage,1989-09-23,1980-05-13,Null,Null,Null,Null,Null
+39,Married,Three,A-502,Julie Williams,2021081,PhD,2021,julie21081@iiitd.ac.in,30000,3000,98478,9137186109,Late Fees,1985-01-10,1987-11-22,Null,Null,Null,Null,Null
+40,Single,Five,A-351,Virginia Kramer,2019024,PhD,2019,virginia19024@iiitd.ac.in,40000,4000,61288,9360505252,No Remarks,2002-02-07,1970-01-18,Amy Frost,2021093,PhD,2021,amy21093@iiitd.ac.in
+41,Married,Seven,A-171,Andrew Lopez,2018013,BTech,2018,andrew18013@iiitd.ac.in,40000,4000,74104,3372230561,Health Issues,1998-08-14,1979-01-23,Null,Null,Null,Null,Null
+42,Single,Three,A-435,Rachael Houston,2024085,BTech,2024,rachael24085@iiitd.ac.in,35000,3500,40379,8695177334,Late Fees,1986-10-12,1984-01-30,Null,Null,Null,Null,Null
+43,Double,Ground,A-101,Charles Richmond,2019051,PhD,2019,charles19051@iiitd.ac.in,30000,3000,30834,3462050922,Health Issues,1987-07-08,1986-04-05,Donna Lynch,2023043,BTech,2023,donna23043@iiitd.ac.in
+44,Single,Three,A-445,Lindsey Moss,2023018,PhD,2023,lindsey23018@iiitd.ac.in,30000,3000,16105,8438450075,No Remarks,2022-05-13,2005-08-24,Null,Null,Null,Null,Null
+45,Double,Six,A-727,Joseph Ryan,2019059,Mtech,2019,joseph19059@iiitd.ac.in,30000,3000,38288,5684402914,No Remarks,2009-11-22,1976-11-08,Emily Walton,2024040,BTech,2024,emily24040@iiitd.ac.in
+46,Double,Six,A-545,Christopher Johnson,2022056,Mtech,2022,christopher22056@iiitd.ac.in,35000,3500,72322,1757994348,No Remarks,2019-01-20,2008-12-17,Null,Null,Null,Null,Null
+47,Double,Nine,A-717,Manuel Nichols,2019026,Mtech,2019,manuel19026@iiitd.ac.in,40000,4000,65995,9399295772,Health Issues,2018-03-18,2019-03-24,Mark Mccarty,2023060,PhD,2023,mark23060@iiitd.ac.in
+48,Single,Ten,A-304,Shane Khan,2019076,BTech,2019,shane19076@iiitd.ac.in,35000,3500,25897,3410943166,Health Issues,1976-09-03,2003-09-07,Null,Null,Null,Null,Null
+49,Single,One,A-597,Virginia Kramer,2019024,PhD,2019,virginia19024@iiitd.ac.in,40000,4000,80546,9360505252,Property Damage,1974-05-09,1987-01-09,Null,Null,Null,Null,Null
+50,Single,Seven,A-834,Elizabeth Garcia,2020021,PhD,2020,elizabeth20021@iiitd.ac.in,35000,3500,51269,8962371042,Property Damage,2001-03-09,1972-05-31,Null,Null,Null,Null,Null
+51,Double,Four,A-753,Hannah Bailey,2022062,Mtech,2022,hannah22062@iiitd.ac.in,35000,3500,23478,3291242402,Health Issues,2013-08-02,2018-08-14,Katelyn Clark,2023072,PhD,2023,katelyn23072@iiitd.ac.in
+52,Single,Seven,A-220,Michelle James,2018020,Mtech,2018,michelle18020@iiitd.ac.in,30000,3000,48947,1485135227,Property Damage,2014-10-18,1986-07-08,Null,Null,Null,Null,Null
+53,Double,Nine,A-742,John Patterson,2019058,BTech,2019,john19058@iiitd.ac.in,30000,3000,49039,6882394467,Late Fees,2002-09-01,1997-01-06,Sarah Hill,2020003,PhD,2020,sarah20003@iiitd.ac.in
+54,Married,Ground,A-664,Danielle Miranda,2022023,Mtech,2022,danielle22023@iiitd.ac.in,30000,3000,30488,6785899395,Property Damage,2021-02-07,1971-05-13,Deborah Moore,2022089,Mtech,2022,deborah22089@iiitd.ac.in
+55,Double,Ground,A-384,Sara Norman,2019002,Mtech,2019,sara19002@iiitd.ac.in,35000,3500,90214,2890166156,Property Damage,1976-03-09,1993-09-04,Mary Bennett,2022033,PhD,2022,mary22033@iiitd.ac.in
+56,Double,One,A-428,Allen Anderson,2018012,PhD,2018,allen18012@iiitd.ac.in,35000,3500,9803,9270699171,Property Damage,2020-04-11,1996-12-20,Anthony Simpson,2018007,BTech,2018,anthony18007@iiitd.ac.in
+57,Single,Six,A-384,Amy Frost,2021093,PhD,2021,amy21093@iiitd.ac.in,30000,3000,12314,7264126337,Health Issues,1985-01-29,2013-10-29,Kevin Wright,2023065,Mtech,2023,kevin23065@iiitd.ac.in
+58,Single,Two,A-989,Glenda Hunter,2020039,PhD,2020,glenda20039@iiitd.ac.in,30000,3000,44340,9108567112,Health Issues,1991-11-21,2005-05-05,Null,Null,Null,Null,Null
+59,Married,Four,A-854,Donna Lynch,2023043,BTech,2023,donna23043@iiitd.ac.in,40000,4000,806,6342108878,Property Damage,1998-09-10,2019-04-22,Emily Walton,2024040,BTech,2024,emily24040@iiitd.ac.in
+60,Married,Eight,A-599,Grant Sosa,2023050,Mtech,2023,grant23050@iiitd.ac.in,40000,4000,2075,2088971423,Property Damage,1975-11-23,2002-07-27,Null,Null,Null,Null,Null
+61,Single,Two,A-273,Kristin Johnson,2024057,PhD,2024,kristin24057@iiitd.ac.in,30000,3000,78771,749747427,Property Damage,1979-05-12,2016-05-23,Null,Null,Null,Null,Null
+62,Single,Eight,A-885,Anthony Simpson,2018007,BTech,2018,anthony18007@iiitd.ac.in,30000,3000,18452,5595724983,No Remarks,1996-03-18,1991-01-01,Null,Null,Null,Null,Null
+63,Single,Seven,A-676,Julie Williams,2021081,PhD,2021,julie21081@iiitd.ac.in,30000,3000,81497,9137186109,Property Damage,2003-10-06,1998-10-04,Null,Null,Null,Null,Null
+64,Married,Three,A-159,Erin Mcintyre,2021042,PhD,2021,erin21042@iiitd.ac.in,30000,3000,27333,5123656443,Property Damage,1981-09-18,1995-11-03,Null,Null,Null,Null,Null
+65,Double,Ground,A-99,Monica Pruitt,2022063,PhD,2022,monica22063@iiitd.ac.in,40000,4000,75281,4481377554,No Remarks,1975-10-03,2014-01-09,Dakota Young,2022097,BTech,2022,dakota22097@iiitd.ac.in
+66,Single,Seven,A-558,Kenneth Skinner,2020054,PhD,2020,kenneth20054@iiitd.ac.in,40000,4000,27050,9425555554,Late Fees,1975-08-13,2014-06-11,Null,Null,Null,Null,Null
+67,Double,Four,A-892,Ricky Rodriguez,2018070,BTech,2018,ricky18070@iiitd.ac.in,35000,3500,65058,8598873797,Late Fees,2001-07-04,2021-02-28,Null,Null,Null,Null,Null
+68,Double,Two,A-273,Julie Hooper,2023071,Mtech,2023,julie23071@iiitd.ac.in,40000,4000,45688,1246567347,Property Damage,1996-01-05,2018-01-18,Christopher Medina,2020014,Mtech,2020,christopher20014@iiitd.ac.in
+69,Double,One,A-346,Adam Hobbs Jr.,2023078,PhD,2023,adam23078@iiitd.ac.in,35000,3500,12138,643019588,No Remarks,1972-01-05,2002-10-02,Rachael Houston,2024085,BTech,2024,rachael24085@iiitd.ac.in
+70,Double,Ground,A-106,Virginia Kramer,2019024,PhD,2019,virginia19024@iiitd.ac.in,35000,3500,43490,9360505252,Property Damage,1974-08-05,1997-06-29,Null,Null,Null,Null,Null
+71,Single,Ground,A-900,Kathleen Fernandez,2018055,BTech,2018,kathleen18055@iiitd.ac.in,35000,3500,42699,193037242,No Remarks,2019-03-06,2018-12-25,Amy Wood,2021048,PhD,2021,amy21048@iiitd.ac.in
+72,Single,One,A-929,Ricky Rodriguez,2018070,BTech,2018,ricky18070@iiitd.ac.in,30000,3000,10803,8598873797,Health Issues,1990-08-08,1986-01-29,Null,Null,Null,Null,Null
+73,Married,Nine,A-427,Amber Rodriguez,2020025,BTech,2020,amber20025@iiitd.ac.in,35000,3500,11533,4598848907,Late Fees,1970-09-20,2005-10-14,Null,Null,Null,Null,Null
+74,Married,One,A-814,Christina Villanueva,2019088,BTech,2019,christina19088@iiitd.ac.in,30000,3000,65758,9362948915,Health Issues,1975-03-07,2013-03-03,Null,Null,Null,Null,Null
+75,Married,Six,A-209,Christopher Johnson,2022056,Mtech,2022,christopher22056@iiitd.ac.in,30000,3000,33710,1757994348,Health Issues,1974-09-20,2006-03-14,Christopher Johnson,2022056,Mtech,2022,christopher22056@iiitd.ac.in
+76,Double,Four,A-443,Amanda Mathis,2023079,BTech,2023,amanda23079@iiitd.ac.in,30000,3000,81092,7772867641,Property Damage,2016-11-19,2020-05-27,Kathleen Fernandez,2018055,BTech,2018,kathleen18055@iiitd.ac.in
+77,Married,Two,A-290,Karen Maynard,2021010,BTech,2021,karen21010@iiitd.ac.in,35000,3500,79542,1769794625,Health Issues,1993-01-15,1970-02-01,Null,Null,Null,Null,Null
+78,Double,Nine,A-170,Stephanie Diaz,2024016,BTech,2024,stephanie24016@iiitd.ac.in,40000,4000,26356,1120953267,Health Issues,2021-04-17,1999-04-04,Amy Potts,2021049,BTech,2021,amy21049@iiitd.ac.in
+79,Married,Ten,A-623,Andrew Lopez,2018013,BTech,2018,andrew18013@iiitd.ac.in,40000,4000,23037,3372230561,No Remarks,1988-04-16,1973-03-03,Mark Mccarty,2023060,PhD,2023,mark23060@iiitd.ac.in
+80,Double,Six,A-251,Chase Williams,2019029,Mtech,2019,chase19029@iiitd.ac.in,40000,4000,97631,623601423,No Remarks,1998-11-27,1990-09-04,Shelly Mclean,2023027,PhD,2023,shelly23027@iiitd.ac.in
+81,Single,Three,A-350,Kevin Neal,2023083,Mtech,2023,kevin23083@iiitd.ac.in,40000,4000,39328,8151943552,No Remarks,2002-06-12,2022-10-19,Elizabeth Garcia,2020021,PhD,2020,elizabeth20021@iiitd.ac.in
+82,Single,Five,A-896,Willie Graham,2020038,Mtech,2020,willie20038@iiitd.ac.in,35000,3500,93058,7129095045,Late Fees,1986-02-04,1977-02-22,Christopher Medina,2020014,Mtech,2020,christopher20014@iiitd.ac.in
+83,Single,Ten,A-734,Michelle Jones,2019015,PhD,2019,michelle19015@iiitd.ac.in,40000,4000,76989,4955637918,Property Damage,2000-08-05,2005-06-05,Monica Pruitt,2022063,PhD,2022,monica22063@iiitd.ac.in
+84,Single,Ground,A-519,Kristin Johnson,2024057,PhD,2024,kristin24057@iiitd.ac.in,30000,3000,13033,749747427,No Remarks,1999-07-01,1998-04-27,Lindsey Moss,2023018,PhD,2023,lindsey23018@iiitd.ac.in
+85,Double,Nine,A-820,Rachael Houston,2024085,BTech,2024,rachael24085@iiitd.ac.in,35000,3500,14539,8695177334,Late Fees,1975-11-20,1997-05-22,Null,Null,Null,Null,Null
+86,Married,Ground,A-706,Ricky Rodriguez,2018070,BTech,2018,ricky18070@iiitd.ac.in,35000,3500,74815,8598873797,Property Damage,1981-10-17,2013-06-03,Null,Null,Null,Null,Null
+87,Married,Five,A-475,Deborah Moore,2022089,Mtech,2022,deborah22089@iiitd.ac.in,40000,4000,15197,9926289967,Health Issues,1989-08-16,1978-02-18,Null,Null,Null,Null,Null
+88,Married,Four,A-38,Charles Richmond,2019051,PhD,2019,charles19051@iiitd.ac.in,30000,3000,26361,3462050922,No Remarks,1984-03-26,1981-05-04,Allen Anderson,2018012,PhD,2018,allen18012@iiitd.ac.in
+89,Married,Seven,A-114,Julie Hooper,2023071,Mtech,2023,julie23071@iiitd.ac.in,40000,4000,32831,1246567347,Property Damage,2021-06-17,1999-08-10,Null,Null,Null,Null,Null
+90,Double,Six,A-935,Elizabeth Garcia,2020021,PhD,2020,elizabeth20021@iiitd.ac.in,40000,4000,88903,8962371042,No Remarks,1997-12-12,1982-04-16,Amy Wood,2021048,PhD,2021,amy21048@iiitd.ac.in
+91,Married,Ten,A-761,Melinda Solis,2018004,BTech,2018,melinda18004@iiitd.ac.in,40000,4000,86714,5962075748,Health Issues,1982-08-01,1977-09-17,Null,Null,Null,Null,Null
+92,Married,Ground,A-560,Chase Williams,2019029,Mtech,2019,chase19029@iiitd.ac.in,40000,4000,16744,623601423,Late Fees,1970-08-27,1994-11-05,Null,Null,Null,Null,Null
+93,Married,Ground,A-281,Julie Williams,2021081,PhD,2021,julie21081@iiitd.ac.in,35000,3500,79278,9137186109,Health Issues,2023-03-05,1975-07-08,Null,Null,Null,Null,Null
+94,Single,Ground,A-845,Rachael Houston,2024085,BTech,2024,rachael24085@iiitd.ac.in,30000,3000,97888,8695177334,Property Damage,2019-10-19,1982-06-06,Null,Null,Null,Null,Null
+95,Single,Five,A-747,Maurice Meyers,2020022,BTech,2020,maurice20022@iiitd.ac.in,40000,4000,33287,639918015,Health Issues,2003-08-26,1989-12-29,Monica Pruitt,2022063,PhD,2022,monica22063@iiitd.ac.in
+96,Double,Five,A-563,Rachael Houston,2024085,BTech,2024,rachael24085@iiitd.ac.in,30000,3000,65044,8695177334,No Remarks,2013-02-06,2018-05-20,Kathleen Fernandez,2018055,BTech,2018,kathleen18055@iiitd.ac.in
+97,Double,Eight,A-622,Julie Hooper,2023071,Mtech,2023,julie23071@iiitd.ac.in,30000,3000,6218,1246567347,No Remarks,2009-04-05,2020-02-03,Null,Null,Null,Null,Null
+98,Single,Five,A-594,Allen Anderson,2018012,PhD,2018,allen18012@iiitd.ac.in,35000,3500,2641,9270699171,Late Fees,1985-08-30,2015-05-08,Null,Null,Null,Null,Null
+99,Married,Ten,A-685,Katelyn Clark,2023072,PhD,2023,katelyn23072@iiitd.ac.in,40000,4000,82209,8927991892,No Remarks,2015-08-16,2007-07-10,Ryan Wagner,2024032,Mtech,2024,ryan24032@iiitd.ac.in
+100,Single,Nine,A-743,Deborah Moore,2022089,Mtech,2022,deborah22089@iiitd.ac.in,35000,3500,36874,9926289967,Late Fees,2017-12-10,2005-05-18,Darren Carpenter,2020098,Mtech,2020,darren20098@iiitd.ac.in
