@@ -80,7 +80,7 @@ roll_no_mobile_mapping = generate_mapping_roll_no_to_mobile(roll_numbers, mobile
 def generate_hostel_data(num_records):
     with open('./Data/hostel_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Sr. No", 
+        writer.writerow(["Sr No", 
                          "Room Type",
                          "Floor",
                          "Room No", 
@@ -94,13 +94,13 @@ def generate_hostel_data(num_records):
                          "Bank ID", 
                          "Contact", 
                          "Remarks", 
-                         "From", 
-                         "To", 
-                         "Name", 
-                         "Roll No", 
-                         "Course", 
-                         "Year", 
-                         "Email ID"])  
+                         "From_Date", 
+                         "To_Date", 
+                         "Name_Share", 
+                         "Roll_No_Share", 
+                         "Course_Share", 
+                         "Year_Share", 
+                         "Email_ID_Share"])  
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
@@ -116,53 +116,29 @@ def generate_hostel_data(num_records):
             email_2 = roll_no_email_mapping[roll_number_2]
             year_2 = roll_number_2[:4]
             course_2 = roll_no_course_mapping[roll_number_2]
-            is_sharing = random.choice([True, False])
-            if is_sharing:
-                writer.writerow([i+1,
-                             fake.random.choice(room_types),
-                             fake.random.choice(floors),
-                             f"A-{fake.random_number(digits=3)}",
-                             name,
-                             roll_number,
-                             course,
-                             year,
-                             email,
-                             fees,
-                             security,
-                             fake.random_number(digits=5),
-                             mobile,
-                             fake.random.choice(remarks),
-                             fake.date(),
-                             fake.date(),
-                             name_2,
-                             roll_number_2,
-                             course_2,
-                             year_2,
-                             email_2
-                             ])
-            else:
-                writer.writerow([i+1,
-                             fake.random.choice(room_types),
-                             fake.random.choice(floors),
-                             f"A-{fake.random_number(digits=3)}",
-                             name,
-                             roll_number,
-                             course,
-                             year,
-                             email,
-                             fees,
-                             security,
-                             fake.random_number(digits=5),
-                             mobile,
-                             fake.random.choice(remarks),
-                             fake.date(),
-                             fake.date(),
-                             "Null",
-                             "Null",
-                             "Null",
-                             "Null",
-                             "Null"
-                             ])
+            writer.writerow([i+1,
+                            fake.random.choice(room_types),
+                            fake.random.choice(floors),
+                            f"A-{fake.random_number(digits=3)}",
+                            name,
+                            roll_number,
+                            course,
+                            year,
+                            email,
+                            fees,
+                            security,
+                            fake.random_number(digits=5),
+                            mobile,
+                            fake.random.choice(remarks),
+                            fake.date(),
+                            fake.date(),
+                            name_2,
+                            roll_number_2,
+                            course_2,
+                            year_2,
+                            email_2
+                            ])
+
 
 def generate_mess_1_data(num_records):
     with open('./Data/mess_1_data.csv', mode='w', newline='') as file:
