@@ -287,9 +287,9 @@ def makeMessDB(host, user, password):
     return "MessDB and tables created successfully and data inserted!"
 
 
-def run():
-    makeSportsDB(host='localhost', user='root', password='#')
-    makeHostelDB(host='localhost', user='root', password='#')
-    makeMessDB(host='localhost', user='root', password='#')
+def run(localhost, username, password):
+    makeSportsDB(localhost, username, password)
+    makeHostelDB(localhost, username, password)
+    makeMessDB(localhost, username, password)
     
-run()
+run('localhost', 'root', '#')
