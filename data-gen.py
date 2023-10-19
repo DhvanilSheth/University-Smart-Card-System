@@ -268,18 +268,18 @@ def generate_pool_non_membership(num_records):
             name = roll_no_name_mapping[roll_number]
             writer.writerow([fake.date(), name, fake.random_number(digits=4), fake.random_number(digits=3), roll_number, fake.time()[:-3], name])
 
-def run():
-    generate_hostel_data(100)
-    generate_mess_1_data(100)
-    generate_mess_2_data(100)
-    generate_package_collection_data(100)
-    generate_home_leave_data(100)
-    generate_medicine_data(100)
-    generate_equipment_loss(100)
-    generate_gym(100)
-    generate_pool(100)
-    generate_equipment_requests(100)
-    generate_medicine_sports(100)
-    generate_pool_non_membership(100)
+def run(num):
+    generate_hostel_data(num)
+    generate_mess_1_data(num)
+    generate_mess_2_data(num)
+    generate_package_collection_data(num)
+    generate_home_leave_data(num)
+    generate_medicine_data(num)
+    generate_equipment_loss(num)
+    generate_gym(num)
+    generate_pool(num)
+    generate_equipment_requests(num)
+    generate_medicine_sports(num)
+    generate_pool_non_membership(num)
     
-run()
+run(100)

@@ -288,8 +288,8 @@ def makeMessDB(host, user, password):
 
 
 def run():
-    makeSportsDB(host='localhost', user='root', password='hanoon2002')
-    makeHostelDB(host='localhost', user='root', password='hanoon2002')
-    makeMessDB(host='localhost', user='root', password='hanoon2002')
+    makeSportsDB(host='localhost', user='root', password='#')
+    makeHostelDB(host='localhost', user='root', password='#')
+    makeMessDB(host='localhost', user='root', password='#')
     
 run()
