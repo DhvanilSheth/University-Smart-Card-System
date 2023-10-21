@@ -5,13 +5,19 @@ import random
 fake = Faker()
 
 def generate_roll_numbers():
-    roll_numbers = []
-    for roll in range(1, 100):
+    roll_numbers = set()
+    generated_roll_numbers = []
+
+    while len(generated_roll_numbers) < 99:
         year_of_admission = random.randint(2018, 2024)
-        roll_number_part = f"{roll:03d}"
+        roll_number_part = f"{random.randint(1, 999):03d}"
         roll_number = f"{year_of_admission}{roll_number_part}"
-        roll_numbers.append(roll_number)
-    return roll_numbers
+
+        if roll_number not in roll_numbers:
+            roll_numbers.add(roll_number)
+            generated_roll_numbers.append(roll_number)
+
+    return generated_roll_numbers
 
 def generate_names():
     names = []
