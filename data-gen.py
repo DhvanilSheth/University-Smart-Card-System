@@ -182,14 +182,14 @@ def generate_mess_2_data(num_records):
 def generate_package_collection_data(num_records):
     with open('./Data/package_collection_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Name", "Room", "Delivery driver name", "Driver Contact", "Company", "Quantity", "Student Who Picks it", "Above person number", "Signature", "Security Signature"])
+        writer.writerow(["Sr No", "Date", "Name", "Room", "Delivery driver name", "Driver Contact", "Company", "Quantity", "Pick Up Student", "Pick Up Student Number", "Signature", "Security Signature"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             roll_number_2 = random.choice(roll_numbers)
             pick_student = roll_no_name_mapping[roll_number_2]
             pick_number = roll_no_mobile_mapping[roll_number_2]
-            writer.writerow([fake.date(), name, f"A-{fake.random_number(digits=3)}", fake.name(), fake.random_number(digits=10), fake.company(), fake.random_number(digits=2), pick_student, pick_number, name, pick_student])
+            writer.writerow([i + 1, fake.date(), name, f"A-{fake.random_number(digits=3)}", fake.name(), fake.random_number(digits=10), fake.company(), fake.random_number(digits=2), pick_student, pick_number, name, pick_student])
 
 
 def generate_home_leave_data(num_records):
@@ -256,14 +256,14 @@ def generate_equipment_requests(num_records):
             writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.random_number(digits=1), fake.time()[:-3], fake.time()[:-3], name, fake.sentence()])
 
 def generate_medicine_sports(num_records):
-    with open('./Data/medicine_sport.csv', mode='w', newline='') as file:
+    with open('./Data/medicine_sports.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Time", "Name", "Contact No", "Quantity", "Medicine Name", "Student Sign", "Security Sign"])
         for i in range(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             mobile = roll_no_mobile_mapping[roll_number]
-            writer.writerow([fake.date(), fake.time()[:-3], name, roll_number, fake.random_number(digits=1), fake.word() , name, fake.name()])
+            writer.writerow([fake.date(), fake.time()[:-3], name, mobile, fake.random_number(digits=1), fake.word() , name, fake.name()])
 
 def generate_pool_non_membership(num_records):
     with open('./Data/pool_non_membership.csv', mode='w', newline='') as file:

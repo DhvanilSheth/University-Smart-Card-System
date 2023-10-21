@@ -88,12 +88,12 @@ def makeSportsDB(host, user, password):
             Remarks TEXT
         )
         """,
-        "medicine_sport": """
-        CREATE TABLE IF NOT EXISTS medicine_sport (
+        "medicine_sports": """
+        CREATE TABLE IF NOT EXISTS medicine_sports (
             Date DATE,
             Time TIME,
             Name VARCHAR(255),
-            Contact_No INT,
+            Contact_No BIGINT,
             Quantity INT,
             Medicine_Name VARCHAR(255),
             Student_Sign VARCHAR(255),
@@ -111,7 +111,7 @@ def makeSportsDB(host, user, password):
         "gym": "./Data/gym.csv",
         "equipment_requests": "./Data/equipment_requests.csv",
         "equipment_loss": "./Data/equipment_loss.csv",
-        "medicine_sport": "./Data/medicine_sport.csv"
+        "medicine_sports": "./Data/medicine_sports.csv"
     }
     
     try:
@@ -191,6 +191,7 @@ def makeHostelDB(host, user, password):
         """,
         "package_collection_data": """
         CREATE TABLE IF NOT EXISTS package_collection_data (
+            Sr_No INT,
             Date DATE,
             Name VARCHAR(255),
             Room VARCHAR(50),
@@ -198,8 +199,8 @@ def makeHostelDB(host, user, password):
             Driver_Contact BIGINT,
             Company VARCHAR(255),
             Quantity INT,
-            Student_Who_Picks_It VARCHAR(255),
-            Above_Person_Number BIGINT,
+            Pick_Up_Student VARCHAR(255),
+            Pick_Up_Student_Number BIGINT,
             Signature VARCHAR(255),
             Security_Signature VARCHAR(255)
         )
@@ -292,4 +293,4 @@ def run(localhost, username, password):
     makeHostelDB(localhost, username, password)
     makeMessDB(localhost, username, password)
     
-run('localhost', 'root', '#')
+run('localhost', 'root', 'root')

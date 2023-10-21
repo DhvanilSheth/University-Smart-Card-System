@@ -259,4 +259,4 @@ def run(localhost, username, password):
     makeHostelDB(localhost, username, password)
     makeMessDB(localhost, username, password)
     
-run('localhost', 'root', 'hanoon2002')
+run('localhost', 'root', 'root')
