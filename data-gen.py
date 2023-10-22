@@ -298,7 +298,28 @@ def run(num):
     # Data Generation
     if DATA_SOURCES["hostel_data"]:
         generate_hostel_data(num)
-    # ... [rest of the if conditions]
+    if DATA_SOURCES["mess_1_data"]:
+        generate_mess_1_data(num)
+    if DATA_SOURCES["mess_2_data"]:
+        generate_mess_2_data(num)
+    if DATA_SOURCES["package_collection_data"]:
+        generate_package_collection_data(num)
+    if DATA_SOURCES["home_leave_data"]:
+        generate_home_leave_data(num)
+    if DATA_SOURCES["medicine_data"]:
+        generate_medicine_data(num)
+    if DATA_SOURCES["equipment_loss"]:
+        generate_equipment_loss(num)
+    if DATA_SOURCES["gym"]:
+        generate_gym(num)
+    if DATA_SOURCES["pool"]:
+        generate_pool(num)
+    if DATA_SOURCES["equipment_requests"]:
+        generate_equipment_requests(num)
+    if DATA_SOURCES["medicine_sports"]:
+        generate_medicine_sports(num)
+    if DATA_SOURCES["pool_non_membership"]:
+        generate_pool_non_membership(num)
 
     # Data Quality Checks
     if not check_data_quality():
