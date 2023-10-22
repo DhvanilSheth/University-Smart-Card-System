@@ -1,0 +1,14 @@
+{
+    "hostel_data": true,
+    "mess_1_data": true,
+    "mess_2_data": true,
+    "package_collection_data": true,
+    "home_leave_data": true,
+    "medicine_data": true,
+    "equipment_loss": true,
+    "gym": true,
+    "pool": true,
+    "equipment_requests": true,
+    "medicine_sports": true,
+    "pool_non_membership": true
+}

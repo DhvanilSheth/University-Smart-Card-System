@@ -1,8 +1,16 @@
+import os
+import json
 from faker import Faker
 import csv
 import random
 
 fake = Faker()
+
+# Read DATA_SOURCES configuration from JSON file
+with open('data_sources_config.json', 'r') as file:
+    DATA_SOURCES = json.load(file)
+
+roll_numbers_generated = set()
 
 def generate_roll_numbers():
     roll_numbers = set()
@@ -269,18 +277,33 @@ def generate_pool_non_membership(num_records):
             name = roll_no_name_mapping[roll_number]
             writer.writerow([fake.date(), name, fake.random_number(digits=4), fake.random_number(digits=3), roll_number, fake.time()[:-3], name])
 
+def check_data_quality():
+    # Check if roll numbers are unique
+    if len(roll_numbers_generated) != len(set(roll_numbers_generated)):
+        print("[ERROR] Duplicate roll numbers detected!")
+        return False
+    return True
+
+def delete_file_if_exists(filename):
+    if os.path.exists(filename):
+        os.remove(filename)
+        print(f"[LOG] Deleted existing data source: {filename}")
+
 def run(num):
-    generate_hostel_data(num)
-    generate_mess_1_data(num)
-    generate_mess_2_data(num)
-    generate_package_collection_data(num)
-    generate_home_leave_data(num)
-    generate_medicine_data(num)
-    generate_equipment_loss(num)
-    generate_gym(num)
-    generate_pool(num)
-    generate_equipment_requests(num)
-    generate_medicine_sports(num)
-    generate_pool_non_membership(num)
+    # Data Deletion Mechanism
+    for data_source, active in DATA_SOURCES.items():
+        if not active:
+            delete_file_if_exists(f'./Data/{data_source}.csv')
     
+    # Data Generation
+    if DATA_SOURCES["hostel_data"]:
+        generate_hostel_data(num)
+    # ... [rest of the if conditions]
+
+    # Data Quality Checks
+    if not check_data_quality():
+        print("[ERROR] Data quality checks failed!")
+    else:
+        print("[LOG] Data quality checks passed!")
+
 run(100)
