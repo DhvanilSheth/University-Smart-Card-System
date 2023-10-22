@@ -68,7 +68,6 @@ def generate_mapping_roll_no_to_mobile(roll_numbers, mobile_numbers):
         mappings[roll_number] = mobile_number
     return mappings
 
-
 roll_numbers = generate_roll_numbers()
 student_names = generate_names()
 mobile_numbers = generate_mobile_no()
@@ -145,7 +144,6 @@ def generate_hostel_data(num_records):
                             email_2
                             ])
 
-
 def generate_mess_1_data(num_records):
     with open('./Data/mess_1_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
@@ -178,7 +176,6 @@ def generate_mess_2_data(num_records):
             else:
                 writer.writerow([i + 1, fake.date_time(), type, name, mobile_number, roll_number, 0, cost, cost])
 
-
 def generate_package_collection_data(num_records):
     with open('./Data/package_collection_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
@@ -191,7 +188,6 @@ def generate_package_collection_data(num_records):
             pick_number = roll_no_mobile_mapping[roll_number_2]
             writer.writerow([i + 1, fake.date(), name, f"A-{fake.random_number(digits=3)}", fake.name(), fake.random_number(digits=10), fake.company(), fake.random_number(digits=2), pick_student, pick_number, name, pick_student])
 
-
 def generate_home_leave_data(num_records):
     with open('./Data/home_leave_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
@@ -201,7 +197,6 @@ def generate_home_leave_data(num_records):
             name = roll_no_name_mapping[roll_number]
             number = roll_no_mobile_mapping[roll_number]
             writer.writerow([fake.date(), name, number, fake.time()[:-3], random.choice(roll_numbers), f"A-{fake.random_number(digits=3)}", fake.address(), fake.time()[:-3], fake.date(), name, fake.name()])
-
 
 def generate_medicine_data(num_records):
     with open('./Data/medicine_data.csv', mode='w', newline='') as file:
