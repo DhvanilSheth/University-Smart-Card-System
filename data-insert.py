@@ -125,7 +125,6 @@ def makeSportsDB(host, user, password):
 
     return "SportsDB and tables created successfully and data inserted!"
 
-
 def makeHostelDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
@@ -228,7 +227,6 @@ def makeHostelDB(host, user, password):
 
     return "HostelDB and tables created successfully and data inserted!"
 
-
 def makeMessDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
@@ -286,7 +284,6 @@ def makeMessDB(host, user, password):
         connection.close()
 
     return "MessDB and tables created successfully and data inserted!"
-
 
 def run(localhost, username, password):
     makeSportsDB(localhost, username, password)
