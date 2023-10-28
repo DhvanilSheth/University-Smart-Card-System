@@ -31,9 +31,8 @@ def drop_table_if_exists(table_name, connection):
 def create_db_and_tables(db_name, tables, host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-
+    
     cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
-
     cursor.execute(f"USE {db_name}")
     
     for table_config in tables:
@@ -65,4 +64,4 @@ def run_from_config(host, user, password):
     for config in configs:
         create_db_and_tables(config["db_name"], config["tables"], host, user, password)
 
-run_from_config('localhost', 'root', 'akis@123')
+run_from_config('localhost', 'root', 'root')
