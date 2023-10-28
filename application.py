@@ -3,8 +3,12 @@ import sys
 import shutil
 
 # Constants for database and table names
-DATABASES = ["SportsDB", "MessDB", "HostelDB"]
-PRIMARY_KEY_TYPES = ["INT", "TEXT"]
+DATABASES = {
+    1: "SportsDB",
+    2: "MessDB",
+    3: "HostelDB"
+}
+PRIMARY_KEY_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
 HEADER_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
 
 # Function to display a progress bar
@@ -25,17 +29,39 @@ def print_progress_bar(segments, completed):
     reset_color = "\033[0m"  # Reset color
 
     # Build the progress bar with colors
-    progress_bar = f"{red_color}[{green_color}{'#' * completed_blocks}{red_color}{'-' * remaining_blocks}{reset_color}]"
+    progress_bar = f"[{green_color}{'#' * completed_blocks}{red_color}{'-' * remaining_blocks}{reset_color}]"
 
     # Calculate the number of spaces for indentation
     indentation = ' ' * len("Progression: ")
 
+    print(f"{'.' * terminal_width}")
+    
     # Print the "Progression:" text and progress bar
     sys.stdout.write(f"\rProgression: {progress_bar}\n")
     sys.stdout.flush()
+    
+    print(f"{'.' * terminal_width}")
+    print()
 
     # Check if segments equals completed
     return segments == completed
+
+def display_error_card(error_message):
+    terminal_width, _ = shutil.get_terminal_size()
+    box_width = terminal_width
+
+    # ANSI escape codes for color
+    red_color = "\033[91m"  # Red
+    reset_color = "\033[0m"
+
+    error_text = f"{red_color}ERROR: {error_message}\n"
+    top_border = f"{red_color}{'*' * box_width}"
+    bottom_border = f"{red_color}{'*' * box_width}"
+    print(top_border)  # Top border
+    line = f"{red_color}{error_text.strip().center(box_width)}{reset_color}"
+    print(line)
+    print(bottom_border)  # Bottom border
+    print(reset_color)  # Reset color
 
 # Function to display text in a designed template with borders and left/right margins
 def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
@@ -79,19 +105,23 @@ def display_menu_with_margins(char1='*', margin=5):
 
 def insert_new_data():
     completed = 0
-    segments = 3
+    segments = 4
     text = "Insert New Data\n\n"
     display_boxed_text("Data Insertion")
     text = "\n"
     print_progress_bar(segments, completed)
-    db_name = input("Which DB? Options [SportsDB, MessDB, HostelDB]: ")
-    if db_name not in DATABASES:
-        print("Invalid database name. Try again.")
+    
+    db_name = int(input("Select Database:\n1.SportsDB\n2.MessDB\n3.HostelDB\nEnter the index: "))
+    if db_name < 1 or db_name >3:
+        print("Invalid database. Try again.")
         return
+    
+    db_name = DATABASES[db_name]
     completed += 1
     print_progress_bar(segments, completed)
-
-    table_name = input("Give Table Name: ")
+    
+    print(f"{db_name} Chosen")
+    table_name = input("Give a name for the new source: ")
     table_name = "_".join(table_name.split())
     completed += 1
     print_progress_bar(segments, completed)
@@ -103,7 +133,7 @@ def insert_new_data():
         insert_header = input("Do you want to Insert New Header [Y/N]? ")
         if insert_header.lower() != "y":
             if not headers:
-                display_boxed_text("New table cannot be created")
+                display_error_card("New table cannot be created")
                 return
             else:
                 break
@@ -111,7 +141,7 @@ def insert_new_data():
         header_name = input("Header Name: ")
         header_name = "_".join(header_name.split())
 
-        header_type = input("Header Type [INT, TEXT]: ")
+        header_type = input("Header Type " + str(HEADER_TYPES) + ": ")
         if header_type not in HEADER_TYPES:
             print("Invalid header type. Try again.")
             continue
