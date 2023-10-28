@@ -19,35 +19,49 @@ def insert_data_from_csv(table_name, csv_path, connection):
     finally:
         cursor.close()
 
+def drop_table_if_exists(table_name, connection):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
+    except mysql.connector.Error as err:
+        print(f"Error dropping table {table_name}: {err}")
+    finally:
+        cursor.close()
+
 def create_db_and_tables(db_name, tables, host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-
+    
     cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
     cursor.execute(f"USE {db_name}")
-
-    for table_info in tables:
-        columns = ", ".join([f"{header['Name']} {header['Type']}" for header in table_info["headers"]])
-        primary_keys = ", ".join(table_info["primary_key"])
-        create_command = f"""
-        CREATE TABLE IF NOT EXISTS {table_info['table']} (
-            {columns},
-            PRIMARY KEY ({primary_keys})
-        )
-        """
-        cursor.execute(create_command)
-
-        if table_info["insert"]:
-            insert_data_from_csv(table_info["table"], table_info["path"], connection)
+    
+    for table_config in tables:
+        table_name = table_config["table"]
+        headers = table_config["headers"]
+        primary_key = table_config["primary_key"]
+        
+        if table_config["insert"]:
+            columns = ", ".join([f"{header['Name']} {header['Type']}" for header in headers])
+            primary_key_str = ", ".join(primary_key)
+            create_command = f"""
+            CREATE TABLE IF NOT EXISTS {table_name} (
+                {columns},
+                PRIMARY KEY ({primary_key_str})
+            )
+            """
+            cursor.execute(create_command)
+            insert_data_from_csv(table_name, table_config["path"], connection)
+        else:
+            drop_table_if_exists(table_name, connection)
 
     cursor.close()
     connection.close()
 
 def run_from_config(host, user, password):
-    with open("data_sources_config.json", "r") as f:
-        configs = json.load(f)
-        for config in configs:
-            create_db_and_tables(config["db_name"], config["tables"], host, user, password)
+    with open("data_sources_config.json", 'r') as file:
+        configs = json.load(file)
+    
+    for config in configs:
+        create_db_and_tables(config["db_name"], config["tables"], host, user, password)
 
 run_from_config('localhost', 'root', 'akis@123')
-
