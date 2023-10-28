@@ -2,55 +2,52 @@ import mysql.connector
 import pandas as pd
 import json
 
-def clean_df_columns(df):
-    """Sanitize DataFrame column names by replacing spaces with underscores."""
+def insert_data_from_csv(table_name, csv_path, connection):
+    df = pd.read_csv(csv_path)
     df.columns = [col.replace(" ", "_") for col in df.columns]
-    return df
+    data_columns_escaped = ", ".join([f"`{col}`" for col in df.columns])
+    values = [tuple(row) for row in df.values]
+    placeholders = ", ".join(["%s"] * len(df.columns))
+    insert_query = f"INSERT INTO `{table_name}` ({data_columns_escaped}) VALUES ({placeholders})"
+    cursor = connection.cursor()
+    try:
+        cursor.executemany(insert_query, values)
+        connection.commit()
+    except mysql.connector.Error as err:
+        print(f"Error inserting data into {table_name}: {err}")
+        connection.rollback()
+    finally:
+        cursor.close()
 
-# Read the configuration file
-with open('data_sources_config.json', 'r') as config_file:
-    config_data = json.load(config_file)
+def create_db_and_tables(db_name, tables, host, user, password):
+    connection = mysql.connector.connect(host=host, user=user, password=password)
+    cursor = connection.cursor()
 
-# Connect to the MySQL server
-connection = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="akis@123",
-)
-cursor = connection.cursor()
-
-# For each database and its tables defined in the config file
-for db_name, table_infos in config_data.items():
+    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
     cursor.execute(f"USE {db_name}")
 
-    for table_info in table_infos:
-        # Extract table details from the configuration
-        table_name = table_info['table']
-        csv_path = table_info['path']
-        headers = table_info['headers']
-
-        # Construct the CREATE TABLE query
-        columns_definitions = ', '.join([f"{header['Name'].replace(' ', '_')} {header['Type']}" for header in headers])
-        primary_keys = ', '.join([pk.replace(' ', '_') for pk in table_info['primary_key']])
-        create_table_query = f"""
-            CREATE TABLE IF NOT EXISTS {table_name} (
-                {columns_definitions},
-                PRIMARY KEY ({primary_keys})
-            )
+    for table_info in tables:
+        columns = ", ".join([f"{header['Name']} {header['Type']}" for header in table_info["headers"]])
+        primary_keys = ", ".join(table_info["primary_key"])
+        create_command = f"""
+        CREATE TABLE IF NOT EXISTS {table_info['table']} (
+            {columns},
+            PRIMARY KEY ({primary_keys})
+        )
         """
-        cursor.execute(create_table_query)
+        cursor.execute(create_command)
 
-        # Read CSV and insert data
-        df = pd.read_csv(csv_path)
-        df = clean_df_columns(df)
-        columns = df.columns.tolist()
-        values = df.values.tolist()
+        if table_info["insert"]:
+            insert_data_from_csv(table_info["table"], table_info["path"], connection)
 
-        for value_set in values:
-            insert_query = f"INSERT IGNORE INTO {table_name} ({', '.join(columns)}) VALUES ({', '.join(['%s'] * len(columns))})"
-            cursor.execute(insert_query, tuple(value_set))
+    cursor.close()
+    connection.close()
 
-        connection.commit()
+def run_from_config(host, user, password):
+    with open("data_sources_config.json", "r") as f:
+        configs = json.load(f)
+        for config in configs:
+            create_db_and_tables(config["db_name"], config["tables"], host, user, password)
 
-cursor.close()
-connection.close()
+run_from_config('localhost', 'root', 'akis@123')
+
