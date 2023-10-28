@@ -8,15 +8,37 @@ PRIMARY_KEY_TYPES = ["INT", "TEXT"]
 HEADER_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
 
 # Function to display a progress bar
-def print_progress_bar(progress):
-    bar_length = 30
-    block = int(round(bar_length * progress))
-    progress_bar = "#" * block + "-" * (bar_length - block)
-    sys.stdout.write(f"\r[{progress_bar}] {int(progress * 100)}%")
+def print_progress_bar(segments, completed):
+    # Get the terminal width
+    terminal_width, _ = shutil.get_terminal_size()
+
+    # Calculate the bar length based on the terminal width
+    bar_length = terminal_width - len("Progression: ") - 2
+
+    # Calculate the number of completed and remaining blocks
+    completed_blocks = int(bar_length * (completed / segments))
+    remaining_blocks = bar_length - completed_blocks
+
+    # ANSI escape codes for color
+    red_color = "\033[91m"  # Red
+    green_color = "\033[92m"  # Green
+    reset_color = "\033[0m"  # Reset color
+
+    # Build the progress bar with colors
+    progress_bar = f"{red_color}[{green_color}{'#' * completed_blocks}{red_color}{'-' * remaining_blocks}{reset_color}]"
+
+    # Calculate the number of spaces for indentation
+    indentation = ' ' * len("Progression: ")
+
+    # Print the "Progression:" text and progress bar
+    sys.stdout.write(f"\rProgression: {progress_bar}\n")
     sys.stdout.flush()
 
+    # Check if segments equals completed
+    return segments == completed
+
 # Function to display text in a designed template with borders and left/right margins
-def display_boxed_text(text, char1='*', char2='*', char3='*', margin=5):
+def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
     terminal_width, _ = shutil.get_terminal_size()
     box_width = terminal_width
     left_margin = margin
@@ -56,14 +78,23 @@ def display_menu_with_margins(char1='*', margin=5):
     print()  # Empty line for bottom margin
 
 def insert_new_data():
+    completed = 0
+    segments = 3
     text = "Insert New Data\n\n"
+    display_boxed_text("Data Insertion")
+    text = "\n"
+    print_progress_bar(segments, completed)
     db_name = input("Which DB? Options [SportsDB, MessDB, HostelDB]: ")
     if db_name not in DATABASES:
         print("Invalid database name. Try again.")
         return
+    completed += 1
+    print_progress_bar(segments, completed)
 
     table_name = input("Give Table Name: ")
     table_name = "_".join(table_name.split())
+    completed += 1
+    print_progress_bar(segments, completed)
 
     headers = []
     primary_key = []
@@ -86,6 +117,9 @@ def insert_new_data():
             continue
 
         headers.append({"Name": header_name, "Type": header_type})
+
+    completed += 1
+    print_progress_bar(segments, completed)
 
     while not primary_key:
         primary_key_input = input("Which columns should be the primary key (e.g., '0 2' for columns 0 and 2): ")
@@ -112,6 +146,7 @@ def insert_new_data():
     else:
         display_boxed_text("Data insertion canceled")
 
+
 while True:
     display_boxed_text("Welcome to University Smart Card System", margin=1)
 
@@ -123,12 +158,12 @@ while True:
         insert_new_data()
     elif choice == "2":
         # Add code for removing a source
-        display_boxed_text("Remove Source option selected", margin=5)
+        display_boxed_text("Remove Source option selected", margin=1)
     elif choice == "3":
         # Add code for modifying an existing source
-        display_boxed_text("Modify Existing Source option selected", margin=5)
+        display_boxed_text("Modify Existing Source option selected", margin=1)
     elif choice == "4":
-        display_boxed_text("Exiting the application", margin=5)
+        display_boxed_text("Exiting the application", margin=1)
         break
     else:
-        display_boxed_text("Invalid choice. Try again", margin=5)
+        display_boxed_text("Invalid choice. Try again", margin=1)
