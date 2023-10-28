@@ -1,159 +1,163 @@
 [
     {
-        "table": "pool",
-        "insert": true,
-        "path": "./Data/pool.csv",
         "db_name": "SportsDB",
-        "headers": [
-            {"Name": "Sr_No", "Type": "INT"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "In_Time", "Type": "TIME"},
-            {"Name": "Out_Time", "Type": "TIME"},
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"}
-        ],
-        "primary_key": ["Sr_No", "Roll_No"]
+        "tables": [
+            {
+                "table": "pool",
+                "insert": true,
+                "path": "./Data/pool.csv",
+                "headers": [
+                    {"Name": "Sr_No", "Type": "INT"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "In_Time", "Type": "TIME"},
+                    {"Name": "Out_Time", "Type": "TIME"},
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"}
+                ],
+                "primary_key": ["Roll_No", "Sr_No"]
+            },
+            {
+                "table": "pool_non_member",
+                "insert": true,
+                "path": "./Data/pool_non_member.csv",
+                "headers": [
+                    {"Name": "Sr_No", "Type": "INT"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "In_Time", "Type": "TIME"},
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"}
+                ],
+                "primary_key": ["Roll_No", "In_Time", "Date"]
+            },
+            {
+                "table": "medicine_sport",
+                "insert": true,
+                "path": "./Data/medicine_sport.csv",
+                "headers": [
+                    {"Name": "Contact_No", "Type": "VARCHAR(255)"},
+                    {"Name": "Time", "Type": "TIME"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "Name", "Type": "VARCHAR(255)"},
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"},
+                    {"Name": "Medicine_Name", "Type": "VARCHAR(255)"},
+                    {"Name": "Remarks", "Type": "TEXT"}
+                ],
+                "primary_key": ["Contact_No", "Time", "Date"]
+            },
+            {
+                "table": "gym",
+                "insert": true,
+                "path": "./Data/gym.csv",
+                "headers": [
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"},
+                    {"Name": "In_Time", "Type": "TIME"},
+                    {"Name": "Out_Time", "Type": "TIME"},
+                    {"Name": "Date", "Type": "DATE"}
+                ],
+                "primary_key": ["Roll_No", "In_Time", "Date"]
+            },
+            {
+                "table": "equipment_request",
+                "insert": true,
+                "path": "./Data/equipment_request.csv",
+                "headers": [
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"},
+                    {"Name": "In_Time", "Type": "TIME"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "Equipment_Name", "Type": "VARCHAR(255)"},
+                    {"Name": "Quantity", "Type": "INT"}
+                ],
+                "primary_key": ["Roll_No", "In_Time", "Date"]
+            },
+            {
+                "table": "equipment_loss",
+                "insert": true,
+                "path": "./Data/equipment_loss.csv",
+                "headers": [
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"},
+                    {"Name": "Time", "Type": "TIME"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "Equipment_Name", "Type": "VARCHAR(255)"},
+                    {"Name": "Quantity", "Type": "INT"}
+                ],
+                "primary_key": ["Roll_No", "Time", "Date"]
+            }
+        ]
     },
     {
-        "table": "pool_non_member",
-        "insert": true,
-        "path": "./Data/pool_non_member.csv",
-        "db_name": "SportsDB",
-        "headers": [
-            {"Name": "Sr_No", "Type": "INT"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "In_Time", "Type": "TIME"},
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"}
-        ],
-        "primary_key": ["Sr_No", "Roll_No", "In_Time", "Date"]
-    },
-    {
-        "table": "medicine_sport",
-        "insert": true,
-        "path": "./Data/medicine_sport.csv",
-        "db_name": "SportsDB",
-        "headers": [
-            {"Name": "Contact_No", "Type": "VARCHAR(255)"},
-            {"Name": "Time", "Type": "TIME"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "Name", "Type": "VARCHAR(255)"},
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"},
-            {"Name": "Medicine_Name", "Type": "VARCHAR(255)"},
-            {"Name": "Remarks", "Type": "TEXT"}
-        ],
-        "primary_key": ["Contact_No", "Time", "Date"]
-    },
-    {
-        "table": "gym",
-        "insert": true,
-        "path": "./Data/gym.csv",
-        "db_name": "SportsDB",
-        "headers": [
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"},
-            {"Name": "In_Time", "Type": "TIME"},
-            {"Name": "Out_Time", "Type": "TIME"},
-            {"Name": "Date", "Type": "DATE"}
-        ],
-        "primary_key": ["Roll_No", "In_Time", "Date"]
-    },
-    {
-        "table": "equipment_request",
-        "insert": true,
-        "path": "./Data/equipment_request.csv",
-        "db_name": "SportsDB",
-        "headers": [
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"},
-            {"Name": "In_Time", "Type": "TIME"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "Equipment_Name", "Type": "VARCHAR(255)"},
-            {"Name": "Quantity", "Type": "INT"}
-        ],
-        "primary_key": ["Roll_No", "In_Time", "Date"]
-    },
-    {
-        "table": "equipment_loss",
-        "insert": true,
-        "path": "./Data/equipment_loss.csv",
-        "db_name": "SportsDB",
-        "headers": [
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"},
-            {"Name": "Time", "Type": "TIME"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "Equipment_Name", "Type": "VARCHAR(255)"},
-            {"Name": "Quantity", "Type": "INT"}
-        ],
-        "primary_key": ["Roll_No", "Time", "Date"]
-    },
-    {
-        "table": "mess_1_data",
-        "insert": true,
-        "path": "./Data/mess_1_data.csv",
         "db_name": "MessDB",
-        "headers": [
-            {"Name": "Sr_No", "Type": "INT"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "In_Time", "Type": "TIME"},
-            {"Name": "Out_Time", "Type": "TIME"},
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"}
-        ],
-        "primary_key": ["Sr_No", "Roll_No"]
+        "tables": [
+            {
+                "table": "mess_1_data",
+                "insert": true,
+                "path": "./Data/mess_1_data.csv",
+                "headers": [
+                    {"Name": "Sr_No", "Type": "INT"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "In_Time", "Type": "TIME"},
+                    {"Name": "Out_Time", "Type": "TIME"},
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"}
+                ],
+                "primary_key": ["Roll_No", "Sr_No"]
+            },
+            {
+                "table": "mess_2_data",
+                "insert": true,
+                "path": "./Data/mess_2_data.csv",
+                "headers": [
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"},
+                    {"Name": "Sale_ID", "Type": "VARCHAR(255)"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "In_Time", "Type": "TIME"},
+                    {"Name": "Out_Time", "Type": "TIME"}
+                ],
+                "primary_key": ["Roll_No", "Sale_ID"]
+            }
+        ]
     },
     {
-        "table": "mess_2_data",
-        "insert": true,
-        "path": "./Data/mess_2_data.csv",
-        "db_name": "MessDB",
-        "headers": [
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"},
-            {"Name": "Sale_ID", "Type": "VARCHAR(255)"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "In_Time", "Type": "TIME"},
-            {"Name": "Out_Time", "Type": "TIME"}
-        ],
-        "primary_key": ["Roll_No", "Sale_ID"]
-    },
-    {
-        "table": "home_leave_data",
-        "insert": true,
-        "path": "./Data/home_leave_data.csv",
         "db_name": "HostelDB",
-        "headers": [
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"},
-            {"Name": "Out_Time", "Type": "TIME"},
-            {"Name": "In_Time", "Type": "TIME"},
-            {"Name": "Date", "Type": "DATE"},
-            {"Name": "Place", "Type": "VARCHAR(255)"}
-        ],
-        "primary_key": ["Roll_No", "Out_Time", "Date"]
-    },
-    {
-        "table": "hostel_data",
-        "insert": true,
-        "path": "./Data/hostel_data.csv",
-        "db_name": "HostelDB",
-        "headers": [
-            {"Name": "Sr_No", "Type": "INT"},
-            {"Name": "Room_Type", "Type": "VARCHAR(255)"},
-            {"Name": "Floor", "Type": "INT"},
-            {"Name": "Room_No", "Type": "VARCHAR(255)"},
-            {"Name": "Student_Name", "Type": "VARCHAR(255)"},
-            {"Name": "Roll_No", "Type": "VARCHAR(255)"},
-            {"Name": "Course_Type", "Type": "VARCHAR(255)"},
-            {"Name": "Year", "Type": "INT"},
-            {"Name": "Email_ID", "Type": "VARCHAR(255)"},
-            {"Name": "Fees", "Type": "DECIMAL"},
-            {"Name": "Security_Amt", "Type": "DECIMAL"},
-            {"Name": "Bank_ID", "Type": "INT"},
-            {"Name": "Contact", "Type": "VARCHAR(255)"},
-            {"Name": "Remarks", "Type": "TEXT"},
-            {"Name": "From_Date", "Type": "DATE"},
-            {"Name": "To_Date", "Type": "DATE"},
-            {"Name": "Name_Share", "Type": "VARCHAR(255)"},
-            {"Name": "Roll_No_Share", "Type": "VARCHAR(255)"},
-            {"Name": "Course_Share", "Type": "VARCHAR(255)"},
-            {"Name": "Year_Share", "Type": "INT"},
-            {"Name": "Email_ID_Share", "Type": "VARCHAR(255)"}
-        ],
-        "primary_key": ["Sr_No", "Roll_No"]
+        "tables": [
+            {
+                "table": "home_leave_data",
+                "insert": true,
+                "path": "./Data/home_leave_data.csv",
+                "headers": [
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"},
+                    {"Name": "Out_Time", "Type": "TIME"},
+                    {"Name": "In_Time", "Type": "TIME"},
+                    {"Name": "Date", "Type": "DATE"},
+                    {"Name": "Place", "Type": "VARCHAR(255)"}
+                ],
+                "primary_key": ["Roll_No", "Out_Time", "Date"]
+            },
+            {
+                "table": "hostel_data",
+                "insert": true,
+                "path": "./Data/hostel_data.csv",
+                "headers": [
+                    {"Name": "Sr_No", "Type": "INT"},
+                    {"Name": "Room_Type", "Type": "VARCHAR(255)"},
+                    {"Name": "Floor", "Type": "INT"},
+                    {"Name": "Room_No", "Type": "VARCHAR(255)"},
+                    {"Name": "Student_Name", "Type": "VARCHAR(255)"},
+                    {"Name": "Roll_No", "Type": "VARCHAR(255)"},
+                    {"Name": "Course_Type", "Type": "VARCHAR(255)"},
+                    {"Name": "Year", "Type": "INT"},
+                    {"Name": "Email_ID", "Type": "VARCHAR(255)"},
+                    {"Name": "Fees", "Type": "DECIMAL"},
+                    {"Name": "Security_Amt", "Type": "DECIMAL"},
+                    {"Name": "Bank_ID", "Type": "INT"},
+                    {"Name": "Contact", "Type": "VARCHAR(255)"},
+                    {"Name": "Remarks", "Type": "TEXT"},
+                    {"Name": "From_Date", "Type": "DATE"},
+                    {"Name": "To_Date", "Type": "DATE"},
+                    {"Name": "Name_Share", "Type": "VARCHAR(255)"},
+                    {"Name": "Roll_No_Share", "Type": "VARCHAR(255)"},
+                    {"Name": "Course_Share", "Type": "VARCHAR(255)"},
+                    {"Name": "Year_Share", "Type": "INT"},
+                    {"Name": "Email_ID_Share", "Type": "VARCHAR(255)"}
+                ],
+                "primary_key": ["Roll_No", "Sr_No"]
+            }
+        ]
     }
 ]
-
