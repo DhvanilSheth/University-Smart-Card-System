@@ -4,7 +4,7 @@
         "tables": [
             {
                 "table": "pool",
-                "insert": false,
+                "insert": true,
                 "path": "./Data/pool.csv",
                 "headers": [
                     {"Name": "Sr_No", "Type": "INT"},
