@@ -15,7 +15,7 @@ with open('data_sources_config.json', 'r') as config_file:
 connection = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="akis@123",
+    password="root",
 )
 cursor = connection.cursor()
 
