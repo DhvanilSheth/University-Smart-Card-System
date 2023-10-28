@@ -289,42 +289,24 @@ def delete_file_if_exists(filename):
         os.remove(filename)
         print(f"[LOG] Deleted existing data source: {filename}")
 
-def run(num):
-    # Data Deletion Mechanism
-    for data_source, active in DATA_SOURCES.items():
-        if not active:
-            delete_file_if_exists(f'./Data/{data_source}.csv')
-    
-    # Data Generation
-    if DATA_SOURCES["hostel_data"]:
-        generate_hostel_data(num)
-    if DATA_SOURCES["mess_1_data"]:
-        generate_mess_1_data(num)
-    if DATA_SOURCES["mess_2_data"]:
-        generate_mess_2_data(num)
-    if DATA_SOURCES["package_collection_data"]:
-        generate_package_collection_data(num)
-    if DATA_SOURCES["home_leave_data"]:
-        generate_home_leave_data(num)
-    if DATA_SOURCES["medicine_data"]:
-        generate_medicine_data(num)
-    if DATA_SOURCES["equipment_loss"]:
-        generate_equipment_loss(num)
-    if DATA_SOURCES["gym"]:
-        generate_gym(num)
-    if DATA_SOURCES["pool"]:
-        generate_pool(num)
-    if DATA_SOURCES["equipment_requests"]:
-        generate_equipment_requests(num)
-    if DATA_SOURCES["medicine_sports"]:
-        generate_medicine_sports(num)
-    if DATA_SOURCES["pool_non_membership"]:
-        generate_pool_non_membership(num)
+def run(num_records):
+    for database in DATA_SOURCES:
+        db_name = database['db_name']
+        for table in database['tables']:
+            table_name = table['table']
+            insert_data = table['insert']
+            data_file_path = table['path']
 
-    # Data Quality Checks
-    if not check_data_quality():
-        print("[ERROR] Data quality checks failed!")
-    else:
-        print("[LOG] Data quality checks passed!")
+            # Data Deletion Mechanism
+            if not insert_data:
+                delete_file_if_exists(data_file_path)
+            
+            # Data Generation
+            generate_function_name = f"generate_{table_name}"
+            if hasattr(__import__('__main__'), generate_function_name):
+                generate_function = getattr(__import__('__main__'), generate_function_name)
+                generate_function(num_records)
+            else:
+                print(f"[WARNING] No data generation function found for {table_name}. Skipping data generation.")
 
 run(100)
