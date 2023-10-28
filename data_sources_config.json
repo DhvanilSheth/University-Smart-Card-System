@@ -1,5 +1,6 @@
-{
-    "pool": {
+[
+    {
+        "table": "pool",
         "insert": true,
         "path": "./Data/pool.csv",
         "db_name": "SportsDB",
@@ -12,7 +13,8 @@
         ],
         "primary_key": ["Sr_No", "Roll_No"]
     },
-    "pool_non_member": {
+    {
+        "table": "pool_non_member",
         "insert": true,
         "path": "./Data/pool_non_member.csv",
         "db_name": "SportsDB",
@@ -24,7 +26,8 @@
         ],
         "primary_key": ["Sr_No", "Roll_No", "In_Time", "Date"]
     },
-    "medicine_sport": {
+    {
+        "table": "medicine_sport",
         "insert": true,
         "path": "./Data/medicine_sport.csv",
         "db_name": "SportsDB",
@@ -39,7 +42,8 @@
         ],
         "primary_key": ["Contact_No", "Time", "Date"]
     },
-    "gym": {
+    {
+        "table": "gym",
         "insert": true,
         "path": "./Data/gym.csv",
         "db_name": "SportsDB",
@@ -51,7 +55,8 @@
         ],
         "primary_key": ["Roll_No", "In_Time", "Date"]
     },
-    "equipment_request": {
+    {
+        "table": "equipment_request",
         "insert": true,
         "path": "./Data/equipment_request.csv",
         "db_name": "SportsDB",
@@ -64,7 +69,8 @@
         ],
         "primary_key": ["Roll_No", "In_Time", "Date"]
     },
-    "equipment_loss": {
+    {
+        "table": "equipment_loss",
         "insert": true,
         "path": "./Data/equipment_loss.csv",
         "db_name": "SportsDB",
@@ -77,7 +83,8 @@
         ],
         "primary_key": ["Roll_No", "Time", "Date"]
     },
-    "mess_1_data": {
+    {
+        "table": "mess_1_data",
         "insert": true,
         "path": "./Data/mess_1_data.csv",
         "db_name": "MessDB",
@@ -90,7 +97,8 @@
         ],
         "primary_key": ["Sr_No", "Roll_No"]
     },
-    "mess_2_data": {
+    {
+        "table": "mess_2_data",
         "insert": true,
         "path": "./Data/mess_2_data.csv",
         "db_name": "MessDB",
@@ -103,7 +111,8 @@
         ],
         "primary_key": ["Roll_No", "Sale_ID"]
     },
-    "home_leave_data": {
+    {
+        "table": "home_leave_data",
         "insert": true,
         "path": "./Data/home_leave_data.csv",
         "db_name": "HostelDB",
@@ -116,7 +125,8 @@
         ],
         "primary_key": ["Roll_No", "Out_Time", "Date"]
     },
-    "hostel_data": {
+    {
+        "table": "hostel_data",
         "insert": true,
         "path": "./Data/hostel_data.csv",
         "db_name": "HostelDB",
@@ -145,4 +155,5 @@
         ],
         "primary_key": ["Sr_No", "Roll_No"]
     }
-}
+]
+
