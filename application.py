@@ -10,6 +10,7 @@ DATABASES = {
 }
 PRIMARY_KEY_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
 HEADER_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
+SOURCES = [["Source1", "Database1"], ["Source2", "Database2"], ["Source3", "Database3"]]  # Replace with your SOURCES list
 
 # Function to display a progress bar
 def print_progress_bar(segments, completed):
@@ -85,7 +86,24 @@ def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
     print(bottom_border)  # Bottom border
 
 # Function to display the menu with left and right margins and vertically aligned items
-def display_menu_with_margins(char1='*', margin=5):
+def display_menu(char1='*', margin=5):
+    terminal_width, _ = shutil.get_terminal_size()
+    box_width = terminal_width
+    left_margin = margin
+
+    menu = [
+        "* 1. Application",
+        "* 2. Settings",
+        "* 3. Exit"
+    ]
+
+    print()  # Empty line for top margin
+    for item in menu:
+        item_with_margin = f"{item.ljust(box_width - 2 * left_margin - 4)} *"
+        print(item_with_margin) 
+    print() 
+
+def display_settings_menu(char1='*', margin=5):
     terminal_width, _ = shutil.get_terminal_size()
     box_width = terminal_width
     left_margin = margin
@@ -100,15 +118,13 @@ def display_menu_with_margins(char1='*', margin=5):
     print()  # Empty line for top margin
     for item in menu:
         item_with_margin = f"{item.ljust(box_width - 2 * left_margin - 4)} *"
-        print(item_with_margin)  # Left and right margins
-    print()  # Empty line for bottom margin
+        print(item_with_margin) 
+    print() 
 
 def insert_new_data():
     completed = 0
     segments = 4
     text = "Insert New Data\n\n"
-    display_boxed_text("Data Insertion")
-    text = "\n"
     print_progress_bar(segments, completed)
     
     db_name = int(input("Select Database:\n1.SportsDB\n2.MessDB\n3.HostelDB\nEnter the index: "))
@@ -175,25 +191,68 @@ def insert_new_data():
         display_boxed_text("Data inserted successfully")
     else:
         display_boxed_text("Data insertion canceled")
+        
 
+def remove_data():
+    text = "Remove Data\n\n"
+
+    print("Select Source:")
+    for i, source in enumerate(SOURCES, start=1):
+        print(f"{i}. {source[0]} - {source[1]}")
+
+    while True:
+        option = input("Enter the index of the source to remove or 'Exit' to exit: ")
+        if option.lower() == 'exit':
+            return
+        try:
+            option = int(option)
+            if 1 <= option <= len(SOURCES):
+                selected_source = SOURCES[option - 1]
+                print(f"Selected Source: {selected_source[0]} - {selected_source[1]}")
+                return
+            else:
+                print("Invalid option. Try again.")
+        except ValueError:
+            print("Invalid option. Try again.")
+
+
+def setting():
+    display_settings_menu(margin=-1)
+    
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        display_boxed_text("Insert Source option selected", margin=1)
+        insert_new_data()
+    elif choice == "2":
+        display_boxed_text("Remove Source option selected", margin=1)
+        remove_data()
+    elif choice == "3":
+        display_boxed_text("Modify Existing Source option selected", margin=1)
+    elif choice == "4":
+        display_boxed_text("Exiting the application", margin=1)
+    else:
+        display_boxed_text("Invalid choice. Try again", margin=1)
+        
+
+def application():
+    return
 
 while True:
     display_boxed_text("Welcome to University Smart Card System", margin=1)
 
-    display_menu_with_margins(margin=-1)
+    display_menu(margin=-1)
 
     choice = input("Enter your choice: ")
 
     if choice == "1":
-        insert_new_data()
+        display_boxed_text("Application selected", margin=1)
+        application()
     elif choice == "2":
-        # Add code for removing a source
-        display_boxed_text("Remove Source option selected", margin=1)
+        display_boxed_text("Setting selected", margin=1)
+        setting()
     elif choice == "3":
-        # Add code for modifying an existing source
-        display_boxed_text("Modify Existing Source option selected", margin=1)
-    elif choice == "4":
         display_boxed_text("Exiting the application", margin=1)
         break
     else:
         display_boxed_text("Invalid choice. Try again", margin=1)
+    
