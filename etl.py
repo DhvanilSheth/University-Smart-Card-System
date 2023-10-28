@@ -37,4 +37,4 @@ def alter_primary_keys(host, user, password):
     cursor.close()
     connection.close()
 
-alter_primary_keys('localhost', 'root', 'root')
+alter_primary_keys('localhost', 'root', 'akis@123')

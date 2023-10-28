@@ -63,5 +63,12 @@ def run_from_config(host, user, password):
     
     for config in configs:
         create_db_and_tables(config["db_name"], config["tables"], host, user, password)
+<<<<<<< HEAD
 
 run_from_config('localhost', 'root', 'akis@123')
+=======
+
+run_from_config('localhost', 'root', 'root')
+
+
+>>>>>>> 38e9af3053cd0ea9bb3f069eb41f4f2be5a22884
