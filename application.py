@@ -1,10 +1,11 @@
 import time
 import sys
+import shutil
 
 # Constants for database and table names
 DATABASES = ["SportsDB", "MessDB", "HostelDB"]
 PRIMARY_KEY_TYPES = ["INT", "TEXT"]
-HEADER_TYPES = ["INT", "TEXT"]
+HEADER_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
 
 # Function to display a progress bar
 def print_progress_bar(progress):
@@ -14,16 +15,48 @@ def print_progress_bar(progress):
     sys.stdout.write(f"\r[{progress_bar}] {int(progress * 100)}%")
     sys.stdout.flush()
 
-# Function to display text in a designed template
-def display_template(text, char1='#', char2='.', char3='-'):
-    template = f"{char1*50}\n"
-    template += f"{char2*50}\n"
-    template += f"{text}\n"
-    template += f"{char3*50}"
-    print(template)
+# Function to display text in a designed template with borders and left/right margins
+def display_boxed_text(text, char1='*', char2='*', char3='*', margin=5):
+    terminal_width, _ = shutil.get_terminal_size()
+    box_width = terminal_width
+    left_margin = margin
+    text_lines = text.split("\n")
+
+    top_border = f"{char1 * box_width}"
+    bottom_border = f"{char1 * box_width}"
+
+    print(top_border)  # Top border
+    for line in text_lines:
+        if line.startswith("*"):
+            # Text lines starting with '*' are considered menu items and have a different margin
+            line = f"{char1}{' ' * (box_width - 2 * left_margin - len(line) + 3)}{line.strip().lstrip('*').rstrip('*').strip()} {char1}"
+        else:
+            # Other lines have the default margin
+            line = f"{char1}{line.strip().center(box_width - 2 * left_margin)}{char1}"
+        print(line)
+    print(bottom_border)  # Bottom border
+
+# Function to display the menu with left and right margins and vertically aligned items
+def display_menu_with_margins(char1='*', margin=5):
+    terminal_width, _ = shutil.get_terminal_size()
+    box_width = terminal_width
+    left_margin = margin
+
+    menu = [
+        "* 1. Insert New Source",
+        "* 2. Remove Source",
+        "* 3. Modify Existing Source",
+        "* 4. Exit",
+    ]
+
+    print()  # Empty line for top margin
+    for item in menu:
+        item_with_margin = f"{item.ljust(box_width - 2 * left_margin - 4)} *"
+        print(item_with_margin)  # Left and right margins
+    print()  # Empty line for bottom margin
 
 def insert_new_data():
-    display_template("Insert New Data")
+    text = "Insert New Data\n\n"
     db_name = input("Which DB? Options [SportsDB, MessDB, HostelDB]: ")
     if db_name not in DATABASES:
         print("Invalid database name. Try again.")
@@ -39,7 +72,7 @@ def insert_new_data():
         insert_header = input("Do you want to Insert New Header [Y/N]? ")
         if insert_header.lower() != "y":
             if not headers:
-                display_template("New table cannot be created")
+                display_boxed_text("New table cannot be created")
                 return
             else:
                 break
@@ -62,29 +95,27 @@ def insert_new_data():
             if 0 <= idx < len(headers):
                 primary_key.append(headers[idx])
 
-    display_template("Data to insert:")
-    print("Database:", db_name)
-    print("Table:", table_name)
-    display_template("Headers:")
+    text += "Data to insert:\n"
+    text += f"Database: {db_name}\n"
+    text += f"Table: {table_name}\n"
+    text += "Headers:\n"
     for header in headers:
-        print(f"- {header['Name']} ({header['Type']})")
-    display_template("Primary Key:")
+        text += f"- {header['Name']} ({header['Type']})\n"
+    text += "Primary Key:\n"
     for key in primary_key:
-        print(f"- {key['Name']} ({key['Type']})")
+        text += f"- {key['Name']} ({key['Type']})\n"
 
     insert_confirm = input("Proceed with insertion [Y/N]? ")
     if insert_confirm.lower() == "y":
         # Add code here to insert data into the database
-        display_template("Data inserted successfully")
+        display_boxed_text("Data inserted successfully")
     else:
-        display_template("Data insertion canceled")
+        display_boxed_text("Data insertion canceled")
 
 while True:
-    display_template("Welcome to University Smart Card System")
-    print("1. Insert New Source")
-    print("2. Remove Source")
-    print("3. Modify Existing Source")
-    print("4. Exit")
+    display_boxed_text("Welcome to University Smart Card System", margin=1)
+
+    display_menu_with_margins(margin=-1)
 
     choice = input("Enter your choice: ")
 
@@ -92,12 +123,12 @@ while True:
         insert_new_data()
     elif choice == "2":
         # Add code for removing a source
-        display_template("Remove Source option selected")
+        display_boxed_text("Remove Source option selected", margin=5)
     elif choice == "3":
         # Add code for modifying an existing source
-        display_template("Modify Existing Source option selected")
+        display_boxed_text("Modify Existing Source option selected", margin=5)
     elif choice == "4":
-        display_template("Exiting the application")
+        display_boxed_text("Exiting the application", margin=5)
         break
     else:
-        display_template("Invalid choice. Try again")
+        display_boxed_text("Invalid choice. Try again", margin=5)
