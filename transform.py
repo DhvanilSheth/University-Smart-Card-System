@@ -19,7 +19,7 @@ UNIQUE_KEY_CONFIGURATION = {
 
 csv_dir = './Data/'
 
-def create_iiitdDB(host, user, password):
+def create_uniDB(host, user, password):
     try:
         connection = mysql.connector.connect(
             host=host,
@@ -89,7 +89,7 @@ def clean_data(csv_file):
     
 
 clean_dbs('192.168.32.187', 'root', 'vhavle')
-create_iiitdDB('192.168.32.187', 'root', 'vhavle')
+create_uniDB('192.168.32.187', 'root', 'vhavle')
 
 allowed_csv_names = set(UNIQUE_KEY_CONFIGURATION.keys())
 
