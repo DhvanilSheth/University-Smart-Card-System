@@ -17,7 +17,7 @@ UNIQUE_KEY_CONFIGURATION = {
     'package_collection_data': ['Pick Up Student Number', 'Driver Contact', 'Sr No']
 }
 
-csv_dir = '../Data/'
+csv_dir = './Data/'
 
 def clean_dbs(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)

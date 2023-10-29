@@ -21,7 +21,7 @@ def insert_data_from_csv(table_name, csv_path, connection):
 def insert_transformation_columns(connection, table_name, create_command):
     cursor = connection.cursor()
     cursor.execute(create_command)
-    cursor.execute(f"ALTER TABLE `{table_name}` ADD COLUMN Unique_Key VARCHAR(255), ADD COLUMN LookUp_Count INT, ADD COLUMN Update_Count INT, ADD COLUMN Key_Combination VARCHAR(255)")
+    cursor.execute(f"ALTER TABLE `{table_name}` ADD COLUMN Unique_Key VARCHAR(255) DEFAULT '', ADD COLUMN LookUp_Count INT, ADD COLUMN Update_Count INT, ADD COLUMN Key_Combination VARCHAR(255), ADD PRIMARY KEY (Unique_Key)")
     
     
 def makeSportsDB(host, user, password):
