@@ -11,6 +11,7 @@ ETL_EXTRACT = 'extract.py'
 ETL_LOAD = 'load.py'
 ETL_TRANSFORM = 'transform.py'
 ETL_GLOBAL = 'etl-global.py'
+SYNC_DB = 'sync-databases.py'
 
 # Constants for database and table names
 DATABASES = {
@@ -127,7 +128,7 @@ def display_settings_menu(char1='*', margin=5):
         "* 3. Add Source",
         "* 4. Remove Source",
         "* 5. Modify Existing Source",
-        "* 6. Run Dynamic Data Updation",
+        "* 6. Update Data",
         "* 7. Run ETL",
         "* 8. Add Database",
         "* 9. Remove Database",
@@ -401,7 +402,7 @@ def setting():
     elif choice == "5":
         display_title_card("Modify Existing Source option selected")
     elif choice == "6":
-        display_title_card("Pulling Data from config")
+        display_title_card("Updating Data initiated")
         dynamic()
     elif choice == "7":
         display_title_card("Initiating ETL Process")
@@ -422,10 +423,12 @@ def application():
     return
       
 def dynamic():
-    print_progress_bar(1,0)
+    print_progress_bar(2,0)
     subprocess.run(['python', DYNAMIC_DATA])
-    print_progress_bar(1,1)
-    display_success_card("Config Data Updated")
+    print_progress_bar(2,1)
+    subprocess.run(['python', SYNC_DB])
+    print_progress_bar(2,2)
+    display_success_card("Data Updation Completed")
     
 def etl():
     print_progress_bar(4,0)
@@ -440,9 +443,6 @@ def etl():
     display_success_card("ETL Process Completed")
 
         
-def application():
-    return
-
 while True:
     display_title_card("Welcome to University Smart Card System")
 
