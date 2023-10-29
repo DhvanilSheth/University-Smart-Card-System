@@ -83,7 +83,7 @@ roll_no_course_mapping = generate_mapping_roll_no_to_course(roll_numbers, course
 roll_no_mobile_mapping = generate_mapping_roll_no_to_mobile(roll_numbers, mobile_numbers)
 
 def generate_hostel_data(num_records):
-    with open('../Data/hostel_data.csv', mode='w', newline='') as file:
+    with open('./Data/hostel_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sr No", 
                          "Room Type",
@@ -145,7 +145,7 @@ def generate_hostel_data(num_records):
                             ])
 
 def generate_mess_1_data(num_records):
-    with open('../Data/mess_1_data.csv', mode='w', newline='') as file:
+    with open('./Data/mess_1_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sr No", "Name", "Phone Number", "Roll No", "Cash", "PayTM", "Total", "Date of Purchase", "Breakfast", "Lunch", "Snack", "Dinner"])
         for i in range(num_records):
@@ -161,7 +161,7 @@ def generate_mess_1_data(num_records):
                 writer.writerow([i + 1, name, mobile_number, roll_number, 0, cost, cost, fake.date(), fake.random_number(digits=2), fake.random_number(digits=2),fake.random_number(digits=2),fake.random_number(digits=2)])
 
 def generate_mess_2_data(num_records):
-    with open('../Data/mess_2_data.csv', mode='w', newline='') as file:
+    with open('./Data/mess_2_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sale ID", "Sale Date", "Coupon Type", "Name", "Phone Number", "Roll NO", "Paytm", "Cash", "Total Amount"])
         for i in range(num_records):
@@ -177,7 +177,7 @@ def generate_mess_2_data(num_records):
                 writer.writerow([i + 1, fake.date_time(), type, name, mobile_number, roll_number, 0, cost, cost])
 
 def generate_package_collection_data(num_records):
-    with open('../Data/package_collection_data.csv', mode='w', newline='') as file:
+    with open('./Data/package_collection_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sr No", "Date", "Name", "Room", "Delivery driver name", "Driver Contact", "Company", "Quantity", "Pick Up Student", "Pick Up Student Number", "Signature", "Security Signature"])
         for i in range(num_records):
@@ -189,7 +189,7 @@ def generate_package_collection_data(num_records):
             writer.writerow([i + 1, fake.date(), name, f"A-{fake.random_number(digits=3)}", fake.name(), fake.random_number(digits=10), fake.company(), fake.random_number(digits=2), pick_student, pick_number, name, pick_student])
 
 def generate_home_leave_data(num_records):
-    with open('../Data/home_leave_data.csv', mode='w', newline='') as file:
+    with open('./Data/home_leave_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Contact", "Out Time", "Roll No", "Room No", "To Address", "Return Time", "Return Date", "Signature", "Security Signature"])
         for i in range(num_records):
@@ -199,7 +199,7 @@ def generate_home_leave_data(num_records):
             writer.writerow([fake.date(), name, number, fake.time()[:-3], random.choice(roll_numbers), f"A-{fake.random_number(digits=3)}", fake.address(), fake.time()[:-3], fake.date(), name, fake.name()])
 
 def generate_medicine_data(num_records):
-    with open('../Data/medicine_data.csv', mode='w', newline='') as file:
+    with open('./Data/medicine_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Contact", "Medicine Name", "Quantity", "Room No", "Time", "Roll No", "Signature", "Purpose", "Security Signature"])
         for i in range(num_records):
@@ -209,7 +209,7 @@ def generate_medicine_data(num_records):
             writer.writerow([fake.date(), name, mobile, fake.word(), fake.random_number(digits=2), f"A-{fake.random_number(digits=3)}", fake.time()[:-3], roll_number, name, fake.sentence(), fake.name()])
 
 def generate_equipment_loss(num_records):
-    with open('../Data/equipment_loss.csv', mode='w', newline='') as file:
+    with open('./Data/equipment_loss.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "Equipment", "Time", "Remarks"])
         for i in range(num_records):
@@ -219,7 +219,7 @@ def generate_equipment_loss(num_records):
             writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.time()[:-3], fake.sentence()])
 
 def generate_gym(num_records):
-    with open('../Data/gym.csv', mode='w', newline='') as file:
+    with open('./Data/gym.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "In_Time", "Out_Time", "Signature"])
         for i in range(num_records):
@@ -229,7 +229,7 @@ def generate_gym(num_records):
             writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.time()[:-3] , fake.time()[:-3], name])
 
 def generate_pool(num_records):
-    with open('../Data/pool.csv', mode='w', newline='') as file:
+    with open('./Data/pool.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sr No", "Card Number", "Membership Expiry", "Name", "Roll No", "Sex", "Department", "Presence"])
         for i in range(num_records):
@@ -241,7 +241,7 @@ def generate_pool(num_records):
             writer.writerow([i+1, fake.random_number(digits=3), fake.date(), name, roll_number, fake.random.choice(['Male', 'Female']) , course , present])
 
 def generate_equipment_requests(num_records):
-    with open('../Data/equipment_requests.csv', mode='w', newline='') as file:
+    with open('./Data/equipment_requests.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Roll No", "Room No", "Contact", "Equipment Issued", "Quantity", "In_Time", "Out_Time", "Signature", "Remarks"])
         for i in range(num_records):
@@ -251,7 +251,7 @@ def generate_equipment_requests(num_records):
             writer.writerow([fake.date(), name, roll_number, f"A-{fake.random_number(digits=3)}", mobile, fake.word() , fake.random_number(digits=1), fake.time()[:-3], fake.time()[:-3], name, fake.sentence()])
 
 def generate_medicine_sports(num_records):
-    with open('../Data/medicine_sports.csv', mode='w', newline='') as file:
+    with open('./Data/medicine_sports.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Time", "Name", "Contact No", "Quantity", "Medicine Name", "Student Sign", "Security Sign"])
         for i in range(num_records):
@@ -261,7 +261,7 @@ def generate_medicine_sports(num_records):
             writer.writerow([fake.date(), fake.time()[:-3], name, mobile, fake.random_number(digits=1), fake.word() , name, fake.name()])
 
 def generate_pool_non_membership(num_records):
-    with open('../Data/pool_non_membership.csv', mode='w', newline='') as file:
+    with open('./Data/pool_non_membership.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Tax ID", "Payment", "Roll No", "In_Time", "Sign"])
         for i in range(num_records):

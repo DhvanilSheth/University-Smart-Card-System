@@ -4,7 +4,9 @@ import shutil
 import subprocess
 
 DYNAMIC_DATA = 'dynamic-data.py'
-ETL = './ETL/main.py'
+ETL_EXTRACT = 'extract.py'
+ETL_LOAD = 'load.py'
+ETL_TRANSFORM = 'transform.py'
 
 # Constants for database and table names
 DATABASES = {
@@ -261,7 +263,9 @@ def dynamic():
     display_success_card("Config Data Updated")
     
 def etl():
-    subprocess.run(['python', ETL])
+    subprocess.run(['python', ETL_EXTRACT])
+    subprocess.run(['python', ETL_TRANSFORM])
+    subprocess.run(['python', ETL_LOAD])
     display_success_card("ETL Process Completed")
 
 def setting():

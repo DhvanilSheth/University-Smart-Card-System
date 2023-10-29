@@ -112,12 +112,12 @@ def makeSportsDB(host, user, password):
         insert_transformation_columns(connection, table_name, create_command)
     
     csv_files = {
-        "pool_non_membership": "../Data/pool_non_membership.csv",
-        "pool": "../Data/pool.csv",
-        "gym": "../Data/gym.csv",
-        "equipment_requests": "../Data/equipment_requests.csv",
-        "equipment_loss": "../Data/equipment_loss.csv",
-        "medicine_sports": "../Data/medicine_sports.csv"
+        "pool_non_membership": "./Data/pool_non_membership.csv",
+        "pool": "./Data/pool.csv",
+        "gym": "./Data/gym.csv",
+        "equipment_requests": "./Data/equipment_requests.csv",
+        "equipment_loss": "./Data/equipment_loss.csv",
+        "medicine_sports": "./Data/medicine_sports.csv"
     }
     
     try:
@@ -216,10 +216,10 @@ def makeHostelDB(host, user, password):
         insert_transformation_columns(connection, table_name, create_command)
 
     csv_files = {
-        "home_leave_data": "../Data/home_leave_data.csv",
-        "hostel_data": "../Data/hostel_data.csv",
-        "medicine_data": "../Data/medicine_data.csv",
-        "package_collection_data": "../Data/package_collection_data.csv"
+        "home_leave_data": "./Data/home_leave_data.csv",
+        "hostel_data": "./Data/hostel_data.csv",
+        "medicine_data": "./Data/medicine_data.csv",
+        "package_collection_data": "./Data/package_collection_data.csv"
     }
 
     try:
@@ -276,8 +276,8 @@ def makeMessDB(host, user, password):
         insert_transformation_columns(connection, table_name, create_command)
 
     csv_files = {
-        "mess_1_data": "../Data/mess_1_data.csv",
-        "mess_2_data": "../Data/mess_2_data.csv"
+        "mess_1_data": "./Data/mess_1_data.csv",
+        "mess_2_data": "./Data/mess_2_data.csv"
     }
 
     try:

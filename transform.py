@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import mysql.connector
 
 UNIQUE_KEY_CONFIGURATION = {
     'pool': ['Roll No', 'Sr No'],
@@ -17,6 +18,19 @@ UNIQUE_KEY_CONFIGURATION = {
 }
 
 csv_dir = '../Data/'
+
+def clean_dbs(host, user, password):
+    connection = mysql.connector.connect(host=host, user=user, password=password)
+    cursor = connection.cursor()
+    databases = ["SportsDB", "HostelDB", "MessDB"]
+    for db in databases:
+        try:
+            cursor.execute(f"DROP DATABASE IF EXISTS {db}")
+        except mysql.connector.Error as err:
+            print(f"Error dropping {db}: {err}")
+    cursor.close()
+    connection.close()
+    print("Databases cleaned.")
 
 def process_csv(db, csv_file):
     df = pd.read_csv(csv_file)
@@ -37,6 +51,9 @@ def clean_data(csv_file):
     df.dropna(subset=[col for col in df.columns if not df[col].dtype == 'O'], inplace=True)
     df.dropna(subset=[col for col in df.columns if df[col].dtype == 'O'], how='any', inplace=True)
     df.to_csv(csv_file, index=False)
+    
+
+clean_dbs('localhost', 'root', 'root')
 
 for root, dirs, files in os.walk(csv_dir):
     for file in files:
