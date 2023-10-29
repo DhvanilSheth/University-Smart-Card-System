@@ -2,6 +2,9 @@ import time
 import sys
 import shutil
 import subprocess
+import os
+import csv
+import json
 import json
 
 DYNAMIC_DATA = 'dynamic-data.py'
@@ -135,18 +138,19 @@ def display_settings_menu(char1='*', margin=5):
         print(item_with_margin) 
     print() 
 
-def insert_new_data():
+def insert_new_data(json_data, json_file_path):
     completed = 0
-    segments = 4
+    segments = 5
     text = "Insert New Data\n\n"
     print_progress_bar(segments, completed)
 
-    db_name = int(input("Select Database:\n1. SportsDB\n2. MessDB\n3. HostelDB\nEnter the index: "))
-    if db_name < 1 or db_name > 3:
+    # Select Database
+    db_index = int(input("Select Database:\n1. SportsDB\n2. MessDB\n3. HostelDB\nEnter the index: ")) - 1
+    if db_index < 0 or db_index > 2:
         print("Invalid database. Try again.")
         return
 
-    db_name = DATABASES[db_name]
+    db_name = DATABASES[db_index + 1]
     completed += 1
     print_progress_bar(segments, completed)
 
@@ -232,11 +236,34 @@ def insert_new_data():
     
     insert_confirm = input("Proceed with insertion [Y/N]? ")
     if insert_confirm.lower() == "y":
+        # Update JSON configuration
+        new_data_source = {
+            'table': table_name,
+            'insert': False,  # Set to False by default
+            'path': f"./Data/{table_name}.csv",
+            'headers': headers,
+            'primary_key': [key['Name'] for key in primary_key]
+        }
+        json_data[db_index]['tables'].append(new_data_source)
+        with open(json_file_path, 'w') as f:
+            json.dump(json_data, f, indent=2)
+
+        # Create CSV file if it doesn't exist
+        csv_file_path = f"./Data/{table_name}.csv"
+        if not os.path.exists(csv_file_path):
+            with open(csv_file_path, 'w', newline='') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=[header['Name'] for header in headers])
+                writer.writeheader()
+        
         display_boxed_text("Data inserted successfully")
+        completed += 1
+        print_progress_bar(segments, completed)
+
     else:
         display_boxed_text("Data insertion canceled")
+        completed += 1
+        print_progress_bar(segments, completed)
         
-
 def get_sources(insert_value=True):
     with open("data_sources_config.json", "r") as f:
         configs = json.load(f)
@@ -351,6 +378,7 @@ while True:
         break
     else:
         display_error_card("Invalid choice. Try again")
+      
 def dynamic():
     subprocess.run(['python', DYNAMIC_DATA])
     display_success_card("Config Data Updated")
@@ -363,11 +391,15 @@ def etl():
 
 def setting():
     display_settings_menu(margin=-1)
-    
+
+    json_file_path = 'data_sources_config.json'
+    with open(json_file_path, 'r') as f: json_data = json.load(f)
+
     choice = input("Enter your choice: ")
+
     if choice == "1":
         display_title_card("Insert Source option selected")
-        insert_new_data()
+        insert_new_data(json_data, json_file_path)
     elif choice == "2":
         display_title_card("Delete Source option selected")
     elif choice == "3":
@@ -388,7 +420,6 @@ def setting():
     else:
         display_title_card("Invalid choice. Try again")
         
-
 def application():
     return
 
