@@ -98,8 +98,8 @@ def clean_data(csv_file):
     df.to_csv(csv_file, index=False)
     
 
-clean_dbs('localhost', 'root', 'hanoon2002')
-create_uniDB('localhost', 'root', 'hanoon2002')
+clean_dbs('localhost', 'root', 'akis@123')
+create_uniDB('localhost', 'root', 'akis@123')
 
 allowed_csv_names = set(UNIQUE_KEY_CONFIGURATION.keys())
 
