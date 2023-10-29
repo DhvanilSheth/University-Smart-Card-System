@@ -4,7 +4,7 @@
         "tables": [
             {
                 "table": "pool",
-                "insert": true,
+                "insert": false,
                 "path": "./Data/pool.csv",
                 "headers": [
                     {
@@ -87,7 +87,7 @@
             },
             {
                 "table": "gym",
-                "insert": false,
+                "insert": true,
                 "path": "./Data/gym.csv",
                 "headers": [
                     {
