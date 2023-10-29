@@ -4,7 +4,7 @@ import shutil
 import subprocess
 
 DYNAMIC_DATA = 'dynamic-data.py'
-DATA_GEN = 'data-gen.py'
+ETL = './ETL/main.py'
 
 # Constants for database and table names
 DATABASES = {
@@ -123,7 +123,7 @@ def display_settings_menu(char1='*', margin=5):
         "* 4. Remove Source",
         "* 5. Modify Existing Source",
         "* 6. Run Dynamic Data Updation",
-        "* 7. Run Data Generation File",
+        "* 7. Run ETL",
         "* 8. Exit",
     ]
 
@@ -260,9 +260,9 @@ def dynamic():
     subprocess.run(['python', DYNAMIC_DATA])
     display_success_card("Config Data Updated")
     
-def datagen():
-    subprocess.run(['python', DATA_GEN])
-    display_success_card("Data Generation Completed")
+def etl():
+    subprocess.run(['python', ETL])
+    display_success_card("ETL Process Completed")
 
 def setting():
     display_settings_menu(margin=-1)
@@ -284,8 +284,8 @@ def setting():
         display_title_card("Pulling Data from config")
         dynamic()
     elif choice == "7":
-        display_title_card("Creating CSVs")
-        datagen()
+        display_title_card("Initiating ETL Process")
+        etl()
     elif choice == "8":
         display_title_card("Exiting the application")
     else:
