@@ -5,7 +5,6 @@ import subprocess
 import os
 import csv
 import json
-import json
 
 DYNAMIC_DATA = 'dynamic-data.py'
 ETL_EXTRACT = 'extract.py'
@@ -129,7 +128,9 @@ def display_settings_menu(char1='*', margin=5):
         "* 5. Modify Existing Source",
         "* 6. Run Dynamic Data Updation",
         "* 7. Run ETL",
-        "* 8. Exit",
+        "* 8. Add Database",
+        "* 9. Remove Database",
+        "* 10. Exit",
     ]
 
     for item in menu:
@@ -326,6 +327,63 @@ def remove_source():
                 print("Invalid option. Try again.")
         except ValueError:
             print("Invalid option. Try again.")
+            
+def addDB():
+    # Load the existing JSON data from databases.json
+    try:
+        with open('databases.json', 'r') as json_file:
+            data_dict = json.load(json_file)
+    except FileNotFoundError:
+        data_dict = {}  
+    print("Select the type of Database:")
+    print("1. Hostel")
+    print("2. Mess")
+    print("3. Sports")
+    
+    type_index = int(input("Enter the index: "))
+    if type_index not in [1, 2, 3]:
+        print("Invalid input. Please select a valid index.")
+        return
+    database_type = {1: "Hostel", 2: "Mess", 3: "Sports"}[type_index]
+    database_name = input("Enter the name of the DB: ")
+    data_dict[database_name] = database_type
+    with open('databases.json', 'w') as json_file:
+        json.dump(data_dict, json_file, indent=4)
+    print(f"Added '{database_name}' to databases.json with type '{database_type}'.")
+
+def deleteDB():
+    # Load the existing JSON data from databases.json
+    try:
+        with open('databases.json', 'r') as json_file:
+            data_dict = json.load(json_file)
+    except FileNotFoundError:
+        print("No data found in databases.json.")
+        return
+
+    # Display the current entries with their indices
+    print("Current entries in databases.json:")
+    for idx, (name, db_type) in enumerate(data_dict.items(), start=1):
+        print(f"{idx}. {name} ({db_type})")
+
+    # Ask the user for the index of the entry to delete
+    if data_dict:
+        try:
+            delete_index = int(input("Enter the index of the entry to delete: "))
+            if delete_index in range(1, len(data_dict) + 1):
+                entry_to_delete = list(data_dict.keys())[delete_index - 1]
+                del data_dict[entry_to_delete]
+
+                # Write the updated data_dict back to databases.json
+                with open('databases.json', 'w') as json_file:
+                    json.dump(data_dict, json_file, indent=4)
+
+                print(f"Deleted '{entry_to_delete}' from databases.json.")
+            else:
+                print("Invalid index. Please enter a valid index.")
+        except ValueError:
+            print("Invalid input. Please enter a valid index.")
+    else:
+        print("No entries to delete.")
 
 def setting():
     display_settings_menu(margin=-1)
@@ -351,6 +409,12 @@ def setting():
         display_title_card("Initiating ETL Process")
         etl()
     elif choice == "8":
+        display_title_card("Adding database options selected")
+        addDB()
+    elif choice == "9":
+        display_title_card("Deleting database options selected")
+        deleteDB()
+    elif choice == "10":
         display_title_card("Exiting the application")
         exit(0)
     else:
