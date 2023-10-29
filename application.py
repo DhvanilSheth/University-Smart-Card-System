@@ -378,6 +378,7 @@ while True:
         break
     else:
         display_error_card("Invalid choice. Try again")
+      
 def dynamic():
     subprocess.run(['python', DYNAMIC_DATA])
     display_success_card("Config Data Updated")
