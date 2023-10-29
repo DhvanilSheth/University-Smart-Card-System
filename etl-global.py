@@ -36,13 +36,11 @@ def create_uniDB(host, user, password):
         with open('databases.json', 'w') as json_file:
             json.dump(data_dict, json_file, indent=4)
         print("Data written to 'databases.json'.")
-
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-
-    finally:
         if connection.is_connected():
             cursor.close()
             connection.close()
+
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
 
 create_uniDB('192.168.32.187', 'root', 'vhavle')
