@@ -45,4 +45,4 @@ def create_uniDB(host, user, password):
             cursor.close()
             connection.close()
 
-create_uniDB("localhost", "root", "hanoon2002")
+create_uniDB('192.168.32.187', 'root', 'vhavle')
