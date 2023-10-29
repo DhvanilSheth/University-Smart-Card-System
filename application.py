@@ -5,6 +5,7 @@ import subprocess
 import os
 import csv
 import json
+import json
 
 DYNAMIC_DATA = 'dynamic-data.py'
 ETL_EXTRACT = 'extract.py'
@@ -263,11 +264,52 @@ def insert_new_data(json_data, json_file_path):
         completed += 1
         print_progress_bar(segments, completed)
         
-def remove_data():
-    text = "Remove Data\n\n"
+def get_sources(insert_value=True):
+    with open("data_sources_config.json", "r") as f:
+        configs = json.load(f)
 
+    return [(table["table"], db["db_name"]) for db in configs for table in db["tables"] if table["insert"] == insert_value]
+
+def toggle_source_insert(source, db_name, insert_value):
+    with open("data_sources_config.json", "r") as f:
+        configs = json.load(f)
+
+    for config in configs:
+        if config["db_name"] == db_name:
+            for table in config["tables"]:
+                if table["table"] == source:
+                    table["insert"] = insert_value
+                    break
+
+    with open("data_sources_config.json", "w") as f:
+        json.dump(configs, f, indent=4)
+
+def add_source():
+    sources_to_add = get_sources(insert_value=False)
     print("Select Source:")
-    for i, source in enumerate(SOURCES, start=1):
+    for i, source in enumerate(sources_to_add, start=1):
+        print(f"{i}. {source[0]} - {source[1]}")
+
+    while True:
+        option = input("Enter the index of the source to add or 'Exit' to exit: ")
+        if option.lower() == 'exit':
+            return
+        try:
+            option = int(option)
+            if 1 <= option <= len(sources_to_add):
+                selected_source = sources_to_add[option - 1]
+                print(f"Selected Source: {selected_source[0]} - {selected_source[1]}")
+                toggle_source_insert(selected_source[0], selected_source[1], insert_value=True)
+                return
+            else:
+                print("Invalid option. Try again.")
+        except ValueError:
+            print("Invalid option. Try again.")
+
+def remove_source():
+    sources_to_remove = get_sources(insert_value=True)
+    print("Select Source:")
+    for i, source in enumerate(sources_to_remove, start=1):
         print(f"{i}. {source[0]} - {source[1]}")
 
     while True:
@@ -276,15 +318,66 @@ def remove_data():
             return
         try:
             option = int(option)
-            if 1 <= option <= len(SOURCES):
-                selected_source = SOURCES[option - 1]
+            if 1 <= option <= len(sources_to_remove):
+                selected_source = sources_to_remove[option - 1]
                 print(f"Selected Source: {selected_source[0]} - {selected_source[1]}")
+                toggle_source_insert(selected_source[0], selected_source[1], insert_value=False)
                 return
             else:
                 print("Invalid option. Try again.")
         except ValueError:
             print("Invalid option. Try again.")
 
+def setting():
+    display_settings_menu(margin=-1)
+    
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        display_title_card("Insert Source option selected")
+        insert_new_data()
+    elif choice == "2":
+        display_title_card("Delete Source option selected")
+    elif choice == "3":
+        display_title_card("Add Source option selected")
+        add_source()
+    elif choice == "4":
+        display_title_card("Remove Source option selected")
+        remove_source()
+    elif choice == "5":
+        display_title_card("Modify Existing Source option selected")
+    elif choice == "6":
+        display_title_card("Pulling Data from config")
+        dynamic()
+    elif choice == "7":
+        display_title_card("Initiating ETL Process")
+        etl()
+    elif choice == "8":
+        display_title_card("Exiting the application")
+        exit(0)
+    else:
+        display_title_card("Invalid choice. Try again")
+
+def application():
+    return
+
+while True:
+    display_title_card("Welcome to University Smart Card System")
+
+    display_menu(margin=-1)
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        display_title_card("Application selected")
+        application()
+    elif choice == "2":
+        display_title_card("Setting selected")
+        setting()
+    elif choice == "3":
+        display_title_card("Exiting the application")
+        break
+    else:
+        display_error_card("Invalid choice. Try again")
 def dynamic():
     subprocess.run(['python', DYNAMIC_DATA])
     display_success_card("Config Data Updated")
