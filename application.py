@@ -386,11 +386,15 @@ def deleteDB():
 
 def setting():
     display_settings_menu(margin=-1)
+    json_file_path = "data_sources_config.json"
+
+    with open(json_file_path, "r") as f: 
+        json_data = json.load(f)
     
     choice = input("Enter your choice: ")
     if choice == "1":
         display_title_card("Insert Source option selected")
-        insert_new_data()
+        insert_new_data(json_data, json_file_path)
     elif choice == "2":
         display_title_card("Delete Source option selected")
     elif choice == "3":
@@ -441,8 +445,7 @@ def etl():
     subprocess.run(['python', ETL_GLOBAL])
     print_progress_bar(4,4)
     display_success_card("ETL Process Completed")
-
-        
+       
 while True:
     display_title_card("Welcome to University Smart Card System")
 
