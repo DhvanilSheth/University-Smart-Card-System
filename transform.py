@@ -18,56 +18,12 @@ UNIQUE_KEY_CONFIGURATION = {
     'package_collection_data': ['Pick Up Student Number', 'Driver Contact', 'Sr No']
 }
 
-csv_dir = './Data/'
-
-def create_uniDB(host, user, password):
-    try:
-        connection = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password
-        )
-        cursor = connection.cursor()
-        cursor.execute("CREATE DATABASE IF NOT EXISTS UniDB")
-        cursor.execute("USE UniDB")
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS localDBs (
-                Sr_No INT,
-                Name VARCHAR(255),
-                Type VARCHAR(255)
-            )
-        """)
-        insert_data = [
-            (1, 'SportsDB', 'Sports'),
-            (2, 'HostelDB', 'Hostel'),
-            (3, 'MessDB', 'Mess')
-        ]
-        cursor.executemany("INSERT INTO localDBs (Sr_No, Name, Type) VALUES (%s, %s, %s)", insert_data)
-        connection.commit()
-        print("UniDB set up complete")
-        
-        data_dict = {
-            'HostelDB': 'Hostel',
-            'SportsDB': 'Sports',
-            'MessDB': 'Mess'
-        }
-        with open('databases.json', 'w') as json_file:
-            json.dump(data_dict, json_file, indent=4)
-        print("Data written to 'databases.json'.")
-
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-
-    finally:
-        if connection.is_connected():
-            cursor.close()
-            connection.close()
-            
+csv_dir = './Data/'            
 
 def clean_dbs(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-    databases = ["SportsDB", "HostelDB", "MessDB", "UniDB"]
+    databases = ["SportsDB", "HostelDB", "MessDB"]
     for db in databases:
         try:
             cursor.execute(f"DROP DATABASE IF EXISTS {db}")
@@ -98,8 +54,7 @@ def clean_data(csv_file):
     df.to_csv(csv_file, index=False)
     
 
-clean_dbs('localhost', 'root', 'akis@123')
-create_uniDB('localhost', 'root', 'akis@123')
+clean_dbs('localhost', 'root', 'hanoon2002')
 
 allowed_csv_names = set(UNIQUE_KEY_CONFIGURATION.keys())
 

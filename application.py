@@ -10,6 +10,7 @@ DYNAMIC_DATA = 'dynamic-data.py'
 ETL_EXTRACT = 'extract.py'
 ETL_LOAD = 'load.py'
 ETL_TRANSFORM = 'transform.py'
+ETL_GLOBAL = 'etl-global.py'
 
 # Constants for database and table names
 DATABASES = {
@@ -421,13 +422,21 @@ def application():
     return
       
 def dynamic():
+    print_progress_bar(1,0)
     subprocess.run(['python', DYNAMIC_DATA])
+    print_progress_bar(1,1)
     display_success_card("Config Data Updated")
     
 def etl():
+    print_progress_bar(4,0)
     subprocess.run(['python', ETL_EXTRACT])
+    print_progress_bar(4,1)
     subprocess.run(['python', ETL_TRANSFORM])
+    print_progress_bar(4,2)
     subprocess.run(['python', ETL_LOAD])
+    print_progress_bar(4,3)
+    subprocess.run(['python', ETL_GLOBAL])
+    print_progress_bar(4,4)
     display_success_card("ETL Process Completed")
 
         

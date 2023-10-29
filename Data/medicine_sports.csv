@@ -1,4 +1,5 @@
 Date,Time,Name,Contact No,Quantity,Medicine Name,Student Sign,Security Sign,Unique_Key,Key_Combination,LookUp_Count,Update_Count
+<<<<<<< HEAD
 1994-11-15,09:57,Christopher Downs,3562267335,5,general,Christopher Downs,Joy Burke,3562267335_09:57_1994-11-15,Contact_No:Time:Date,0,0
 2006-09-29,21:54,Holly Hood,148666738,9,whom,Holly Hood,Melissa Olson,148666738_21:54_2006-09-29,Contact_No:Time:Date,0,0
 2007-09-23,05:06,Christopher Moreno,6683990427,5,something,Christopher Moreno,Nancy Simmons,6683990427_05:06_2007-09-23,Contact_No:Time:Date,0,0
@@ -99,3 +100,105 @@ Date,Time,Name,Contact No,Quantity,Medicine Name,Student Sign,Security Sign,Uniq
 2010-10-07,03:56,Mary Long,4360116787,6,live,Mary Long,Kathy Paul,4360116787_03:56_2010-10-07,Contact_No:Time:Date,0,0
 1975-03-30,03:42,Jessica Warner,797245703,1,natural,Jessica Warner,Sandy Carter,797245703_03:42_1975-03-30,Contact_No:Time:Date,0,0
 1990-08-02,13:45,William Jones,3505780985,9,through,William Jones,Kelly Russell,3505780985_13:45_1990-08-02,Contact_No:Time:Date,0,0
+=======
+2013-03-28,08:40,Heather Hicks,1795042839,8,recently,Heather Hicks,Kimberly Smith,1795042839_08:40_2013-03-28,Contact_No:Time:Date,0,0
+1988-04-11,14:03,Jonathan Parrish,2882214280,5,available,Jonathan Parrish,Alexander Ellis,2882214280_14:03_1988-04-11,Contact_No:Time:Date,0,0
+2020-06-27,18:55,Brian Allen,6193572453,9,some,Brian Allen,Andrew Stafford,6193572453_18:55_2020-06-27,Contact_No:Time:Date,0,0
+1978-11-21,12:14,Lisa Miller,9959741488,3,hour,Lisa Miller,Norman Francis,9959741488_12:14_1978-11-21,Contact_No:Time:Date,0,0
+2005-01-07,14:34,Donald Guerrero,8278582266,7,week,Donald Guerrero,Rebecca Zamora,8278582266_14:34_2005-01-07,Contact_No:Time:Date,0,0
+1973-12-26,20:21,Matthew Garcia,2174901287,9,will,Matthew Garcia,Michael Kaufman,2174901287_20:21_1973-12-26,Contact_No:Time:Date,0,0
+2007-10-22,21:27,Victoria Johnson,7948135324,7,scene,Victoria Johnson,Bradley Jackson,7948135324_21:27_2007-10-22,Contact_No:Time:Date,0,0
+1999-10-16,05:50,Denise Cabrera,1087572488,3,thus,Denise Cabrera,Christopher Rangel,1087572488_05:50_1999-10-16,Contact_No:Time:Date,0,0
+1995-05-07,10:27,Matthew Conway,4920739185,4,success,Matthew Conway,Nathaniel Wade,4920739185_10:27_1995-05-07,Contact_No:Time:Date,0,0
+2009-08-21,15:30,Cynthia Hernandez,2497576459,7,fill,Cynthia Hernandez,Jonathan Thornton,2497576459_15:30_2009-08-21,Contact_No:Time:Date,0,0
+2003-12-11,02:17,Beverly Potter,1855655143,7,push,Beverly Potter,Joshua Shaffer,1855655143_02:17_2003-12-11,Contact_No:Time:Date,0,0
+2017-09-28,10:58,Amy Lopez,204044487,6,lawyer,Amy Lopez,Haley Marshall,204044487_10:58_2017-09-28,Contact_No:Time:Date,0,0
+1979-08-05,11:22,Olivia Johns,7745811545,6,process,Olivia Johns,Nicholas Johnson,7745811545_11:22_1979-08-05,Contact_No:Time:Date,0,0
+2014-01-24,15:37,Brandon Mitchell,3990810413,3,type,Brandon Mitchell,Samantha Brooks,3990810413_15:37_2014-01-24,Contact_No:Time:Date,0,0
+1983-10-18,13:13,Michael Richardson,1457153034,7,write,Michael Richardson,Jennifer Chapman,1457153034_13:13_1983-10-18,Contact_No:Time:Date,0,0
+1985-09-17,13:56,Robert Silva,382897645,4,result,Robert Silva,Dana Shaw DVM,382897645_13:56_1985-09-17,Contact_No:Time:Date,0,0
+2000-10-29,11:00,Mr. Sean Pratt MD,363763678,0,opportunity,Mr. Sean Pratt MD,Robert Rodriguez,363763678_11:00_2000-10-29,Contact_No:Time:Date,0,0
+2018-02-03,06:29,Gary Green,3775258723,4,speak,Gary Green,Hector Ellison,3775258723_06:29_2018-02-03,Contact_No:Time:Date,0,0
+2005-11-29,09:39,Robert Baker,6601476473,9,room,Robert Baker,Nichole Burch,6601476473_09:39_2005-11-29,Contact_No:Time:Date,0,0
+2003-09-13,13:07,Heather Hicks,1795042839,3,improve,Heather Hicks,Rachael Zhang,1795042839_13:07_2003-09-13,Contact_No:Time:Date,0,0
+1975-03-06,20:39,Gary Richards,258672305,8,focus,Gary Richards,Whitney Davis,258672305_20:39_1975-03-06,Contact_No:Time:Date,0,0
+1971-03-15,20:14,Patty Jones,4135917671,0,commercial,Patty Jones,Elizabeth Austin,4135917671_20:14_1971-03-15,Contact_No:Time:Date,0,0
+1994-02-28,13:47,Karen Santana,281312026,1,catch,Karen Santana,Benjamin Spears,281312026_13:47_1994-02-28,Contact_No:Time:Date,0,0
+2014-09-10,14:01,Anthony Hall,1190008137,5,probably,Anthony Hall,Kyle Scott,1190008137_14:01_2014-09-10,Contact_No:Time:Date,0,0
+2017-06-27,23:22,Nichole Vaughan,532476694,6,pretty,Nichole Vaughan,Anita Higgins,532476694_23:22_2017-06-27,Contact_No:Time:Date,0,0
+2021-09-01,02:21,Daniel Patrick,2405454511,0,development,Daniel Patrick,Monique Ramirez,2405454511_02:21_2021-09-01,Contact_No:Time:Date,0,0
+1977-08-26,08:06,Brian Allen,6193572453,0,they,Brian Allen,Joshua Wallace,6193572453_08:06_1977-08-26,Contact_No:Time:Date,0,0
+1979-06-18,14:27,Leah Ballard,7272609551,7,free,Leah Ballard,Ashley Berry,7272609551_14:27_1979-06-18,Contact_No:Time:Date,0,0
+2021-02-12,18:10,Daniel Patrick,2405454511,0,which,Daniel Patrick,Dr. Marcus Williams,2405454511_18:10_2021-02-12,Contact_No:Time:Date,0,0
+1976-06-02,10:00,Daniel Patrick,2405454511,6,type,Daniel Patrick,William Schultz,2405454511_10:00_1976-06-02,Contact_No:Time:Date,0,0
+2014-01-12,14:35,Julia Fletcher,8933378955,4,east,Julia Fletcher,Kyle Miles,8933378955_14:35_2014-01-12,Contact_No:Time:Date,0,0
+2019-01-13,22:35,Jennifer Kelly,9081958502,7,government,Jennifer Kelly,Sandra Cardenas,9081958502_22:35_2019-01-13,Contact_No:Time:Date,0,0
+2002-10-07,17:13,Christopher Wells,4375904415,2,here,Christopher Wells,Dawn Wolfe,4375904415_17:13_2002-10-07,Contact_No:Time:Date,0,0
+2015-04-09,12:34,Andrea Norman,7112503168,3,write,Andrea Norman,Michelle Moore,7112503168_12:34_2015-04-09,Contact_No:Time:Date,0,0
+1977-03-29,10:04,Karen Santana,281312026,2,one,Karen Santana,Thomas Alvarez,281312026_10:04_1977-03-29,Contact_No:Time:Date,0,0
+1983-03-14,20:21,Lori Hernandez,8447766462,3,beautiful,Lori Hernandez,Sherri Lynch,8447766462_20:21_1983-03-14,Contact_No:Time:Date,0,0
+1988-02-18,19:40,Eric Cobb,123927004,8,relate,Eric Cobb,Lisa Andrews,123927004_19:40_1988-02-18,Contact_No:Time:Date,0,0
+2011-11-02,01:15,Kristen Medina,493274987,9,figure,Kristen Medina,Amanda Brown,493274987_01:15_2011-11-02,Contact_No:Time:Date,0,0
+1997-03-28,15:11,Brian Allen,6193572453,1,able,Brian Allen,Hayley Colon,6193572453_15:11_1997-03-28,Contact_No:Time:Date,0,0
+1980-04-15,09:48,Andrea Norman,7112503168,6,six,Andrea Norman,Jennifer Hayes,7112503168_09:48_1980-04-15,Contact_No:Time:Date,0,0
+1990-11-11,10:56,Zachary Mccormick,1752781095,1,finally,Zachary Mccormick,Cheryl Love,1752781095_10:56_1990-11-11,Contact_No:Time:Date,0,0
+1984-02-15,22:58,Julia Fletcher,8933378955,2,great,Julia Fletcher,Yolanda Cordova,8933378955_22:58_1984-02-15,Contact_No:Time:Date,0,0
+1985-04-21,06:19,Tina Jackson,890752078,2,anyone,Tina Jackson,Tammy Church,890752078_06:19_1985-04-21,Contact_No:Time:Date,0,0
+2002-07-14,16:18,Crystal Delgado,6162916970,1,question,Crystal Delgado,Lucas Williams,6162916970_16:18_2002-07-14,Contact_No:Time:Date,0,0
+1975-10-04,20:27,Theresa Taylor,681289463,3,teach,Theresa Taylor,Mr. Jason Parker,681289463_20:27_1975-10-04,Contact_No:Time:Date,0,0
+2009-12-27,04:20,Patty Jones,4135917671,7,get,Patty Jones,Melissa Wagner,4135917671_04:20_2009-12-27,Contact_No:Time:Date,0,0
+2010-04-24,12:30,Michelle Key,7437510664,9,true,Michelle Key,Charles Smith,7437510664_12:30_2010-04-24,Contact_No:Time:Date,0,0
+2003-04-30,19:10,Valerie Watkins,7063124870,0,prevent,Valerie Watkins,Mallory Kim,7063124870_19:10_2003-04-30,Contact_No:Time:Date,0,0
+2021-07-02,00:08,Robert Baker,6601476473,7,marriage,Robert Baker,Cindy Hunter,6601476473_00:08_2021-07-02,Contact_No:Time:Date,0,0
+2008-11-11,22:31,Cody Freeman,5805982580,6,we,Cody Freeman,Mitchell Harris MD,5805982580_22:31_2008-11-11,Contact_No:Time:Date,0,0
+2012-08-02,03:25,Jonathan Parrish,2882214280,4,system,Jonathan Parrish,Debra Aguirre,2882214280_03:25_2012-08-02,Contact_No:Time:Date,0,0
+2003-11-14,18:54,Allison Jones,4917132215,7,room,Allison Jones,Monica Garcia,4917132215_18:54_2003-11-14,Contact_No:Time:Date,0,0
+1999-01-12,05:15,Tina Jackson,890752078,1,cup,Tina Jackson,Sharon Williams,890752078_05:15_1999-01-12,Contact_No:Time:Date,0,0
+1977-04-02,17:06,Patricia Dunn,5068405645,2,scene,Patricia Dunn,Cody Larsen,5068405645_17:06_1977-04-02,Contact_No:Time:Date,0,0
+1974-01-20,18:43,Melissa Rivera,5717160352,0,community,Melissa Rivera,Robert Johnson,5717160352_18:43_1974-01-20,Contact_No:Time:Date,0,0
+1982-02-22,00:00,Tina Jackson,890752078,8,when,Tina Jackson,Michael Juarez,890752078_00:00_1982-02-22,Contact_No:Time:Date,0,0
+2002-04-09,09:32,Cynthia Hernandez,2497576459,4,suffer,Cynthia Hernandez,Jennifer Grant,2497576459_09:32_2002-04-09,Contact_No:Time:Date,0,0
+1989-05-06,22:57,Lisa Miller,9959741488,0,whom,Lisa Miller,Alexander Levine,9959741488_22:57_1989-05-06,Contact_No:Time:Date,0,0
+1980-03-16,23:29,Lori Hernandez,8447766462,0,strategy,Lori Hernandez,Walter Mills,8447766462_23:29_1980-03-16,Contact_No:Time:Date,0,0
+1992-10-13,07:35,Wanda Adams,72831568,3,another,Wanda Adams,Jordan Smith,72831568_07:35_1992-10-13,Contact_No:Time:Date,0,0
+1997-02-17,01:18,Patty Jones,4135917671,2,easy,Patty Jones,Rachel Jones,4135917671_01:18_1997-02-17,Contact_No:Time:Date,0,0
+2013-06-03,15:20,Heather Hicks,1795042839,9,early,Heather Hicks,Ashley Nichols,1795042839_15:20_2013-06-03,Contact_No:Time:Date,0,0
+1972-05-16,07:33,Andrea Joseph,2120730184,0,head,Andrea Joseph,Pamela Hawkins,2120730184_07:33_1972-05-16,Contact_No:Time:Date,0,0
+2004-04-01,20:49,Cynthia Hernandez,2497576459,4,church,Cynthia Hernandez,Paul Mcdowell,2497576459_20:49_2004-04-01,Contact_No:Time:Date,0,0
+1980-11-26,02:27,Aaron Allen,4508783716,4,control,Aaron Allen,Kevin Watkins,4508783716_02:27_1980-11-26,Contact_No:Time:Date,0,0
+2005-11-11,02:42,Robert Silva,382897645,2,father,Robert Silva,Rachel Rowe,382897645_02:42_2005-11-11,Contact_No:Time:Date,0,0
+1988-10-16,12:24,Tiffany Bartlett,22767907,9,age,Tiffany Bartlett,Emily King,22767907_12:24_1988-10-16,Contact_No:Time:Date,0,0
+2003-04-30,15:26,Julia Fletcher,8933378955,8,yet,Julia Fletcher,Rebecca Reynolds,8933378955_15:26_2003-04-30,Contact_No:Time:Date,0,0
+2016-08-28,22:10,Donald Guerrero,8278582266,1,network,Donald Guerrero,Courtney Thornton,8278582266_22:10_2016-08-28,Contact_No:Time:Date,0,0
+1990-07-18,12:18,Christopher Smith,7915844529,8,officer,Christopher Smith,Dwayne Cox,7915844529_12:18_1990-07-18,Contact_No:Time:Date,0,0
+1970-04-29,11:13,Daniel Patrick,2405454511,3,south,Daniel Patrick,James Richards,2405454511_11:13_1970-04-29,Contact_No:Time:Date,0,0
+2003-05-15,18:54,Cody Freeman,5805982580,9,he,Cody Freeman,Jose Jordan,5805982580_18:54_2003-05-15,Contact_No:Time:Date,0,0
+1973-01-30,00:43,Samantha Torres,8501603556,8,organization,Samantha Torres,Brooke Grant,8501603556_00:43_1973-01-30,Contact_No:Time:Date,0,0
+1990-04-20,02:51,Laura Miller,5269124584,7,analysis,Laura Miller,Katrina Blackwell,5269124584_02:51_1990-04-20,Contact_No:Time:Date,0,0
+2013-04-06,00:56,Jennifer Kennedy,3884646795,9,start,Jennifer Kennedy,Lindsey Cooley,3884646795_00:56_2013-04-06,Contact_No:Time:Date,0,0
+2013-03-27,21:24,Lori Hernandez,8447766462,4,stand,Lori Hernandez,Kathryn Adams,8447766462_21:24_2013-03-27,Contact_No:Time:Date,0,0
+2002-05-07,02:24,Cody Freeman,5805982580,4,attack,Cody Freeman,Erica Cunningham,5805982580_02:24_2002-05-07,Contact_No:Time:Date,0,0
+1991-04-03,01:06,Eric Cobb,123927004,1,clear,Eric Cobb,Michelle Gibbs,123927004_01:06_1991-04-03,Contact_No:Time:Date,0,0
+1984-05-30,04:25,Emily Wong,9133038339,0,democratic,Emily Wong,Lynn Wong,9133038339_04:25_1984-05-30,Contact_No:Time:Date,0,0
+1978-06-08,06:07,Kelly Blair,5762536985,6,kitchen,Kelly Blair,Dawn Thomas,5762536985_06:07_1978-06-08,Contact_No:Time:Date,0,0
+1971-08-28,06:40,Arthur Fisher,9119582273,3,office,Arthur Fisher,Denise Nunez,9119582273_06:40_1971-08-28,Contact_No:Time:Date,0,0
+2019-12-12,19:07,Angelica Lynn,1778912946,3,police,Angelica Lynn,Ryan Foster,1778912946_19:07_2019-12-12,Contact_No:Time:Date,0,0
+2006-06-05,21:38,Matthew Garcia,2174901287,2,to,Matthew Garcia,Casey Wolfe,2174901287_21:38_2006-06-05,Contact_No:Time:Date,0,0
+2017-03-04,20:09,Brandon Sanchez,1088932538,0,their,Brandon Sanchez,Jason Anderson,1088932538_20:09_2017-03-04,Contact_No:Time:Date,0,0
+2007-09-17,02:29,Gabriel Steele,2533100978,0,he,Gabriel Steele,Thomas Hester,2533100978_02:29_2007-09-17,Contact_No:Time:Date,0,0
+2015-11-28,15:22,Gary Richards,258672305,1,suffer,Gary Richards,Ashley Andrews,258672305_15:22_2015-11-28,Contact_No:Time:Date,0,0
+2006-09-21,02:35,Robert Silva,382897645,6,visit,Robert Silva,Dr. Kathy Gonzalez,382897645_02:35_2006-09-21,Contact_No:Time:Date,0,0
+2022-11-16,03:05,Rodney Robertson,1638756858,3,sister,Rodney Robertson,Kara Henderson,1638756858_03:05_2022-11-16,Contact_No:Time:Date,0,0
+2016-06-01,02:29,Wanda Adams,72831568,8,factor,Wanda Adams,Brittany Kline,72831568_02:29_2016-06-01,Contact_No:Time:Date,0,0
+2021-11-10,03:28,Tiffany Bartlett,22767907,2,since,Tiffany Bartlett,Lauren Gutierrez,22767907_03:28_2021-11-10,Contact_No:Time:Date,0,0
+1975-06-10,22:15,Allison Jones,4917132215,6,act,Allison Jones,Eric Williams,4917132215_22:15_1975-06-10,Contact_No:Time:Date,0,0
+1983-12-20,03:39,Frank Gonzalez,9898123224,9,trouble,Frank Gonzalez,Jennifer Thomas,9898123224_03:39_1983-12-20,Contact_No:Time:Date,0,0
+1986-08-17,01:37,Olivia Johns,7745811545,4,above,Olivia Johns,Jesse Wright,7745811545_01:37_1986-08-17,Contact_No:Time:Date,0,0
+1998-12-20,20:37,Heather Hicks,1795042839,2,anything,Heather Hicks,Daniel Coleman,1795042839_20:37_1998-12-20,Contact_No:Time:Date,0,0
+2018-12-10,14:27,Christopher Wells,4375904415,2,sister,Christopher Wells,Ellen Spencer,4375904415_14:27_2018-12-10,Contact_No:Time:Date,0,0
+2020-10-14,09:04,Brian Allen,6193572453,3,civil,Brian Allen,Kevin Bentley,6193572453_09:04_2020-10-14,Contact_No:Time:Date,0,0
+2000-05-06,09:58,Robert Baker,6601476473,9,between,Robert Baker,Katelyn Hurst,6601476473_09:58_2000-05-06,Contact_No:Time:Date,0,0
+2011-11-10,06:59,Mr. Sean Pratt MD,363763678,0,allow,Mr. Sean Pratt MD,Stephanie Beck,363763678_06:59_2011-11-10,Contact_No:Time:Date,0,0
+2022-03-22,20:32,Jennifer Kennedy,3884646795,5,such,Jennifer Kennedy,Michelle Scott,3884646795_20:32_2022-03-22,Contact_No:Time:Date,0,0
+2018-01-04,23:29,Christopher Wells,4375904415,2,oil,Christopher Wells,Eric Barber,4375904415_23:29_2018-01-04,Contact_No:Time:Date,0,0
+>>>>>>> bd17aea (update)
