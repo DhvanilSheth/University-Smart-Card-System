@@ -88,8 +88,8 @@ def clean_data(csv_file):
     df.to_csv(csv_file, index=False)
     
 
-clean_dbs('localhost', 'root', 'hanoon2002')
-create_iiitdDB('localhost', 'root', 'hanoon2002')
+clean_dbs('192.168.32.187', 'root', 'vhavle')
+create_iiitdDB('192.168.32.187', 'root', 'vhavle')
 
 allowed_csv_names = set(UNIQUE_KEY_CONFIGURATION.keys())
 
