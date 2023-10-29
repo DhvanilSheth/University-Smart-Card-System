@@ -13,7 +13,6 @@ ETL_TRANSFORM = 'transform.py'
 ETL_GLOBAL = 'etl-global.py'
 SYNC_DB = 'sync-databases.py'
 
-# Constants for database and table names
 DATABASES = {
     1: "SportsDB",
     2: "MessDB",
@@ -53,11 +52,11 @@ def display_error_card(error_message):
     error_text = f"{RED}ERROR: {error_message}\n"
     top_border = f"{RED}{'*' * box_width}"
     bottom_border = f"{RED}{'*' * box_width}"
-    print(top_border)  # Top border
+    print(top_border)  
     line = f"{RED}{error_text.strip().center(box_width)}{NORMAL}"
     print(line)
-    print(bottom_border)  # Bottom border
-    print(NORMAL)  # Reset color
+    print(bottom_border)  
+    print(NORMAL) 
 
 def display_success_card(success_message):
     terminal_width, _ = shutil.get_terminal_size()
@@ -65,11 +64,11 @@ def display_success_card(success_message):
     error_text = f"{GREEN}SUCCESS: {success_message}\n"
     top_border = f"{GREEN}{'*' * box_width}"
     bottom_border = f"{GREEN}{'*' * box_width}"
-    print(top_border)  # Top border
+    print(top_border)  
     line = f"{GREEN}{error_text.strip().center(box_width)}{NORMAL}"
     print(line)
-    print(bottom_border)  # Bottom border
-    print(NORMAL)  # Reset color
+    print(bottom_border) 
+    print(NORMAL)  
     
 def display_title_card(title_message):
     terminal_width, _ = shutil.get_terminal_size()
@@ -77,11 +76,11 @@ def display_title_card(title_message):
     error_text = f"{BLUE}{title_message}\n"
     top_border = f"{BLUE}{'*' * box_width}"
     bottom_border = f"{BLUE}{'*' * box_width}"
-    print(top_border)  # Top border
+    print(top_border) 
     line = f"{BLUE}{error_text.strip().center(box_width)}{NORMAL}"
     print(line)
-    print(bottom_border)  # Bottom border
-    print(NORMAL)  # Reset color
+    print(bottom_border) 
+    print(NORMAL)  
 
 def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
     terminal_width, _ = shutil.get_terminal_size()
@@ -90,16 +89,14 @@ def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
     text_lines = text.split("\n")
     top_border = f"{char1 * box_width}"
     bottom_border = f"{char1 * box_width}"
-    print(top_border)  # Top border
+    print(top_border)  
     for line in text_lines:
         if line.startswith("*"):
-            # Text lines starting with '*' are considered menu items and have a different margin
             line = f"{char1}{' ' * (box_width - 2 * left_margin - len(line) + 3)}{line.strip().lstrip('*').rstrip('*').strip()} {char1}"
         else:
-            # Other lines have the default margin
             line = f"{char1}{line.strip().center(box_width - 2 * left_margin)}{char1}"
         print(line)
-    print(bottom_border)  # Bottom border
+    print(bottom_border) 
 
 def display_menu(char1='*', margin=5):
     terminal_width, _ = shutil.get_terminal_size()
@@ -146,7 +143,6 @@ def insert_new_data(json_data, json_file_path):
     text = "Insert New Data\n\n"
     print_progress_bar(segments, completed)
 
-    # Select Database
     db_index = int(input("Select Database:\n1. SportsDB\n2. MessDB\n3. HostelDB\nEnter the index: ")) - 1
     if db_index < 0 or db_index > 2:
         print("Invalid database. Try again.")
@@ -223,7 +219,6 @@ def insert_new_data(json_data, json_file_path):
     completed += 1
     print_progress_bar(segments, completed)
     
-    # Display the entire data
     data_to_insert = "Data to insert:\n"
     data_to_insert += f"Database: {db_name}\n"
     data_to_insert += f"Table: {table_name}\n"
@@ -238,10 +233,9 @@ def insert_new_data(json_data, json_file_path):
     
     insert_confirm = input("Proceed with insertion [Y/N]? ")
     if insert_confirm.lower() == "y":
-        # Update JSON configuration
         new_data_source = {
             'table': table_name,
-            'insert': False,  # Set to False by default
+            'insert': False, 
             'path': f"./Data/{table_name}.csv",
             'headers': headers,
             'primary_key': [key['Name'] for key in primary_key]
@@ -250,7 +244,6 @@ def insert_new_data(json_data, json_file_path):
         with open(json_file_path, 'w') as f:
             json.dump(json_data, f, indent=2)
 
-        # Create CSV file if it doesn't exist
         csv_file_path = f"./Data/{table_name}.csv"
         if not os.path.exists(csv_file_path):
             with open(csv_file_path, 'w', newline='') as csvfile:
@@ -288,6 +281,11 @@ def toggle_source_insert(source, db_name, insert_value):
 
 def add_source():
     sources_to_add = get_sources(insert_value=False)
+    
+    if not sources_to_add:
+        print("There exists no table to insert.")
+        return
+
     print("Select Source:")
     for i, source in enumerate(sources_to_add, start=1):
         print(f"{i}. {source[0]} - {source[1]}")
@@ -364,7 +362,6 @@ def deleteDB():
     for idx, (name, db_type) in enumerate(data_dict.items(), start=1):
         print(f"{idx}. {name} ({db_type})")
 
-    # Ask the user for the index of the entry to delete
     if data_dict:
         try:
             delete_index = int(input("Enter the index of the entry to delete: "))
@@ -372,7 +369,6 @@ def deleteDB():
                 entry_to_delete = list(data_dict.keys())[delete_index - 1]
                 del data_dict[entry_to_delete]
 
-                # Write the updated data_dict back to databases.json
                 with open('databases.json', 'w') as json_file:
                     json.dump(data_dict, json_file, indent=4)
 

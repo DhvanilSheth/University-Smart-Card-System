@@ -67,8 +67,7 @@ def create_db_and_tables(db_name, tables, host, user, password):
         
         if table_config["insert"]:
             columns = ", ".join([f"{header['Name']} {header['Type']}" for header in headers])
-
-            # Add the new columns to the table schema
+            
             columns += ", Unique_Key VARCHAR(255), Key_Combination VARCHAR(255), LookUp_Count INT DEFAULT 0, Update_Count INT DEFAULT 0"
             
             primary_key_str = ", ".join(primary_key)

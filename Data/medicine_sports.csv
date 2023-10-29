@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Date,Time,Name,Contact No,Quantity,Medicine Name,Student Sign,Security Sign,Unique_Key,Key_Combination,LookUp_Count,Update_Count
 1991-10-26,20:30,Mary Ryan,3542707510,5,have,Mary Ryan,Jessica Duncan,3542707510_20:30_1991-10-26,Contact_No:Time:Date,0,0
 1996-10-20,03:42,Stephanie Johnson,870295364,4,season,Stephanie Johnson,Keith Ramos,870295364_03:42_1996-10-20,Contact_No:Time:Date,0,0
@@ -99,3 +100,106 @@ Date,Time,Name,Contact No,Quantity,Medicine Name,Student Sign,Security Sign,Uniq
 1974-04-12,07:48,Blake Lopez,9758843092,2,table,Blake Lopez,Nancy Wells,9758843092_07:48_1974-04-12,Contact_No:Time:Date,0,0
 2002-05-20,12:02,Michelle Underwood,1724825272,6,relate,Michelle Underwood,Eileen Fisher,1724825272_12:02_2002-05-20,Contact_No:Time:Date,0,0
 2004-08-28,12:14,Jacob Higgins,119647988,1,lose,Jacob Higgins,Yolanda Lam,119647988_12:14_2004-08-28,Contact_No:Time:Date,0,0
+=======
+Date,Time,Name,Contact No,Quantity,Medicine Name,Student Sign,Security Sign
+1978-01-06,04:54,Lindsey Morales,7835575801,8,phone,Lindsey Morales,Aaron Dean
+2011-03-04,06:56,Danny Boyd,2526114969,5,finish,Danny Boyd,Emily Brady
+2000-04-24,09:07,Angela Russell,1663254762,0,the,Angela Russell,Kyle Hernandez
+1983-08-23,06:28,Brandy Rodriguez,5436061139,9,wish,Brandy Rodriguez,Angela Hall
+1992-07-15,11:20,Penny Spears,5950439430,5,meet,Penny Spears,Sherry Arnold
+2023-05-23,09:14,Lauren Dixon,7223041767,9,whom,Lauren Dixon,John Smith PhD
+1972-04-20,16:39,Michael Farrell,239192214,2,entire,Michael Farrell,Steven Forbes
+1970-01-23,18:53,Michael Martin,8904137951,8,study,Michael Martin,Edwin Davis
+1979-10-11,00:41,Penny Spears,5950439430,3,evening,Penny Spears,Teresa Johnson
+2015-04-10,19:10,Lindsey Morales,7835575801,9,risk,Lindsey Morales,Tiffany Jones
+2023-08-03,17:05,Shawn Sawyer,3390832397,6,memory,Shawn Sawyer,Jessica Frye
+2012-04-28,03:43,Patricia May,1162746588,3,political,Patricia May,Samantha Simmons
+2014-01-17,16:41,Tina Norman,363191637,0,situation,Tina Norman,Jonathan Davis
+2018-07-15,01:01,Michael Palmer,4749608023,7,table,Michael Palmer,Jennifer Pacheco
+1975-08-25,08:18,Dr. Erin Sanchez,2834363021,5,home,Dr. Erin Sanchez,Melissa Ward
+1972-06-30,00:47,Charles Mack,1615220733,8,economic,Charles Mack,Edwin Fleming
+1994-10-12,06:08,Stephen Zimmerman,3455651338,3,training,Stephen Zimmerman,Kimberly Mays
+2005-05-03,23:16,Katrina Underwood,1554032816,0,four,Katrina Underwood,Anthony Torres
+1979-06-10,07:26,Andrew Stanley,670644375,1,term,Andrew Stanley,Steven Bailey
+2002-06-10,02:05,Wayne Ortiz,6279886572,8,land,Wayne Ortiz,Joseph Carroll
+2006-12-13,00:57,Jack Swanson,3231271407,5,exist,Jack Swanson,Christopher Boyle
+1993-10-13,01:28,Jeffrey Nichols,7891689714,0,near,Jeffrey Nichols,Sandra Fuller
+2007-10-03,02:11,Charles Mack,1615220733,2,want,Charles Mack,Adrian Moreno
+2017-04-17,11:24,Meagan Smith,9057481640,0,both,Meagan Smith,Theresa Lawson
+2003-06-17,17:51,Katherine Moore,9209057952,4,even,Katherine Moore,Joshua Park
+1987-08-29,03:07,Brianna Humphrey,8515342188,0,event,Brianna Humphrey,Alexander Robertson
+1998-06-29,02:33,Stacey Spencer,2833058265,3,out,Stacey Spencer,Joel Baker
+1993-05-16,02:14,Matthew Shelton,4046918258,5,subject,Matthew Shelton,Richard Bruce
+1988-12-10,13:39,Amy Rivers,7954292246,2,hand,Amy Rivers,Robin Anderson
+2016-11-14,03:20,Katherine Moore,9209057952,7,write,Katherine Moore,Julie Nash
+1992-06-16,11:12,Stephanie Chen,1843394723,7,thought,Stephanie Chen,Lawrence Matthews
+1977-11-08,06:51,Emily Miller,6717095639,6,since,Emily Miller,Robert Sandoval
+1972-04-02,03:54,Patricia Nash,2005108826,9,your,Patricia Nash,Jennifer Riley
+1971-10-27,22:12,Evan Fritz,1117420902,0,rule,Evan Fritz,Alexa Lowe
+1979-06-03,19:51,Vanessa Walker,1030748294,6,or,Vanessa Walker,Jason Gallagher
+1986-01-10,15:15,Stephen Zimmerman,3455651338,0,never,Stephen Zimmerman,Rachel Potts
+1993-06-03,06:54,Charles Jones,5226718602,8,surface,Charles Jones,Katelyn Wyatt
+2012-01-24,10:46,John Carney DVM,7794155110,7,red,John Carney DVM,Daniel Allen
+1972-06-16,09:21,Patricia Nguyen,2758151381,9,institution,Patricia Nguyen,Mark Moore
+1975-12-16,18:32,Daniel King,6835742212,0,example,Daniel King,Joshua Reilly
+2012-04-17,01:25,Angela Russell,1663254762,0,mean,Angela Russell,Jessica Wilson
+2008-07-23,15:48,Eric Martin,6235533666,8,where,Eric Martin,Elizabeth Garcia
+1981-10-08,17:40,Stephanie Pham,1178079422,3,person,Stephanie Pham,Richard Brown
+2002-01-06,13:08,Michael Martin,8904137951,8,morning,Michael Martin,Joseph Mcintosh
+1985-06-11,17:43,Shawn Sawyer,3390832397,2,democratic,Shawn Sawyer,Audrey Larsen
+2000-07-31,12:58,Tonya Hall,7858856343,9,majority,Tonya Hall,Sherry Conrad
+2016-09-10,21:34,Debra Mcguire,9517172441,3,never,Debra Mcguire,Christine Ball
+2016-06-22,01:57,John Castillo,8414628329,7,two,John Castillo,Stephanie Ingram
+1993-11-21,23:57,Paul Thompson,6056506700,0,remain,Paul Thompson,Thomas Kennedy
+1988-10-01,22:22,Ashley Ramos,164821327,6,pretty,Ashley Ramos,Danielle Mitchell
+1992-10-19,15:34,Donald Johnson,532210274,1,approach,Donald Johnson,Dennis Gonzalez
+1995-08-29,01:15,Debra Mcguire,9517172441,7,expect,Debra Mcguire,Jenna Robinson
+2008-03-02,16:48,Eric Martin,6235533666,1,by,Eric Martin,Ann Kennedy
+1974-10-22,19:27,Angela Russell,1663254762,3,house,Angela Russell,Guy Murphy
+2022-03-22,03:25,John Carney DVM,7794155110,6,alone,John Carney DVM,Caleb Harrington
+1977-05-01,17:37,Steven Malone,8487039652,5,rise,Steven Malone,Dr. David Garcia
+2006-02-27,13:30,Amanda Harris,2577012741,3,dream,Amanda Harris,Jared Roberts
+1994-01-21,01:06,Julie Shelton,7176661131,3,individual,Julie Shelton,Marcus Bruce
+1998-06-17,21:02,Brianna Humphrey,8515342188,6,theory,Brianna Humphrey,Brett Lawrence
+1985-05-31,22:41,Allen Mcdonald,319063663,9,plan,Allen Mcdonald,Ricky Cummings
+2004-07-24,07:59,Evan Fritz,1117420902,3,discover,Evan Fritz,Jessica Wallace
+2020-02-15,07:54,Thomas Smith,1580360759,5,source,Thomas Smith,Joseph Soto
+1998-01-29,02:56,David Watkins,599428911,6,firm,David Watkins,Jason Smith
+1977-12-07,09:33,Debra Mcguire,9517172441,5,other,Debra Mcguire,Daniel Taylor
+2019-08-06,18:15,Stephen Zimmerman,3455651338,0,commercial,Stephen Zimmerman,Kelly Williams
+1991-01-17,00:32,Patricia Nash,2005108826,9,but,Patricia Nash,Lori Kaufman
+2007-02-20,01:58,Michael Palmer,4749608023,3,child,Michael Palmer,Anna Barry
+1994-01-08,05:09,Thomas Webb,1808769634,7,final,Thomas Webb,Edward Landry
+2011-08-15,11:01,Kathleen Washington,1688346982,3,piece,Kathleen Washington,Terri Howell
+1987-04-01,13:43,Julie Shelton,7176661131,6,see,Julie Shelton,Paul Campbell
+1998-03-08,23:15,Brianna Humphrey,8515342188,5,pick,Brianna Humphrey,Morgan Brady
+2010-10-02,02:29,Alyssa Stewart,1631069025,3,spend,Alyssa Stewart,Valerie Daniels
+1977-03-17,06:44,Juan Callahan,5792774502,7,down,Juan Callahan,Vanessa Silva
+1987-01-03,09:12,Joseph Perry,8248953562,3,around,Joseph Perry,Miranda Ross
+2002-08-09,15:36,Adrian Hinton,1497857796,5,between,Adrian Hinton,Brandon Newton
+1980-08-14,18:44,Martin Chase,6207563702,2,point,Martin Chase,Julie Martinez
+2005-08-22,07:31,Allen Mcdonald,319063663,2,court,Allen Mcdonald,Jeff Snyder
+2000-11-20,20:40,Martin Chase,6207563702,4,room,Martin Chase,Candace Williams
+2023-01-24,17:48,Patricia Nash,2005108826,5,strong,Patricia Nash,Erin Freeman
+1983-04-29,15:16,Ashley Brown,4500983325,2,general,Ashley Brown,Robert Harper
+2005-01-15,23:04,Penny Spears,5950439430,5,why,Penny Spears,Susan Lane
+2016-02-08,20:49,Charles Mack,1615220733,6,claim,Charles Mack,Robert Stout
+1970-01-09,06:14,William Lucero,5235288161,4,military,William Lucero,Tricia Miller
+1982-12-03,20:21,Stephen Zimmerman,3455651338,8,entire,Stephen Zimmerman,Rebecca Ward
+1987-12-12,22:49,Kristi Shaffer,8518476325,9,major,Kristi Shaffer,Jonathan Flynn
+1976-11-04,11:41,Wayne Ortiz,6279886572,6,money,Wayne Ortiz,Juan Powers
+2017-02-25,05:34,Julie Black,2677904156,0,not,Julie Black,Amber Brown
+2003-08-24,02:08,David Watkins,599428911,5,and,David Watkins,Jennifer Roberts
+2022-03-15,11:39,Tonya Hall,7858856343,6,quickly,Tonya Hall,Michele Banks
+2002-11-25,14:18,Debra Mcguire,9517172441,3,war,Debra Mcguire,Joseph Snyder
+1987-03-26,11:05,Amy Rivers,7954292246,5,nature,Amy Rivers,Lisa Diaz
+2003-12-22,08:33,Julie Black,2677904156,4,within,Julie Black,Shawn Pace
+1975-06-19,03:01,Daniel Taylor,3603587598,3,community,Daniel Taylor,Brittany Smith
+1978-08-31,01:32,Nancy Johnson,5515615348,9,space,Nancy Johnson,Kathryn Bryan
+1990-02-25,08:06,Amanda Harris,2577012741,9,son,Amanda Harris,Jessica Kemp
+2008-05-12,03:58,Thomas Webb,1808769634,5,enjoy,Thomas Webb,Angela Vega
+1970-07-09,01:24,Emily Miller,6717095639,9,animal,Emily Miller,Sandy Wright
+2004-06-12,21:53,Eric Martin,6235533666,5,interview,Eric Martin,Troy Moore
+2018-12-30,04:54,Evan Fritz,1117420902,7,reveal,Evan Fritz,James Campbell
+1989-10-11,05:14,Allen Mcdonald,319063663,7,by,Allen Mcdonald,Sierra Johnson
+>>>>>>> 94d0343188e27f28a74cd7c507c065b0342eb963
