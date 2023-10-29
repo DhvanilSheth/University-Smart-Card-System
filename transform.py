@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import mysql.connector
+import json
 
 UNIQUE_KEY_CONFIGURATION = {
     'pool': ['Roll No', 'Sr No'],
@@ -44,6 +45,15 @@ def create_uniDB(host, user, password):
         cursor.executemany("INSERT INTO localDBs (Sr_No, Name, Type) VALUES (%s, %s, %s)", insert_data)
         connection.commit()
         print("UniDB set up complete")
+        
+        data_dict = {
+            'HostelDB': 'Hostel',
+            'SportsDB': 'Sports',
+            'MessDB': 'Mess'
+        }
+        with open('databases.json', 'w') as json_file:
+            json.dump(data_dict, json_file, indent=4)
+        print("Data written to 'databases.json'.")
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
@@ -88,8 +98,8 @@ def clean_data(csv_file):
     df.to_csv(csv_file, index=False)
     
 
-clean_dbs('192.168.32.187', 'root', 'vhavle')
-create_uniDB('192.168.32.187', 'root', 'vhavle')
+clean_dbs('localhost', 'root', 'hanoon2002')
+create_uniDB('localhost', 'root', 'hanoon2002')
 
 allowed_csv_names = set(UNIQUE_KEY_CONFIGURATION.keys())
 
