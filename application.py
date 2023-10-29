@@ -288,6 +288,11 @@ def toggle_source_insert(source, db_name, insert_value):
 
 def add_source():
     sources_to_add = get_sources(insert_value=False)
+    
+    if not sources_to_add:
+        print("There exists no table to insert.")
+        return
+
     print("Select Source:")
     for i, source in enumerate(sources_to_add, start=1):
         print(f"{i}. {source[0]} - {source[1]}")
