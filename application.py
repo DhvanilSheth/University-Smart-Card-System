@@ -81,8 +81,7 @@ def display_title_card(title_message):
     print(line)
     print(bottom_border)  # Bottom border
     print(NORMAL)  # Reset color
-    
-# Function to display text in a designed template with borders and left/right margins
+
 def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
     terminal_width, _ = shutil.get_terminal_size()
     box_width = terminal_width
@@ -359,25 +358,6 @@ def setting():
 
 def application():
     return
-
-while True:
-    display_title_card("Welcome to University Smart Card System")
-
-    display_menu(margin=-1)
-
-    choice = input("Enter your choice: ")
-
-    if choice == "1":
-        display_title_card("Application selected")
-        application()
-    elif choice == "2":
-        display_title_card("Setting selected")
-        setting()
-    elif choice == "3":
-        display_title_card("Exiting the application")
-        break
-    else:
-        display_error_card("Invalid choice. Try again")
       
 def dynamic():
     subprocess.run(['python', DYNAMIC_DATA])
@@ -389,37 +369,6 @@ def etl():
     subprocess.run(['python', ETL_LOAD])
     display_success_card("ETL Process Completed")
 
-def setting():
-    display_settings_menu(margin=-1)
-
-    json_file_path = 'data_sources_config.json'
-    with open(json_file_path, 'r') as f: json_data = json.load(f)
-
-    choice = input("Enter your choice: ")
-
-    if choice == "1":
-        display_title_card("Insert Source option selected")
-        insert_new_data(json_data, json_file_path)
-    elif choice == "2":
-        display_title_card("Delete Source option selected")
-    elif choice == "3":
-        display_title_card("Add Source option selected")
-    elif choice == "4":
-        display_title_card("Remove Source option selected")
-        remove_data()
-    elif choice == "5":
-        display_title_card("Modify Existing Source option selected")
-    elif choice == "6":
-        display_title_card("Pulling Data from config")
-        dynamic()
-    elif choice == "7":
-        display_title_card("Initiating ETL Process")
-        etl()
-    elif choice == "8":
-        display_title_card("Exiting the application")
-    else:
-        display_title_card("Invalid choice. Try again")
-        
 def application():
     return
 
@@ -441,4 +390,3 @@ while True:
         break
     else:
         display_error_card("Invalid choice. Try again")
-    
