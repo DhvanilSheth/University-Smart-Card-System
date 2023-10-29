@@ -329,7 +329,6 @@ def remove_source():
             print("Invalid option. Try again.")
             
 def addDB():
-    # Load the existing JSON data from databases.json
     try:
         with open('databases.json', 'r') as json_file:
             data_dict = json.load(json_file)
@@ -349,10 +348,9 @@ def addDB():
     data_dict[database_name] = database_type
     with open('databases.json', 'w') as json_file:
         json.dump(data_dict, json_file, indent=4)
-    print(f"Added '{database_name}' to databases.json with type '{database_type}'.")
+    display_success_card(f"Added '{database_name}' to databases.json with type '{database_type}'.")
 
 def deleteDB():
-    # Load the existing JSON data from databases.json
     try:
         with open('databases.json', 'r') as json_file:
             data_dict = json.load(json_file)
@@ -360,7 +358,6 @@ def deleteDB():
         print("No data found in databases.json.")
         return
 
-    # Display the current entries with their indices
     print("Current entries in databases.json:")
     for idx, (name, db_type) in enumerate(data_dict.items(), start=1):
         print(f"{idx}. {name} ({db_type})")
@@ -377,7 +374,7 @@ def deleteDB():
                 with open('databases.json', 'w') as json_file:
                     json.dump(data_dict, json_file, indent=4)
 
-                print(f"Deleted '{entry_to_delete}' from databases.json.")
+                display_success_card(f"Deleted '{entry_to_delete}' from databases.json.")
             else:
                 print("Invalid index. Please enter a valid index.")
         except ValueError:
