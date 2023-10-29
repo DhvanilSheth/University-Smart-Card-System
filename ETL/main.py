@@ -16,7 +16,7 @@ def CleanDBs(host, user, password):
     print("Databases cleaned.")
 
 
-CleanDBs('localhost', 'root', 'hanoon2002')
+CleanDBs('localhost', 'root', 'root')
 subprocess.run(['python', 'extract.py'])
 subprocess.run(['python', 'transform.py'])
 subprocess.run(['python', 'load.py'])
