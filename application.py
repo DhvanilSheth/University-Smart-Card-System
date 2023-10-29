@@ -2,13 +2,13 @@ import time
 import sys
 import shutil
 import subprocess
+import json
 
 DYNAMIC_DATA = 'dynamic-data.py'
 ETL_EXTRACT = 'extract.py'
 ETL_LOAD = 'load.py'
 ETL_TRANSFORM = 'transform.py'
 
-# Constants for database and table names
 DATABASES = {
     1: "SportsDB",
     2: "MessDB",
@@ -16,7 +16,7 @@ DATABASES = {
 }
 PRIMARY_KEY_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
 HEADER_TYPES = ["INT", "TEXT", "DATE", "VARCHAR(255)", "BOOLEAN", "TIME", "BIGINT", "DECIMAL(10, 2)"]
-SOURCES = [["Source1", "Database1"], ["Source2", "Database2"], ["Source3", "Database3"]]  
+
 RED = "\033[91m"
 GREEN = "\033[92m"
 NORMAL = "\033[0m"
@@ -78,7 +78,6 @@ def display_title_card(title_message):
     print(bottom_border)  # Bottom border
     print(NORMAL)  # Reset color
     
-# Function to display text in a designed template with borders and left/right margins
 def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
     terminal_width, _ = shutil.get_terminal_size()
     box_width = terminal_width
@@ -89,10 +88,8 @@ def display_boxed_text(text, char1='*', char2='*', char3='*', margin=1):
     print(top_border)  # Top border
     for line in text_lines:
         if line.startswith("*"):
-            # Text lines starting with '*' are considered menu items and have a different margin
             line = f"{char1}{' ' * (box_width - 2 * left_margin - len(line) + 3)}{line.strip().lstrip('*').rstrip('*').strip()} {char1}"
         else:
-            # Other lines have the default margin
             line = f"{char1}{line.strip().center(box_width - 2 * left_margin)}{char1}"
         print(line)
     print(bottom_border)  # Bottom border
@@ -111,7 +108,7 @@ def display_menu(char1='*', margin=5):
     for item in menu:
         item_with_margin = f"{item.ljust(box_width - 2 * left_margin - 4)} *"
         print(item_with_margin) 
-    print() 
+    print()
 
 def display_settings_menu(char1='*', margin=5):
     terminal_width, _ = shutil.get_terminal_size()
@@ -132,115 +129,32 @@ def display_settings_menu(char1='*', margin=5):
     for item in menu:
         item_with_margin = f"{item.ljust(box_width - 2 * left_margin - 4)} *"
         print(item_with_margin) 
-    print() 
+    print()
 
-def insert_new_data():
-    completed = 0
-    segments = 4
-    text = "Insert New Data\n\n"
-    print_progress_bar(segments, completed)
+def get_sources(insert_value=True):
+    with open("data_sources_config.json", "r") as f:
+        configs = json.load(f)
 
-    db_name = int(input("Select Database:\n1. SportsDB\n2. MessDB\n3. HostelDB\nEnter the index: "))
-    if db_name < 1 or db_name > 3:
-        print("Invalid database. Try again.")
-        return
+    return [(table["table"], db["db_name"]) for db in configs for table in db["tables"] if table["insert"] == insert_value]
 
-    db_name = DATABASES[db_name]
-    completed += 1
-    print_progress_bar(segments, completed)
+def toggle_source_insert(source, db_name, insert_value):
+    with open("data_sources_config.json", "r") as f:
+        configs = json.load(f)
 
-    print(format(f"{db_name} Chosen"))
-    table_name = input("Give a name for the new source: ")
-    table_name = "_".join(table_name.split())
-    completed += 1
-    print_progress_bar(segments, completed)
+    for config in configs:
+        if config["db_name"] == db_name:
+            for table in config["tables"]:
+                if table["table"] == source:
+                    table["insert"] = insert_value
+                    break
 
-    headers = []
-    primary_key = []
-
-    header_index = 0
-    while True:
-        insert_header = input("Do you want to Insert New Header [Y/N]? ")
-        if insert_header.lower() != "y":
-            if not headers:
-                display_error_card("Enter at least one HEADER")
-                return
-            else:
-                break
-
-        header_name = input("Header Name: ")
-        header_name = "_".join(header_name.split())
-
-        header_type = None
-        while header_type is None:
-            print("Header Types:")
-            for idx, header_type_option in enumerate(HEADER_TYPES):
-                print(f"{idx}. {header_type_option}")
-
-            header_type_choice = input("Select a header type by index: ")
-            if header_type_choice.isdigit():
-                header_type_choice = int(header_type_choice)
-                if 0 <= header_type_choice < len(HEADER_TYPES):
-                    header_type = HEADER_TYPES[header_type_choice]
-                    print(f"Header {header_index}: {header_name} ({header_type})")
-                    headers.append({"Name": header_name, "Type": header_type})
-                    header_index += 1
-                else:
-                    print("Invalid index. Try again.")
-            else:
-                print("Invalid input. Enter the index to choose a header type.")
-
-    completed += 1
-    print_progress_bar(segments, completed)
-
-    while not primary_key:
-        print("Select primary key columns from the following headers by their index:")
-        for idx, header in enumerate(headers):
-            print(f"{idx}: {header['Name']} ({header['Type']})")
-
-        primary_key_input = input("Enter the indices of the primary key columns (e.g., '0 2'). Enter 'Done' when finished: ")
-
-        if primary_key_input.lower() == "done":
-            if primary_key:
-                break
-            else:
-                print("Please select at least one column as the primary key.")
-                continue
-
-        primary_key_indices = [int(idx) for idx in primary_key_input.split() if idx.isdigit()]
-
-        for idx in primary_key_indices:
-            if 0 <= idx < len(headers):
-                primary_key.append(headers[idx])
-
-    completed += 1
-    print_progress_bar(segments, completed)
-    
-    # Display the entire data
-    data_to_insert = "Data to insert:\n"
-    data_to_insert += f"Database: {db_name}\n"
-    data_to_insert += f"Table: {table_name}\n"
-    data_to_insert += "Headers:\n"
-    for header in headers:
-        data_to_insert += f"- {header['Name']} ({header['Type']})\n"
-    data_to_insert += "Primary Key:\n"
-    for key in primary_key:
-        data_to_insert += f"- {key['Name']} ({key['Type']})\n"
-
-    print(data_to_insert)
-    
-    insert_confirm = input("Proceed with insertion [Y/N]? ")
-    if insert_confirm.lower() == "y":
-        display_boxed_text("Data inserted successfully")
-    else:
-        display_boxed_text("Data insertion canceled")
-        
+    with open("data_sources_config.json", "w") as f:
+        json.dump(configs, f, indent=4)
 
 def remove_data():
-    text = "Remove Data\n\n"
-
+    sources_to_remove = get_sources(insert_value=True)
     print("Select Source:")
-    for i, source in enumerate(SOURCES, start=1):
+    for i, source in enumerate(sources_to_remove, start=1):
         print(f"{i}. {source[0]} - {source[1]}")
 
     while True:
@@ -249,9 +163,32 @@ def remove_data():
             return
         try:
             option = int(option)
-            if 1 <= option <= len(SOURCES):
-                selected_source = SOURCES[option - 1]
+            if 1 <= option <= len(sources_to_remove):
+                selected_source = sources_to_remove[option - 1]
                 print(f"Selected Source: {selected_source[0]} - {selected_source[1]}")
+                toggle_source_insert(selected_source[0], selected_source[1], insert_value=False)
+                return
+            else:
+                print("Invalid option. Try again.")
+        except ValueError:
+            print("Invalid option. Try again.")
+
+def add_source():
+    sources_to_add = get_sources(insert_value=False)
+    print("Select Source:")
+    for i, source in enumerate(sources_to_add, start=1):
+        print(f"{i}. {source[0]} - {source[1]}")
+
+    while True:
+        option = input("Enter the index of the source to add or 'Exit' to exit: ")
+        if option.lower() == 'exit':
+            return
+        try:
+            option = int(option)
+            if 1 <= option <= len(sources_to_add):
+                selected_source = sources_to_add[option - 1]
+                print(f"Selected Source: {selected_source[0]} - {selected_source[1]}")
+                toggle_source_insert(selected_source[0], selected_source[1], insert_value=True)
                 return
             else:
                 print("Invalid option. Try again.")
@@ -279,6 +216,7 @@ def setting():
         display_title_card("Delete Source option selected")
     elif choice == "3":
         display_title_card("Add Source option selected")
+        add_source()
     elif choice == "4":
         display_title_card("Remove Source option selected")
         remove_data()
