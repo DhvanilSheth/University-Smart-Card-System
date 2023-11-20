@@ -1,5 +1,6 @@
 {
     "HostelDB": "Hostel",
     "SportsDB": "Sports",
-    "MessDB": "Mess"
+    "MessDB": "Mess",
+    "Tennis": "Sports"
 }

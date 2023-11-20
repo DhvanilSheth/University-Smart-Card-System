@@ -397,6 +397,24 @@
           "Roll_No",
           "Sale_ID"
         ]
+      },
+      {
+        "table": "mess_3_data",
+        "insert": false,
+        "path": "./Data/mess_3_data.csv",
+        "headers": [
+          {
+            "Name": "Sr_No",
+            "Type": "INT"
+          },
+          {
+            "Name": "Name",
+            "Type": "VARCHAR(255)"
+          }
+        ],
+        "primary_key": [
+          "Sr_No"
+        ]
       }
     ]
   },

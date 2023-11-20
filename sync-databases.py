@@ -40,4 +40,4 @@ def synchronize_databases(host, user, password):
     cursor.close()
     connection.close()
 
-synchronize_databases('localhost', 'root', 'hanoon2002')
+synchronize_databases('localhost', 'root', 'root')

@@ -54,7 +54,7 @@ def clean_data(csv_file):
     df.to_csv(csv_file, index=False)
     
 
-clean_dbs('192.168.32.187', 'root', 'vhavle')
+clean_dbs('localhost', 'root', 'root')
 
 allowed_csv_names = set(UNIQUE_KEY_CONFIGURATION.keys())
 
