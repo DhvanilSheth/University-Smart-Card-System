@@ -705,8 +705,63 @@ def sip():
 
 def mmt():
     roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+    
+    # Database configuration
+    db_config = {
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': 'UniDB'
+    }
+
+    try:
+        # Establishing the database connection
+        connection = mysql.connector.connect(**db_config)
+
+        try:
+            # Creating a cursor object to execute SQL queries
+            cursor = connection.cursor()
+
+            # SQL Query to fetch meal consumption data for a specific roll number
+            query = f"""
+            SELECT 
+                Roll_No,
+                Name,
+                SUM(BreakfastCoupons) AS TotalBreakfasts,
+                SUM(LunchCoupons) AS TotalLunches,
+                SUM(SnackCoupons) AS TotalSnacks,
+                SUM(DinnerCoupons) AS TotalDinners,
+                SUM(TotalAmount) AS TotalSpending,
+                COUNT(TransactionDate) AS Visits,
+                AVG(TotalAmount) AS AvgSpendingPerVisit
+            FROM
+                Mess_Global
+            WHERE
+                Roll_No = '{roll_no}'
+            GROUP BY
+                Roll_No, Name
+            """
+
+            # Executing the query
+            cursor.execute(query)
+            rows = cursor.fetchall()
+
+            # Checking if any rows are returned
+            if rows:
+                headers = [desc[0] for desc in cursor.description]
+                print(tabulate(rows, headers=headers, tablefmt="pretty"))
+            else:
+                print(f"No meal data found for Roll_No: {roll_no}")
+
+        finally:
+            cursor.close()
+
+    except mysql.connector.Error as e:
+        print(f"Database Error: {e}")
+
+    finally:
+        if connection.is_connected():
+            connection.close()
 
 def sim():
     start = input("Enter the start time of the query: ")
