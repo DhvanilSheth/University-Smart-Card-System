@@ -87,6 +87,7 @@ course_types = ['BTech', 'Mtech', 'PhD']
 room_types = ['Single', 'Double', 'Married']
 floors = ['Ground', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
 remarks = ['No Remarks', 'Late Fees', 'Property Damage', 'Health Issues']
+buildings = ['Academic Block', 'Hostel Block A', 'Hostel Block B', 'Sports Complex']
 
 roll_no_name_mapping = generate_mapping_roll_no_to_name(roll_numbers, student_names)
 roll_no_email_mapping = generate_mapping_roll_no_to_email(roll_numbers, student_names)
@@ -295,6 +296,21 @@ def generate_pool_non_membership(num_records):
             roll_number = random.choice(roll_numbers)
             name = roll_no_name_mapping[roll_number]
             writer.writerow([fake.date(), name, fake.random_number(digits=4), fake.random_number(digits=3), roll_number, fake.time()[:-3], name])
+            
+def generate_access_log_records(num_records):
+    with open('./Data/access_logs.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Sr_No", "Roll_No", "Name", "Building", "Room", "In_Time", "Out_Time", "In_Date", "Out_Date"])
+        for i in range(num_records):
+            roll_number = random.choice(roll_numbers)
+            name = roll_no_name_mapping[roll_number]
+            building = fake.random.choice(buildings)
+            room = f"A-{fake.random_number(digits=3)}"
+            in_time = fake.time()[:-3]
+            out_time = fake.time()[:-3]
+            in_date = fake.date()
+            out_date = fake.date()
+            writer.writerow([i + 1, roll_number, name, building, room, in_time, out_time, in_date, out_date])
 
 def run(num):
     generate_student_data()
@@ -310,6 +326,7 @@ def run(num):
     generate_equipment_requests(num)
     generate_medicine_sports(num)
     generate_pool_non_membership(num)
+    generate_access_log_records(num)
     print("Data Generation for CSV's is Complete")
     
 run(100)
