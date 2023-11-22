@@ -6,6 +6,14 @@ import os
 import csv
 import json
 from tabulate import tabulate
+import mysql.connector
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+IP = os.getenv("IP")
+USER = os.getenv("USERNAME")
+PASS = os.getenv("PASSWORD")
 
 DYNAMIC_DATA = 'dynamic-data.py'
 ETL_EXTRACT = 'extract.py'
@@ -13,6 +21,8 @@ ETL_LOAD = 'load.py'
 ETL_TRANSFORM = 'transform.py'
 ETL_GLOBAL = 'etl-global.py'
 SYNC_DB = 'sync-databases.py'
+DATA_GEN = 'data-gen.py'
+DATA_INSERT = 'data-insert.py'
 
 DATABASES = {
     1: "SportsDB",
@@ -26,6 +36,67 @@ RED = "\033[91m"
 GREEN = "\033[92m"
 NORMAL = "\033[0m"
 BLUE = "\033[94m"
+
+def getRollNo():
+    db_config = {
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': 'AdminDB'
+    }
+    connection = mysql.connector.connect(**db_config)
+    try:
+        cursor = connection.cursor()
+        query = "SELECT Roll_No FROM student_information"
+        cursor.execute(query)
+        roll_numbers = [result[0] for result in cursor.fetchall()]
+        return roll_numbers
+    finally:
+        cursor.close()
+        connection.close()
+        
+def insertData(db_name, table_name, data):
+    db_config = {
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': db_name
+    }
+    connection = mysql.connector.connect(**db_config)
+    try:
+        cursor = connection.cursor()
+        cursor.execute(f"SELECT MAX(Sr_No) FROM {table_name}")
+        max_sr_no = cursor.fetchone()[0]
+        next_sr_no = max_sr_no + 1 if max_sr_no is not None else 1
+        columns = ", ".join(data.keys())
+        values = ", ".join(str(value) for value in data.values())
+        query = f"INSERT INTO {table_name} (Sr_No, {columns}) VALUES ({next_sr_no}, {values})"
+        cursor.execute(query)
+        connection.commit()
+        print(f"Data inserted successfully with Sr_No: {next_sr_no}")
+
+    finally:
+        cursor.close()
+        connection.close()
+        
+def getStudentInfo(roll_no):
+    db_config = {
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': 'AdminDB'
+    }
+    connection = mysql.connector.connect(**db_config)
+    try:
+        cursor = connection.cursor(dictionary=True)
+        query = f"SELECT * FROM student_information WHERE Roll_No = {roll_no}"
+        cursor.execute(query)
+        student_info = cursor.fetchone()
+        return student_info
+    finally:
+        cursor.close()
+        connection.close()
+
 
 def format(item, char1='*'):
     terminal_width, _ = shutil.get_terminal_size()
@@ -127,7 +198,7 @@ def display_settings_menu(char1='*', margin=5):
         "* 4. Delete Table from Database",
         "* 5. Insert New Database",
         "* 6. Delete New Database",
-        "* 7. Run ETL",
+        "* 7. Run Data-Gen and Data-Insert",
         "* 10. Exit",
     ]
 
@@ -401,6 +472,7 @@ def deleteDB():
         print("No entries to delete.")
         
 def insertEntry():
+    db_roll_no = getRollNo()
     with open('data_sources_config.json', 'r') as config_file:
         config_data = json.load(config_file)
 
@@ -417,37 +489,132 @@ def insertEntry():
 
     selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
     selected_table = table_mapping[selected_db][selected_table_index]
-    headers = next(table["headers"] for table in next(db_config["tables"] for db_config in config_data if db_config["db_name"] == selected_db) if table["table"] == selected_table)
+    headers = next(
+        table["headers"]
+        for table in next(
+            db_config["tables"]
+            for db_config in config_data
+            if db_config["db_name"] == selected_db
+        )
+        if table["table"] == selected_table
+    )
 
     data = {}
-    
+
     while True:
         try:
-            roll_no = int(input(f"Enter value for Roll_No: "))
-            data["Roll_No"] = roll_no
-            break
+            roll_no = input(f"Enter value for Roll_No: ")
+            if roll_no in db_roll_no:
+                data["Roll_No"] = roll_no
+                student_info = getStudentInfo(data["Roll_No"])
+                student_data = [(key, student_info[key]) for key in student_info]
+                print("Student Information:")
+                print(tabulate(student_data, headers=["Attribute", "Value"], tablefmt="pretty"))
+                break
+            else:
+                print("Roll_No does not exist. You need to create a user for the Roll Number.")
         except ValueError:
             print("Roll_No must be an integer. Please enter a valid integer.")
 
     for header in headers:
         header_name = header["Name"]
-        header_type = header["Type"]
-        if header_name != "Roll_No":
-            value = input(f"Enter value for {header_name} ({header_type}) (press Enter to keep it NULL): ")
+        if header_name != "Roll_No" and header_name != "Sr_No":  # Exclude "Sr_No"
+            header_type = header["Type"]
+            value = input(
+                f"Enter value for {header_name} ({header_type}) (press Enter to keep it NULL): "
+            )
+
+            if header_name in student_info and str(value) != str(student_info[header_name]):
+                print(f"Error: {header_name} value does not match the existing data.")
+                return
             data[header_name] = value if value != "" else None
 
-    print("\nThe Final Information to be added will be: ")
+def insertEntry():
+    db_roll_no = getRollNo()
+    with open('data_sources_config.json', 'r') as config_file:
+        config_data = json.load(config_file)
+
+    table_mapping = {db_config["db_name"]: [table["table"] for table in db_config["tables"]] for db_config in config_data}
+    print("Select a Database:")
+    for i, db_name in enumerate(table_mapping.keys()):
+        print(f"{i + 1}. {db_name}")
+
+    selected_db_index = int(input("Enter the index of the Database you want to edit: ")) - 1
+    selected_db = list(table_mapping.keys())[selected_db_index]
+    print(f"\nTables in {selected_db}:")
+    for i, table_name in enumerate(table_mapping[selected_db]):
+        print(f"{i + 1}. {table_name}")
+
+    selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
+    selected_table = table_mapping[selected_db][selected_table_index]
+    headers = next(
+        table["headers"]
+        for table in next(
+            db_config["tables"]
+            for db_config in config_data
+            if db_config["db_name"] == selected_db
+        )
+        if table["table"] == selected_table
+    )
+
+    data = {}
+
+    while True:
+        try:
+            roll_no = input(f"Enter value for Roll_No: ")
+            if roll_no in db_roll_no:
+                data["Roll_No"] = roll_no
+                student_info = getStudentInfo(data["Roll_No"])
+                student_data = [(key, student_info[key]) for key in student_info]
+                print("Student Information:")
+                print(tabulate(student_data, headers=["Attribute", "Value"], tablefmt="pretty"))
+                break
+            else:
+                print("Roll_No does not exist. You need to create a user for the Roll Number.")
+        except ValueError:
+            print("Roll_No must be an integer. Please enter a valid integer.")
+
+    for header in headers:
+        header_name = header["Name"]
+        if header_name != "Roll_No" and header_name != "Sr_No":  # Exclude "Sr_No"
+            header_type = header["Type"]
+            value = input(
+                f"Enter value for {header_name} ({header_type}) (press Enter to keep it NULL): "
+            )
+
+            if header_name in student_info and str(value) != str(student_info[header_name]):
+                print(f"Error: {header_name} value does not match the existing data.")
+                return
+            data[header_name] = value if value != "" else None
+
+    # Insert the data using the insertData function
+
+    print("\nThe Final Information to be added will be:")
     print(f"Database: {selected_db}")
     print(f"Table: {selected_table}")
     print("Row to be added:")
-    headers_names = [header["Name"] for header in headers]
-    data_values = [str(data[header["Name"]]) if data[header["Name"]] is not None else "NULL" for header in headers]
+    headers_names = [header["Name"] for header in headers if header["Name"] != "Sr_No"]
+    data_values = [
+        str(data[header["Name"]]) if data[header["Name"]] is not None else "NULL"
+        for header in headers if header["Name"] != "Sr_No"
+    ]
     table_data = [headers_names, data_values]
     table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
     print(table)
+    insertData(selected_db, selected_table, data)
+    print("\nData Inserted Successfully")    
 
 
 def deleteEntry():
+    return
+
+def runDGDI():
+    print_progress_bar(2,0)
+    subprocess.run(['python', DATA_GEN])
+    print_progress_bar(2,1)
+    subprocess.run(['python', DATA_INSERT])
+    print_progress_bar(2,2)
+    display_success_card("Data Generated and Inserted Successfully")
     return
     
 def setting():
@@ -475,7 +642,8 @@ def setting():
         display_title_card("Delete Database options selected")
         deleteDB()
     elif choice == "7":
-        display_title_card("Initiating ETL Process")
+        display_title_card("Running Data-Gen and Data-Insert")
+        runDGDI()
     elif choice == "8":
         display_title_card("")
     elif choice == "9":
