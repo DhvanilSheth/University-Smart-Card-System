@@ -6,27 +6,33 @@ def transform(sports_data, hostel_data, mess_data, admin_data, access_data):
     integrated_data_list = []
 
     # Assuming student information is in admin_data with key 'Student_Information'
-    student_info_df = admin_data['Student_Information']
+    student_info_df = admin_data['Student_Information'].copy()
+
+    # Ensure 'Name' and 'Contact_No' in student_info_df are of type string
+    student_info_df['Name'] = student_info_df['Name'].astype(str)
+    student_info_df['Contact_No'] = student_info_df['Contact_No'].astype(str)
 
     # Function to process each table
-    def process_table(df, student_info_df):
-        # Ensure 'Name' and 'Contact_No' are of type string
+    def process_table(df, student_info):
+        # Add Sr_No if it's not present and move it to the first column
+        if 'Sr_No' not in df.columns:
+            df.insert(0, 'Sr_No', range(1, len(df) + 1))
+
+        # Check for Contact_No or alternative column name
+        contact_column = 'Contact_No'
+        if 'Contact_No' not in df.columns and 'Pick_Up_Student_Number' in df.columns:
+            contact_column = 'Pick_Up_Student_Number'
+
+        # Ensure 'Name' and contact column are of type string in each df
         if 'Name' in df.columns:
             df['Name'] = df['Name'].astype(str)
-        if 'Contact_No' in df.columns:
-            df['Contact_No'] = df['Contact_No'].astype(str)
+        if contact_column in df.columns:
+            df[contact_column] = df[contact_column].astype(str)
 
-        # Ensure 'Name' and 'Contact_No' in student_info_df are of type string
-        student_info_df['Name'] = student_info_df['Name'].astype(str)
-        student_info_df['Contact_No'] = student_info_df['Contact_No'].astype(str)
-
-        # Add Sr_No if it's not present
-        if 'Sr_No' not in df.columns:
-            df['Sr_No'] = range(1, len(df) + 1)
-
-        # Add Roll_No by mapping from student_info_df if it's not present and 'Name', 'Contact_No' are available
-        if 'Roll_No' not in df.columns and {'Name', 'Contact_No'}.issubset(df.columns):
-            df = df.merge(student_info_df[['Name', 'Contact_No', 'Roll_No']], on=['Name', 'Contact_No'], how='left')
+        # Add Roll_No by mapping from student_info if it's not present
+        if 'Roll_No' not in df.columns and {'Name', contact_column}.issubset(df.columns):
+            merged_df = df.merge(student_info[['Name', 'Contact_No', 'Roll_No']], left_on=['Name', contact_column], right_on=['Name', 'Contact_No'], how='left')
+            df['Roll_No'] = merged_df['Roll_No']
 
         return df
 

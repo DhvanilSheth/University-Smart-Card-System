@@ -355,7 +355,7 @@
                         "Type": "BIGINT"
                     },
                     {
-                        "Name": "Roll_NO",
+                        "Name": "Roll_No",
                         "Type": "INT"
                     },
                     {
