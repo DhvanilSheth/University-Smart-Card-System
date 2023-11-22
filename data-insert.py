@@ -1,5 +1,16 @@
 import mysql.connector
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+IP = os.getenv("IP")
+USER = os.getenv("USERNAME")
+PASS = os.getenv("PASSWORD")
+
+print(f"IP: {IP}")
+print(f"USER: {USER}")
+print(f"PASS: {PASS}")
 
 def insert_data_from_csv(table_name, csv_path, connection):
     df = pd.read_csv(csv_path)
@@ -357,4 +368,4 @@ def data_insertion(localhost, username, password):
     makeAccessDB(localhost, username, password)
     print("Data insertion into all databases and tables completed!")
     
-data_insertion('192.168.32.187', 'root', 'vhavle')
+data_insertion(IP, USER, PASS)

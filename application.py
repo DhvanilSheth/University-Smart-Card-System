@@ -446,6 +446,9 @@ def insertEntry():
     table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
     print(table)
 
+
+def deleteEntry():
+    return
     
 def setting():
     display_settings_menu(margin=-1)
@@ -460,6 +463,7 @@ def setting():
         insertEntry()
     elif choice == "2":
         display_title_card("Delete Row option selected")
+        deleteEntry()
     elif choice == "3":
         display_title_card("Insert Table option selected")
     elif choice == "4":
