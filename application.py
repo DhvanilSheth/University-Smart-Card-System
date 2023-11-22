@@ -947,7 +947,7 @@ def hfu():
                 Date, 
                 NULL 
             FROM 
-                medicine_data 
+                hostel_medicine_data 
             WHERE 
                 Roll_No = '{roll_no}'
 

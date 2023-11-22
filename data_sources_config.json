@@ -531,7 +531,7 @@
                 ]
             },
             {
-                "table": "medicine_data",
+                "table": "hostel_medicine_data",
                 "insert": true,
                 "headers": [
                     {
