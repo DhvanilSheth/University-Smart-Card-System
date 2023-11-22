@@ -4,38 +4,41 @@ import pandas as pd
 
 def transform(sports_data, hostel_data, mess_data, admin_data, access_data):
     integrated_data_list = []
-    # Identify common columns for entity matching
-    common_columns = ['Name', 'Roll_No', 'Contact']  # Modify this list based on actual common columns
 
-    # Create empty dataframe for integrated data
-    integrated_data = pd.DataFrame()
+    # Assuming student information is in admin_data with key 'Student_Information'
+    student_info_df = admin_data['Student_Information']
 
-    # Example of how to merge data from different tables
-    for table_name, df in sports_data.items():
-        if set(common_columns).issubset(df.columns):
-            integrated_data = integrated_data.append(df[common_columns], ignore_index=True)
+    # Function to process each table
+    def process_table(df, student_info_df):
+        # Ensure 'Name' and 'Contact_No' are of type string
+        if 'Name' in df.columns:
+            df['Name'] = df['Name'].astype(str)
+        if 'Contact_No' in df.columns:
+            df['Contact_No'] = df['Contact_No'].astype(str)
 
-    for table_name, df in hostel_data.items():
-        if set(common_columns).issubset(df.columns):
-            integrated_data = integrated_data.append(df[common_columns], ignore_index=True)
+        # Ensure 'Name' and 'Contact_No' in student_info_df are of type string
+        student_info_df['Name'] = student_info_df['Name'].astype(str)
+        student_info_df['Contact_No'] = student_info_df['Contact_No'].astype(str)
 
-    for table_name, df in mess_data.items():
-        if set(common_columns).issubset(df.columns):
-            integrated_data = integrated_data.append(df[common_columns], ignore_index=True)
+        # Add Sr_No if it's not present
+        if 'Sr_No' not in df.columns:
+            df['Sr_No'] = range(1, len(df) + 1)
 
-    for table_name, df in admin_data.items():
-        if set(common_columns).issubset(df.columns):
-            integrated_data = integrated_data.append(df[common_columns], ignore_index=True)
+        # Add Roll_No by mapping from student_info_df if it's not present and 'Name', 'Contact_No' are available
+        if 'Roll_No' not in df.columns and {'Name', 'Contact_No'}.issubset(df.columns):
+            df = df.merge(student_info_df[['Name', 'Contact_No', 'Roll_No']], on=['Name', 'Contact_No'], how='left')
 
-    for table_name, df in access_data.items():
-        if set(common_columns).issubset(df.columns):
-            integrated_data = integrated_data.append(df[common_columns], ignore_index=True)
+        return df
 
-    # Remove duplicates and reset index
-    integrated_data = integrated_data.drop_duplicates().reset_index(drop=True)
 
-    # Add a new primary key column
-    integrated_data['ID'] = range(1, len(integrated_data) + 1)
-    integrated_data_list.append(integrated_data)
+    # Process each DataFrame in the dictionaries
+    for data_dict in [sports_data, hostel_data, mess_data, admin_data, access_data]:
+        for table_name, df in data_dict.items():
+            processed_df = process_table(df, student_info_df)
+            integrated_data_list.append(processed_df)
+
     print("Data Integration Complete")
     return integrated_data_list
+
+# Example usage
+# integrated_df_list = transform(sports_dfs, hostel_dfs, mess_dfs, admin_dfs, access_dfs)
