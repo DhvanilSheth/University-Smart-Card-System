@@ -747,40 +747,39 @@ def sip():
         'password': PASS,    # Replace with your actual database password
         'database': 'UniDB'  # Replace with your actual database name
     }
+
     connection = mysql.connector.connect(**db_config)
 
     try:
         cursor = connection.cursor()
 
-        # Initialize an empty DataFrame for consolidated data
-        consolidated_data = pd.DataFrame()
-
-        # Define queries for different data sources
+        # Define queries for different sources
         queries = {
-            "student_data": f"SELECT * FROM student_data WHERE Roll_No = '{roll_no}'",
-            "hostel_data": f"SELECT * FROM hostel_data WHERE Roll_No = '{roll_no}'",
-            "Mess_Global": f"SELECT * FROM Mess_Global WHERE Roll_No = '{roll_no}'",
-            "Pool_Global": f"SELECT * FROM Pool_Global WHERE Roll_No = '{roll_no}'",
-            "Equipment_Global": f"SELECT * FROM Equipment_Global WHERE Roll_No = '{roll_no}'",
-            "Medicine_Global": f"SELECT * FROM Medicine_Global WHERE Roll_No = '{roll_no}'"
+            "Student Information": "SELECT * FROM student_data WHERE Roll_No = %s",
+            "Hostel Information": "SELECT * FROM hostel_data WHERE Roll_No = %s",
+            "Mess Information": "SELECT * FROM Mess_Global WHERE Roll_No = %s",
+            "Sports Facility Access": "SELECT * FROM Pool_Global WHERE Roll_No = %s",
+            "Sports Equipment Usage": "SELECT * FROM Equipment_Global WHERE Roll_No = %s",
+            "Medicine Usage": "SELECT * FROM Medicine_Global WHERE Roll_No = %s"
         }
 
-        # Execute each query and add data to the consolidated DataFrame
-        for source, query in queries.items():
-            cursor.execute(query)
+        # Consolidate all results
+        consolidated_results = []
+        common_headers = None
+        for title, query in queries.items():
+            cursor.execute(query, (roll_no,))
             rows = cursor.fetchall()
-            headers = [desc[0] for desc in cursor.description]
 
-            # Convert query results to a DataFrame
-            df = pd.DataFrame(rows, columns=headers)
-            df['Source'] = source  # Add a column to identify the source table/view
+            # Combine the results into a common table format
+            if rows:
+                if not common_headers:
+                    common_headers = ["Category"] + [desc[0] for desc in cursor.description]
+                for row in rows:
+                    consolidated_results.append([title] + list(row))
 
-            # Concatenate with the consolidated DataFrame
-            consolidated_data = pd.concat([consolidated_data, df], ignore_index=True)
-
-        # Display the consolidated data
-        if not consolidated_data.empty:
-            print(tabulate(consolidated_data, headers='keys', tablefmt='pretty'))
+        # Display the consolidated results
+        if consolidated_results:
+            print(tabulate(consolidated_results, headers=common_headers, tablefmt="pretty"))
         else:
             print("No data found for the provided roll number.")
 
@@ -1002,9 +1001,36 @@ def hfu():
             connection.close()
 
 def sfu():
-    roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+    try:
+        roll_no = input("Enter the roll number of the student: ")
+        db_config = {
+            'host': IP,
+            'user': USER,
+            'password': PASS,
+            'database': 'UniDB'
+        }
+        connection = mysql.connector.connect(**db_config)
+        try:
+            cursor = connection.cursor()
+            table_query = f"SELECT Roll_No, Name, 'Gym Data' AS Type, In_Time, Out_Time, Date AS In_Date, NULL AS Out_Date FROM gym_data WHERE Roll_No = {roll_no}"
+            cursor.execute(table_query)
+            gym_data_result = cursor.fetchall()
+            view_query = f"SELECT Roll_No, Name, 'Pool View' AS Type, InTime, NULL AS Out_Time, Date AS In_Date, NULL AS Out_Date FROM PoolGlobalView WHERE Roll_No = {roll_no}"
+            cursor.execute(view_query)
+            pool_view_result = cursor.fetchall()
+            common_table = gym_data_result + pool_view_result
+            common_headers = ["Roll_No", "Name", "Type", "In_Time", "Out_Time", "In_Date", "Out_Date"]
+            print(tabulate(common_table, headers=common_headers, tablefmt="pretty"))
+
+        finally:
+            cursor.close()
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        if connection:
+            connection.close()
 
 def sat():
     try:
