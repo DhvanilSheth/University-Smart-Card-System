@@ -764,9 +764,38 @@ def mmt():
             connection.close()
 
 def sim():
-    start = input("Enter the start time of the query: ")
-    end = input("Enter the end time of the query: ")
-    return
+    try:
+        # Get Roll_No from user input
+        roll_no = input("Enter the roll number of the student: ")
+
+        db_config = {
+            'host': IP,          
+            'user': USER,        
+            'password': PASS,    
+            'database': 'UniDB'  
+        }
+        connection = mysql.connector.connect(**db_config)
+        try:
+            cursor = connection.cursor()
+            query = f"SELECT * FROM Equipment_Global WHERE Roll_No = '{roll_no}' ORDER BY Date DESC;"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+
+            if rows:
+                headers = [desc[0] for desc in cursor.description]
+                print(tabulate(rows, headers=headers, tablefmt="pretty"))
+            else:
+                print(f"No equipment data found for Roll_No: {roll_no}")
+
+        finally:
+            cursor.close()
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()
 
 def hfu():
     roll_no = input("Enter the roll number of the student: ")
