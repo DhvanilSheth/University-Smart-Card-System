@@ -99,7 +99,7 @@ def generate_student_data():
 
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Roll No", "Name", "Contact No", "Email", "Course", "Gender"])
+        writer.writerow(["Roll No", "Name", "Contact No", "Email ID", "Course", "Gender"])
 
         for roll_no in roll_numbers:
             name = roll_no_name_mapping[roll_no]
@@ -310,6 +310,6 @@ def run(num):
     generate_equipment_requests(num)
     generate_medicine_sports(num)
     generate_pool_non_membership(num)
-    print("Data Extraction Complete")
+    print("Data Generation for CSV's is Complete")
     
 run(100)

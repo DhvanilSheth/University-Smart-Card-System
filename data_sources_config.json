@@ -645,5 +645,43 @@
                 ]
             }
         ]
+    },
+    {
+        "db_name" : "AdminDB",
+        "tables" : [
+            {
+                "table" : "student_information",
+                "insert" : true,
+                "headers" : [
+                    {
+                        "Name" : "Roll_No",
+                        "Type" : "INT"
+                    },
+                    {
+                        "Name" : "Name",
+                        "Type" : "VARCHAR(255)"
+                    },
+                    {
+                        "Name" : "Contact_No",
+                        "Type" : "BIGINT"
+                    },
+                    {
+                        "Name": "Email_ID",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name" : "Course",
+                        "Type" : "VARCHAR(50)"
+                    },
+                    {
+                        "Name" : "Gender",
+                        "Type" : "VARCHAR(10)"
+                    }
+                ],
+                "primary_key" : [
+                    "Roll_No"
+                ]
+            }
+        ]
     }
 ]
