@@ -724,9 +724,35 @@ def sfu():
     return
 
 def sat():
-    roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+    try:
+        # Get Roll_No from user input
+        roll_no = input("Enter the roll number of the student: ")
+        db_config = {
+            'host': IP,
+            'user': USER,
+            'password': PASS,
+            'database': 'UniDB'
+        }
+        connection = mysql.connector.connect(**db_config)
+        try:
+            cursor = connection.cursor()
+            query = f"SELECT * FROM access_logs_data WHERE Roll_No = '{roll_no}'"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            if rows:
+                headers = [desc[0] for desc in cursor.description]
+                print(tabulate(rows, headers=headers, tablefmt="pretty"))
+            else:
+                print(f"No data found for Roll_No: {roll_no}")
+
+        finally:
+            cursor.close()
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        connection.close()
     
 def application():
     display_application_menu(margin=-1)
