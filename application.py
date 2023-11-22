@@ -739,8 +739,50 @@ def fma():
 
 def sip():
     roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+
+    db_config = {
+        'host': IP,          # Replace with your actual database host
+        'user': USER,        # Replace with your actual database user
+        'password': PASS,    # Replace with your actual database password
+        'database': 'UniDB'  # Replace with your actual database name
+    }
+    connection = mysql.connector.connect(**db_config)
+
+    try:
+        cursor = connection.cursor()
+
+        # Queries for different data sources
+        queries = [
+            ("SELECT * FROM student_data WHERE Roll_No = %s", (roll_no,)),
+            ("SELECT * FROM hostel_data WHERE Roll_No = %s", (roll_no,)),
+            ("SELECT * FROM Mess_Global WHERE Roll_No = %s", (roll_no,)),
+            ("SELECT * FROM Pool_Global WHERE Roll_No = %s", (roll_no,)),
+            ("SELECT * FROM Equipment_Global WHERE Roll_No = %s", (roll_no,)),
+            ("SELECT * FROM Medicine_Global WHERE Roll_No = %s", (roll_no,))
+        ]
+
+        # Consolidate all results
+        consolidated_results = []
+        for query, params in queries:
+            cursor.execute(query, params)
+            rows = cursor.fetchall()
+            if rows:
+                consolidated_results.extend(rows)
+
+        # Display consolidated results
+        if consolidated_results:
+            headers = [desc[0] for desc in cursor.description]
+            print(tabulate(consolidated_results, headers=headers, tablefmt="pretty"))
+        else:
+            print("No data found for the provided roll number.")
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
 
 def mmt():
     roll_no = input("Enter the roll number of the student: ")
