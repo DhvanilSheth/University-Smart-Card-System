@@ -18,21 +18,19 @@ def transform(sports_data, hostel_data, mess_data, admin_data, access_data):
         if 'Sr_No' not in df.columns:
             df.insert(0, 'Sr_No', range(1, len(df) + 1))
 
-        # Check for Contact_No or alternative column name
-        contact_column = 'Contact_No'
-        if 'Contact_No' not in df.columns and 'Pick_Up_Student_Number' in df.columns:
-            contact_column = 'Pick_Up_Student_Number'
+        # Determine the correct columns for 'Name' and 'Contact_No'
+        name_column = 'Pick_Up_Student' if 'Pick_Up_Student' in df.columns else 'Name'
+        contact_column = 'Pick_Up_Student_Number' if 'Pick_Up_Student_Number' in df.columns else 'Contact_No'
 
-        # Ensure 'Name' and contact column are of type string in each df
-        if 'Name' in df.columns:
-            df['Name'] = df['Name'].astype(str)
+        # Ensure the correct name and contact columns are of type string in each df
+        if name_column in df.columns:
+            df[name_column] = df[name_column].astype(str)
         if contact_column in df.columns:
             df[contact_column] = df[contact_column].astype(str)
 
         # Add Roll_No by mapping from student_info if it's not present
-        if 'Roll_No' not in df.columns and {'Name', contact_column}.issubset(df.columns):
-            merged_df = df.merge(student_info[['Name', 'Contact_No', 'Roll_No']], left_on=['Name', contact_column], right_on=['Name', 'Contact_No'], how='left')
-            df['Roll_No'] = merged_df['Roll_No']
+        if 'Roll_No' not in df.columns and {name_column, contact_column}.issubset(df.columns):
+            df = df.merge(student_info[['Name', 'Contact_No', 'Roll_No']], left_on=[name_column, contact_column], right_on=['Name', 'Contact_No'], how='left')
 
         return df
 
@@ -44,3 +42,5 @@ def transform(sports_data, hostel_data, mess_data, admin_data, access_data):
 
     print("Data Integration Complete")
     return integrated_data_list
+
+
