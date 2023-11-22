@@ -28,8 +28,8 @@ def extract_db_data(host, user, password, db_name, tables):
 
 def extract(localhost, username, password):
     sports_dfs = extract_db_data(localhost, username, password, "SportsDB", data_config[0]["tables"])
-    hostel_dfs = extract_db_data(localhost, username, password, "HostelDB", data_config[2]["tables"])
     mess_dfs = extract_db_data(localhost, username, password, "MessDB", data_config[1]["tables"])
+    hostel_dfs = extract_db_data(localhost, username, password, "HostelDB", data_config[2]["tables"])
     admin_dfs = extract_db_data(localhost, username, password, "AdminDB", data_config[3]["tables"])
     access_dfs = extract_db_data(localhost, username, password, "AccessDB", data_config[4]["tables"])
     
