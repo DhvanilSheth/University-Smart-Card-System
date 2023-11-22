@@ -5,6 +5,7 @@ import subprocess
 import os
 import csv
 import json
+from tabulate import tabulate
 
 DYNAMIC_DATA = 'dynamic-data.py'
 ETL_EXTRACT = 'extract.py'
@@ -120,15 +121,13 @@ def display_settings_menu(char1='*', margin=5):
     left_margin = margin
 
     menu = [
-        "* 1. Insert New Source",
-        "* 2. Delete Source",
-        "* 3. Add Source",
-        "* 4. Remove Source",
-        "* 5. Modify Existing Source",
-        "* 6. Update Data",
+        "* 1. Insert New Entry to Table",
+        "* 2. Delete Entry from Table",
+        "* 3. Insert Table to Database",
+        "* 4. Delete Table from Database",
+        "* 5. Insert New Database",
+        "* 6. Delete New Database",
         "* 7. Run ETL",
-        "* 8. Add Database",
-        "* 9. Remove Database",
         "* 10. Exit",
     ]
 
@@ -400,7 +399,54 @@ def deleteDB():
             print("Invalid input. Please enter a valid index.")
     else:
         print("No entries to delete.")
+        
+def insertEntry():
+    with open('data_sources_config.json', 'r') as config_file:
+        config_data = json.load(config_file)
 
+    table_mapping = {db_config["db_name"]: [table["table"] for table in db_config["tables"]] for db_config in config_data}
+    print("Select a Database:")
+    for i, db_name in enumerate(table_mapping.keys()):
+        print(f"{i + 1}. {db_name}")
+
+    selected_db_index = int(input("Enter the index of the Database you want to edit: ")) - 1
+    selected_db = list(table_mapping.keys())[selected_db_index]
+    print(f"\nTables in {selected_db}:")
+    for i, table_name in enumerate(table_mapping[selected_db]):
+        print(f"{i + 1}. {table_name}")
+
+    selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
+    selected_table = table_mapping[selected_db][selected_table_index]
+    headers = next(table["headers"] for table in next(db_config["tables"] for db_config in config_data if db_config["db_name"] == selected_db) if table["table"] == selected_table)
+
+    data = {}
+    
+    while True:
+        try:
+            roll_no = int(input(f"Enter value for Roll_No: "))
+            data["Roll_No"] = roll_no
+            break
+        except ValueError:
+            print("Roll_No must be an integer. Please enter a valid integer.")
+
+    for header in headers:
+        header_name = header["Name"]
+        header_type = header["Type"]
+        if header_name != "Roll_No":
+            value = input(f"Enter value for {header_name} ({header_type}) (press Enter to keep it NULL): ")
+            data[header_name] = value if value != "" else None
+
+    print("\nThe Final Information to be added will be: ")
+    print(f"Database: {selected_db}")
+    print(f"Table: {selected_table}")
+    print("Row to be added:")
+    headers_names = [header["Name"] for header in headers]
+    data_values = [str(data[header["Name"]]) if data[header["Name"]] is not None else "NULL" for header in headers]
+    table_data = [headers_names, data_values]
+    table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
+    print(table)
+
+    
 def setting():
     display_settings_menu(margin=-1)
     json_file_path = "data_sources_config.json"
@@ -410,30 +456,26 @@ def setting():
     
     choice = input("Enter your choice: ")
     if choice == "1":
-        display_title_card("Insert Source option selected")
-        insert_new_data(json_data, json_file_path)
+        display_title_card("Insert Entry option selected")
+        insertEntry()
     elif choice == "2":
-        display_title_card("Delete Source option selected")
+        display_title_card("Delete Row option selected")
     elif choice == "3":
-        display_title_card("Add Source option selected")
-        add_source()
+        display_title_card("Insert Table option selected")
     elif choice == "4":
-        display_title_card("Remove Source option selected")
-        remove_source()
+        display_title_card("Delete Table option selected")
     elif choice == "5":
-        display_title_card("Modify Existing Source option selected")
+        display_title_card("Insert Database options selected")
+        addDB()
     elif choice == "6":
-        display_title_card("Updating Data initiated")
-        dynamic()
+        display_title_card("Delete Database options selected")
+        deleteDB()
     elif choice == "7":
         display_title_card("Initiating ETL Process")
-        etl()
     elif choice == "8":
-        display_title_card("Adding database options selected")
-        addDB()
+        display_title_card("")
     elif choice == "9":
-        display_title_card("Deleting database options selected")
-        deleteDB()
+        display_title_card("")
     elif choice == "10":
         display_title_card("Exiting the application")
         exit(0)
