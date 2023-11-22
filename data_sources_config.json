@@ -531,7 +531,7 @@
                 ]
             },
             {
-                "table": "hostel_medicine_data",
+                "table": "medicine_data",
                 "insert": true,
                 "headers": [
                     {
@@ -586,7 +586,7 @@
                 ]
             },
             {
-                "table": "courier_data",
+                "table": "package_collection_data",
                 "insert": true,
                 "headers": [
                     {

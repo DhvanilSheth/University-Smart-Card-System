@@ -205,7 +205,7 @@ def generate_mess_2_data(num_records):
                 writer.writerow([i + 1, fake.date_time(), type, name, mobile_number, roll_number, 0, cost, cost])
 
 def generate_package_collection_data(num_records):
-    with open('./Data/courier_data.csv', mode='w', newline='') as file:
+    with open('./Data/package_collection_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sr No", "Date", "Name", "Room", "Delivery driver name", "Driver Contact", "Company", "Quantity", "Pick Up Student", "Pick Up Student Number", "Signature", "Security Signature"])
         for i in range(num_records):
@@ -227,7 +227,7 @@ def generate_home_leave_data(num_records):
             writer.writerow([fake.date(), name, number, fake.time()[:-3], random.choice(roll_numbers), f"A-{fake.random_number(digits=3)}", fake.address(), fake.time()[:-3], fake.date(), name, fake.name()])
 
 def generate_medicine_data(num_records):
-    with open('./Data/hostel_medicine_data.csv', mode='w', newline='') as file:
+    with open('./Data/medicine_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Date", "Name", "Contact", "Medicine Name", "Quantity", "Room No", "Time", "Roll No", "Signature", "Purpose", "Security Signature"])
         for i in range(num_records):

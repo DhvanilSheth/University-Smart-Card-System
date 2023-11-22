@@ -183,8 +183,8 @@ def makeHostelDB(host, user, password):
             Email_ID_Share VARCHAR(255)
         )
         """,
-        "hostel_medicine_data": """
-        CREATE TABLE IF NOT EXISTS hostel_medicine_data (
+        "medicine_data": """
+        CREATE TABLE IF NOT EXISTS medicine_data (
             Date DATE,
             Name VARCHAR(255),
             Contact BIGINT,
@@ -198,8 +198,8 @@ def makeHostelDB(host, user, password):
             Security_Signature VARCHAR(255)
         )
         """,
-        "courier_data": """
-        CREATE TABLE IF NOT EXISTS courier_data (
+        "package_collection_data": """
+        CREATE TABLE IF NOT EXISTS package_collection_data (
             Sr_No INT,
             Date DATE,
             Name VARCHAR(255),
