@@ -1,7 +1,7 @@
 import mysql.connector
 from sqlalchemy import create_engine
 
-def load(dfs, host, user, password, database="UniDB", table_name="integrated_data"):
+def load(dfs, host, user, password, database="UniDB"):
     # Create a connection to the database
     connection = mysql.connector.connect(host=host, user=user, password=password, database=database)
     cursor = connection.cursor()
@@ -17,8 +17,9 @@ def load(dfs, host, user, password, database="UniDB", table_name="integrated_dat
     engine = create_engine(f'mysql+mysqlconnector://{user}:{password}@{host}/{database}', echo=False)
 
     # Load data into the new table
-    for df in dfs:
-        df.to_sql(name=table_name, con=engine, if_exists='replace', index=False)
+    table_names = {0:"integrated_data"}
+    for df in range(len(dfs)):
+        dfs[df].to_sql(name=table_names[df], con=engine, if_exists='replace', index=False)
 
     cursor.close()
     connection.close()
