@@ -16,8 +16,7 @@ def main():
 
 	sports_data, hostel_data, mess_data = extract(SERVER_IP, SERVER_USER, SERVER_PASSWORD)
 	integrated_data = transform(sports_data, hostel_data, mess_data)
-	print(integrated_data.head())
-	# load(integrated_data, SERVER_IP, SERVER_USER, SERVER_PASSWORD)
+	load(integrated_data, SERVER_IP, SERVER_USER, SERVER_PASSWORD)
 
 if __name__ == "__main__":
     main()
