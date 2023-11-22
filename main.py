@@ -5,10 +5,13 @@ from load2 import *
 import mysql.connector
 import json
 import pandas as pd
+from dotenv import load_dotenv
+import os
 
-SERVER_IP = '192.168.32.187'
-SERVER_USER = 'root'
-SERVER_PASSWORD = 'vhavle'
+load_dotenv()
+SERVER_IP = os.getenv("IP")
+SERVER_USER = os.getenv("USERNAME")
+SERVER_PASSWORD = os.getenv("PASSWORD")
 
 def main():
 
