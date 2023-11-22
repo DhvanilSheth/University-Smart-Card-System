@@ -586,7 +586,7 @@
                 ]
             },
             {
-                "table": "package_collection_data",
+                "table": "courier_data",
                 "insert": true,
                 "headers": [
                     {

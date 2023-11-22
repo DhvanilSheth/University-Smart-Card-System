@@ -198,8 +198,8 @@ def makeHostelDB(host, user, password):
             Security_Signature VARCHAR(255)
         )
         """,
-        "package_collection_data": """
-        CREATE TABLE IF NOT EXISTS package_collection_data (
+        "courier_data": """
+        CREATE TABLE IF NOT EXISTS courier_data (
             Sr_No INT,
             Date DATE,
             Name VARCHAR(255),
