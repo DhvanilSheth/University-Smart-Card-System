@@ -298,8 +298,9 @@ def makeAdminDB(host, user, password):
         Name VARCHAR(255),
         Roll_No VARCHAR(255) PRIMARY KEY,
         Contact_No VARCHAR(255),
-        Email VARCHAR(255),
-        Course VARCHAR(255)
+        Email_ID VARCHAR(255),
+        Course VARCHAR(255),
+        Gender VARCHAR(50)
     )
     """
 
