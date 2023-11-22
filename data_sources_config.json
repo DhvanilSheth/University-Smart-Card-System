@@ -683,5 +683,55 @@
                 ]
             }
         ]
+    },
+    {
+        "db_name" : "AccessDB",
+        "tables" : [
+            {
+                "table" : "logging_information",
+                "insert" : true,
+                "headers" : [
+                    {
+                        "Name" : "Sr_No",
+                        "Type" : "INT"
+                    },
+                    {
+                        "Name" : "Roll_No",
+                        "Type" : "INT"
+                    },
+                    {
+                        "Name" : "Name",
+                        "Type" : "VARCHAR(255)"
+                    },
+                    {
+                        "Name" : "Building",
+                        "Type" : "VARCHAR(50)"
+                    },
+                    {
+                        "Name" : "Room",
+                        "Type" : "VARCHAR(10)"
+                    },
+                    {
+                        "Name" : "In_Time",
+                        "Type" : "TIME"
+                    },
+                    {
+                        "Name" : "Out_Time",
+                        "Type" : "TIME"
+                    },
+                    {
+                        "Name" : "In_Date",
+                        "Type" : "DATE"
+                    },
+                    {
+                        "Name" : "Out_Date",
+                        "Type" : "DATE"
+                    }
+                ],
+                "primary_key" : [
+                    "Roll_No"
+                ]
+            }
+        ]
     }
 ]

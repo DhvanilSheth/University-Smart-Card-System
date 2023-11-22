@@ -315,11 +315,45 @@ def makeAdminDB(host, user, password):
 
     return "AdminDB and Student_Information table created successfully and data inserted!"
 
+def makeAccessDB(host, user, password):
+    connection = mysql.connector.connect(host=host, user=user, password=password)
+    cursor = connection.cursor()
+
+    cursor.execute("CREATE DATABASE IF NOT EXISTS AccessDB")
+    cursor.execute("USE AccessDB")
+
+    create_access_logs_table = """
+    CREATE TABLE IF NOT EXISTS Access_Logs (
+        Sr_No INT,
+        Roll_No VARCHAR(255),
+        Name VARCHAR(255),
+        Building VARCHAR(255),
+        Room VARCHAR(255),
+        In_Time TIME,
+        Out_Time TIME,
+        In_Date DATE,
+        Out_Date DATE
+    )
+    """
+
+    cursor.execute(create_access_logs_table)
+
+    try:
+        insert_data_from_csv("Access_Logs", "./Data/access_logs.csv", connection)
+    except Exception as e:
+        print(f"An error occurred while inserting data into Access_Logs: {str(e)}")
+    finally:
+        cursor.close()
+        connection.close()
+
+    return "AccessDB and Access_Logs table created successfully and data inserted!"
+
 def run(localhost, username, password):
     makeSportsDB(localhost, username, password)
     makeHostelDB(localhost, username, password)
     makeMessDB(localhost, username, password)
     makeAdminDB(localhost, username, password)
-    print("Data Loading Complete")
+    makeAccessDB(localhost, username, password)
+    print("Data insertion into all databases and tables completed!")
     
 run('localhost', 'root', 'root')
