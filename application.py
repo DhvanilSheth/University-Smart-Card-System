@@ -243,7 +243,8 @@ def display_application_menu(char1='*', margin=5):
         "* 5. Student Sports Inventory Management",
         "* 6. Hostel Facilities Usage",
         "* 7. Sports Facility Usage",
-        "* 8. Exit"
+        "* 8. Student Access Tracking",
+        "* 9. Exit"
     ]
 
     for item in menu:
@@ -555,7 +556,10 @@ def insertEntry():
     table_data = [headers_names, data_values]
     table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
     print(table)
-    insertData(selected_db, selected_table, data)
+    
+    # Call the insertData function with table_name and data
+    insertData(selected_table, data)
+    
     print("\nData Inserted Successfully")    
 
 
@@ -642,6 +646,11 @@ def sfu():
     name = input("Enter the name of the student: ")
     return
 
+def sat():
+    roll_no = input("Enter the roll number of the student: ")
+    name = input("Enter the name of the student: ")
+    return
+
 def application():
     display_application_menu(margin=-1)
     choice = input("Enter your choice: ")
@@ -667,6 +676,9 @@ def application():
         display_title_card("Sports Facility Usage selected")
         sfu()
     elif choice == "8":
+        display_title_card("Student Access Tracking selected")
+        sat()
+    elif choice == "9":
         display_title_card("Exiting the application")
         return
           

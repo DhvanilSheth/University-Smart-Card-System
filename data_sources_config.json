@@ -3,7 +3,7 @@
         "db_name": "SportsDB",
         "tables": [
             {
-                "table": "pool",
+                "table": "swimming_pool_data",
                 "insert": true,
                 "headers": [
                     {
@@ -45,7 +45,7 @@
                 ]
             },
             {
-                "table": "pool_non_membership",
+                "table": "swimming_pool_non_membership_data",
                 "insert": true,
                 "headers": [
                     {
@@ -84,7 +84,7 @@
                 ]
             },
             {
-                "table": "gym",
+                "table": "gym_data",
                 "insert": true,
                 "headers": [
                     {
@@ -127,7 +127,7 @@
                 ]
             },
             {
-                "table": "equipment_requests",
+                "table": "equipment_requests_data",
                 "insert": true,
                 "headers": [
                     {
@@ -182,7 +182,7 @@
                 ]
             },
             {
-                "table": "equipment_loss",
+                "table": "equipment_loss_data",
                 "insert": true,
                 "headers": [
                     {
@@ -225,7 +225,7 @@
                 ]
             },
             {
-                "table": "medicine_sports",
+                "table": "medicine_sports_data",
                 "insert": true,
                 "headers": [
                     {
