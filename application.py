@@ -47,7 +47,7 @@ def getRollNo():
     connection = mysql.connector.connect(**db_config)
     try:
         cursor = connection.cursor()
-        query = "SELECT Roll_No FROM student_information"
+        query = "SELECT Roll_No FROM Student_Information"
         cursor.execute(query)
         roll_numbers = [result[0] for result in cursor.fetchall()]
         return roll_numbers
@@ -69,8 +69,9 @@ def insertData(table_name, data):
         max_sr_no = cursor.fetchone()[0]
         next_sr_no = max_sr_no + 1 if max_sr_no is not None else 1
         columns = ", ".join(data.keys())
-        values = ", ".join(str(value) for value in data.values())
+        values = ", ".join("'"+str(value)+"'" for value in data.values())
         query = f"INSERT INTO {table_name} (Sr_No, {columns}) VALUES ({next_sr_no}, {values})"
+        print(query)
         cursor.execute(query)
         connection.commit()
         print(f"Data inserted successfully with Sr_No: {next_sr_no}")
@@ -89,7 +90,7 @@ def getStudentInfo(roll_no):
     connection = mysql.connector.connect(**db_config)
     try:
         cursor = connection.cursor(dictionary=True)
-        query = f"SELECT * FROM student_information WHERE Roll_No = {roll_no}"
+        query = f"SELECT * FROM Student_Information WHERE Roll_No = {roll_no}"
         cursor.execute(query)
         student_info = cursor.fetchone()
         return student_info
@@ -601,7 +602,7 @@ def insertEntry():
     table_data = [headers_names, data_values]
     table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
     print(table)
-    insertData(selected_db, selected_table, data)
+    insertData(selected_table, data)
     print("\nData Inserted Successfully")    
 
 
