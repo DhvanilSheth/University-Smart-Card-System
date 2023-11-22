@@ -55,12 +55,12 @@ def getRollNo():
         cursor.close()
         connection.close()
         
-def insertData(db_name, table_name, data):
+def insertData(table_name, data):
     db_config = {
         'host': IP,
         'user': USER,
         'password': PASS,
-        'database': db_name
+        'database': 'UniDB'
     }
     connection = mysql.connector.connect(**db_config)
     try:
