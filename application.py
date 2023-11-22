@@ -496,71 +496,75 @@ def deleteDB():
         print("No entries to delete.")
         
 def insertEntry():
-    db_roll_no = getRollNo()
-    with open('data_sources_config.json', 'r') as config_file:
-        config_data = json.load(config_file)
+    try:
+        db_roll_no = getRollNo()
+        with open('data_sources_config.json', 'r') as config_file:
+            config_data = json.load(config_file)
 
-    table_mapping = {db_config["db_name"]: [table["table"] for table in db_config["tables"]] for db_config in config_data}
-    print("Select a Database:")
-    for i, db_name in enumerate(table_mapping.keys()):
-        print(f"{i + 1}. {db_name}")
+        table_mapping = {db_config["db_name"]: [table["table"] for table in db_config["tables"]] for db_config in config_data}
+        print("Select a Database:")
+        for i, db_name in enumerate(table_mapping.keys()):
+            print(f"{i + 1}. {db_name}")
 
-    selected_db_index = int(input("Enter the index of the Database you want to edit: ")) - 1
-    selected_db = list(table_mapping.keys())[selected_db_index]
-    print(f"\nTables in {selected_db}:")
-    for i, table_name in enumerate(table_mapping[selected_db]):
-        print(f"{i + 1}. {table_name}")
+        selected_db_index = int(input("Enter the index of the Database you want to edit: ")) - 1
+        selected_db = list(table_mapping.keys())[selected_db_index]
+        print(f"\nTables in {selected_db}:")
+        for i, table_name in enumerate(table_mapping[selected_db]):
+            print(f"{i + 1}. {table_name}")
 
-    selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
-    selected_table = table_mapping[selected_db][selected_table_index]
+        selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
+        selected_table = table_mapping[selected_db][selected_table_index]
 
-    headers, types = getTableData(selected_table)
+        headers, types = getTableData(selected_table)
 
-    data = {}
+        data = {}
 
-    while True:
-        try:
-            roll_no = input(f"Enter value for Roll_No: ")
-            if roll_no in db_roll_no:
-                data["Roll_No"] = roll_no
-                student_info = getStudentInfo(data["Roll_No"])
-                student_data = [(key, student_info[key]) for key in student_info]
-                print("Student Information:")
-                print(tabulate(student_data, headers=["Attribute", "Value"], tablefmt="pretty"))
-                break
-            else:
-                print("Roll_No does not exist. You need to create a user for the Roll Number.")
-        except ValueError:
-            print("Roll_No must be an integer. Please enter a valid integer.")
+        while True:
+            try:
+                roll_no = input(f"Enter value for Roll_No: ")
+                if roll_no in db_roll_no:
+                    data["Roll_No"] = roll_no
+                    student_info = getStudentInfo(data["Roll_No"])
+                    student_data = [(key, student_info[key]) for key in student_info]
+                    print("Student Information:")
+                    print(tabulate(student_data, headers=["Attribute", "Value"], tablefmt="pretty"))
+                    break
+                else:
+                    print("Roll_No does not exist. You need to create a user for the Roll Number.")
+            except ValueError:
+                print("Roll_No must be an integer. Please enter a valid integer.")
 
-    for header, data_type in zip(headers, types):
-        if header != "Roll_No" and header != "Sr_No":  # Exclude "Sr_No"
-            value = input(
-                f"Enter value for {header} ({data_type}) (press Enter to keep it NULL): "
-            )
+        for header, data_type in zip(headers, types):
+            if header != "Roll_No" and header != "Sr_No":  # Exclude "Sr_No"
+                value = input(
+                    f"Enter value for {header} ({data_type}) (press Enter to keep it NULL): "
+                )
 
-            if header in student_info and str(value) != str(student_info[header]):
-                print(f"Error: {header} value does not match the existing data.")
-                return
-            data[header] = value if value != "" else None
+                if header in student_info and str(value) != str(student_info[header]):
+                    print(f"Error: {header} value does not match the existing data.")
+                    return
+                data[header] = value if value != "" else None
 
-    print("\nThe Final Information to be added will be:")
-    print(f"Database: {selected_db}")
-    print(f"Table: {selected_table}")
-    print("Row to be added:")
-    headers_names = [header for header in headers if header != "Sr_No"]
-    data_values = [
-        str(data[header]) if data[header] is not None else "NULL"
-        for header in headers if header != "Sr_No"
-    ]
-    table_data = [headers_names, data_values]
-    table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
-    print(table)
+        print("\nThe Final Information to be added will be:")
+        print(f"Database: {selected_db}")
+        print(f"Table: {selected_table}")
+        print("Row to be added:")
+        headers_names = [header for header in headers if header != "Sr_No"]
+        data_values = [
+            str(data[header]) if data[header] is not None else "NULL"
+            for header in headers if header != "Sr_No"
+        ]
+        table_data = [headers_names, data_values]
+        table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
+        print(table)
+        
+        # Call the insertData function with table_name and data
+        insertData(selected_table, data)
+        
+        print("\nData Inserted Successfully") 
     
-    # Call the insertData function with table_name and data
-    insertData(selected_table, data)
-    
-    print("\nData Inserted Successfully")    
+    except:
+        display_error_card("Error in Inserting Data")   
 
 
 def deleteEntry():
