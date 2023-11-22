@@ -557,10 +557,7 @@ def insertEntry():
         table_data = [headers_names, data_values]
         table = tabulate(table_data, headers="firstrow", tablefmt="pretty")
         print(table)
-        
-        # Call the insertData function with table_name and data
         insertData(selected_table, data)
-        
         print("\nData Inserted Successfully") 
     
     except:
@@ -654,7 +651,7 @@ def sat():
     roll_no = input("Enter the roll number of the student: ")
     name = input("Enter the name of the student: ")
     return
-
+    
 def application():
     display_application_menu(margin=-1)
     choice = input("Enter your choice: ")
