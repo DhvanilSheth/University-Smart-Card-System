@@ -650,7 +650,7 @@
         "db_name" : "AdminDB",
         "tables" : [
             {
-                "table" : "student_information",
+                "table" : "Student_Information",
                 "insert" : true,
                 "headers" : [
                     {
@@ -688,7 +688,7 @@
         "db_name" : "AccessDB",
         "tables" : [
             {
-                "table" : "logging_information",
+                "table" : "Access_Logs",
                 "insert" : true,
                 "headers" : [
                     {

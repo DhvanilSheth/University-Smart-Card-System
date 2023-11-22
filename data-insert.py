@@ -349,7 +349,7 @@ def makeAccessDB(host, user, password):
 
     return "AccessDB and Access_Logs table created successfully and data inserted!"
 
-def run(localhost, username, password):
+def data_insertion(localhost, username, password):
     makeSportsDB(localhost, username, password)
     makeHostelDB(localhost, username, password)
     makeMessDB(localhost, username, password)
@@ -357,4 +357,4 @@ def run(localhost, username, password):
     makeAccessDB(localhost, username, password)
     print("Data insertion into all databases and tables completed!")
     
-run('localhost', 'root', 'root')
+data_insertion('192.168.32.187', 'root', 'vhavle')

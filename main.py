@@ -11,11 +11,12 @@ SERVER_USER = 'root'
 SERVER_PASSWORD = 'vhavle'
 
 def main():
+
 	with open('data_sources_config.json', 'r') as file:
 		data_config = json.load(file)
 
-	sports_data, hostel_data, mess_data = extract(SERVER_IP, SERVER_USER, SERVER_PASSWORD)
-	integrated_data = transform(sports_data, hostel_data, mess_data)
+	sports_dfs, hostel_dfs, mess_dfs, admin_dfs, access_dfs = extract(SERVER_IP, SERVER_USER, SERVER_PASSWORD)
+	integrated_data = transform(sports_dfs, hostel_dfs, mess_dfs, admin_dfs, access_dfs)
 	load(integrated_data, SERVER_IP, SERVER_USER, SERVER_PASSWORD)
 
 if __name__ == "__main__":
