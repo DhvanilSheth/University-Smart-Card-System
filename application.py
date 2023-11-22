@@ -742,10 +742,10 @@ def sip():
     roll_no = input("Enter the roll number of the student: ")
 
     db_config = {
-        'host': IP,          # Replace with your actual database host
-        'user': USER,        # Replace with your actual database user
-        'password': PASS,    # Replace with your actual database password
-        'database': 'UniDB'  # Replace with your actual database name
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': 'UniDB'
     }
 
     connection = mysql.connector.connect(**db_config)
