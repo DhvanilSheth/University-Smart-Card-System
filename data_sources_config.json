@@ -1,693 +1,649 @@
 [
-  {
-    "db_name": "SportsDB",
-    "tables": [
-      {
-        "table": "pool",
-        "insert": true,
-        "path": "./Data/pool.csv",
-        "headers": [
-          {
-            "Name": "Sr_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Card_Number",
-            "Type": "INT"
-          },
-          {
-            "Name": "Membership_Expiry",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Sex",
-            "Type": "VARCHAR(10)"
-          },
-          {
-            "Name": "Department",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Presence",
-            "Type": "BOOLEAN"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "Sr_No"
+    {
+        "db_name": "SportsDB",
+        "tables": [
+            {
+                "table": "pool",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Sr_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Card_Number",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Membership_Expiry",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Sex",
+                        "Type": "VARCHAR(10)"
+                    },
+                    {
+                        "Name": "Department",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Presence",
+                        "Type": "BOOLEAN"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "Sr_No"
+                ]
+            },
+            {
+                "table": "pool_non_membership",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Tax_ID",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Payment",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "In_Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Sign",
+                        "Type": "VARCHAR(255)"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "In_Time",
+                    "Date"
+                ]
+            },
+            {
+                "table": "gym",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Room_No",
+                        "Type": "VARCHAR(10)"
+                    },
+                    {
+                        "Name": "Contact",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "In_Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Out_Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Signature",
+                        "Type": "VARCHAR(255)"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "In_Time",
+                    "Date"
+                ]
+            },
+            {
+                "table": "equipment_requests",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Room_No",
+                        "Type": "VARCHAR(10)"
+                    },
+                    {
+                        "Name": "Contact",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Equipment_Issued",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Quantity",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "In_Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Out_Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Signature",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Remarks",
+                        "Type": "TEXT"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "In_Time",
+                    "Date"
+                ]
+            },
+            {
+                "table": "equipment_loss",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Room_No",
+                        "Type": "VARCHAR(10)"
+                    },
+                    {
+                        "Name": "Contact",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Equipment",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Remarks",
+                        "Type": "TEXT"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "Time",
+                    "Date"
+                ]
+            },
+            {
+                "table": "medicine_sports",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Contact_No",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Quantity",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Medicine_Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Student_Sign",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Security_Sign",
+                        "Type": "VARCHAR(255)"
+                    }
+                ],
+                "primary_key": [
+                    "Contact_No",
+                    "Time",
+                    "Date"
+                ]
+            }
         ]
-      },
-      {
-        "table": "pool_non_membership",
-        "insert": true,
-        "path": "./Data/pool_non_membership.csv",
-        "headers": [
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Tax_ID",
-            "Type": "INT"
-          },
-          {
-            "Name": "Payment",
-            "Type": "INT"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "In_Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Sign",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "In_Time",
-          "Date"
+    },
+    {
+        "db_name": "MessDB",
+        "tables": [
+            {
+                "table": "mess_1_data",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Sr_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Phone_Number",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Cash",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "PayTM",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "Total",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "Date_of_Purchase",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Breakfast",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "Lunch",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "Snack",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "Dinner",
+                        "Type": "DECIMAL(10, 2)"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "Sr_No"
+                ]
+            },
+            {
+                "table": "mess_2_data",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Sale_ID",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Sale_Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Coupon_Type",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Phone_Number",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Roll_NO",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Paytm",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "Cash",
+                        "Type": "DECIMAL(10, 2)"
+                    },
+                    {
+                        "Name": "Total_Amount",
+                        "Type": "DECIMAL(10, 2)"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "Sale_ID"
+                ]
+            }
         ]
-      },
-      {
-        "table": "gym",
-        "insert": true,
-        "path": "./Data/gym.csv",
-        "headers": [
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Room_No",
-            "Type": "VARCHAR(10)"
-          },
-          {
-            "Name": "Contact",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "In_Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Out_Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Signature",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "In_Time",
-          "Date"
+    },
+    {
+        "db_name": "HostelDB",
+        "tables": [
+            {
+                "table": "home_leave_data",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Contact",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Out_Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Room_No",
+                        "Type": "VARCHAR(10)"
+                    },
+                    {
+                        "Name": "To_Address",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Return_Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Return_Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Signature",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Security_Signature",
+                        "Type": "VARCHAR(255)"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "Out_Time",
+                    "Date"
+                ]
+            },
+            {
+                "table": "hostel_data",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Sr_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Room_Type",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Floor",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Room_No",
+                        "Type": "VARCHAR(10)"
+                    },
+                    {
+                        "Name": "Student_Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Course_Type",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Year",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Email_ID",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Fees",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Security_Amt",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Bank_ID",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Contact",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Remarks",
+                        "Type": "TEXT"
+                    },
+                    {
+                        "Name": "From_Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "To_Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name_Share",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Roll_No_Share",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Course_Share",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Year_Share",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Email_ID_Share",
+                        "Type": "VARCHAR(255)"
+                    }
+                ],
+                "primary_key": [
+                    "Roll_No",
+                    "Sr_No"
+                ]
+            },
+            {
+                "table": "medicine_data",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Contact",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Medicine_Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Quantity",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Room_No",
+                        "Type": "VARCHAR(10)"
+                    },
+                    {
+                        "Name": "Time",
+                        "Type": "TIME"
+                    },
+                    {
+                        "Name": "Roll_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Signature",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Purpose",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Security_Signature",
+                        "Type": "VARCHAR(255)"
+                    }
+                ],
+                "primary_key": [
+                    "Contact",
+                    "Time",
+                    "Date"
+                ]
+            },
+            {
+                "table": "package_collection_data",
+                "insert": true,
+                "headers": [
+                    {
+                        "Name": "Sr_No",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Date",
+                        "Type": "DATE"
+                    },
+                    {
+                        "Name": "Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Room",
+                        "Type": "VARCHAR(50)"
+                    },
+                    {
+                        "Name": "Delivery_Driver_Name",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Driver_Contact",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Company",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Quantity",
+                        "Type": "INT"
+                    },
+                    {
+                        "Name": "Pick_Up_Student",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Pick_Up_Student_Number",
+                        "Type": "BIGINT"
+                    },
+                    {
+                        "Name": "Signature",
+                        "Type": "VARCHAR(255)"
+                    },
+                    {
+                        "Name": "Security_Signature",
+                        "Type": "VARCHAR(255)"
+                    }
+                ],
+                "primary_key": [
+                    "Pick_Up_Student_Number",
+                    "Driver_Contact",
+                    "Sr_No"
+                ]
+            }
         ]
-      },
-      {
-        "table": "equipment_requests",
-        "insert": true,
-        "path": "./Data/equipment_requests.csv",
-        "headers": [
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Room_No",
-            "Type": "VARCHAR(10)"
-          },
-          {
-            "Name": "Contact",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Equipment_Issued",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Quantity",
-            "Type": "INT"
-          },
-          {
-            "Name": "In_Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Out_Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Signature",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Remarks",
-            "Type": "TEXT"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "In_Time",
-          "Date"
-        ]
-      },
-      {
-        "table": "equipment_loss",
-        "insert": true,
-        "path": "./Data/equipment_loss.csv",
-        "headers": [
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Room_No",
-            "Type": "VARCHAR(10)"
-          },
-          {
-            "Name": "Contact",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Equipment",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Remarks",
-            "Type": "TEXT"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "Time",
-          "Date"
-        ]
-      },
-      {
-        "table": "medicine_sports",
-        "insert": true,
-        "path": "./Data/medicine_sports.csv",
-        "headers": [
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Contact_No",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Quantity",
-            "Type": "INT"
-          },
-          {
-            "Name": "Medicine_Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Student_Sign",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Security_Sign",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Contact_No",
-          "Time",
-          "Date"
-        ]
-      },
-      {
-        "table": "Apple",
-        "insert": false,
-        "path": "./Data/Apple.csv",
-        "headers": [
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          }
-        ],
-        "primary_key": [
-          "Roll_No"
-        ]
-      }
-    ]
-  },
-  {
-    "db_name": "MessDB",
-    "tables": [
-      {
-        "table": "mess_1_data",
-        "insert": true,
-        "path": "./Data/mess_1_data.csv",
-        "headers": [
-          {
-            "Name": "Sr_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Phone_Number",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Cash",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "PayTM",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "Total",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "Date_of_Purchase",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Breakfast",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "Lunch",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "Snack",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "Dinner",
-            "Type": "DECIMAL(10, 2)"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "Sr_No"
-        ]
-      },
-      {
-        "table": "mess_2_data",
-        "insert": true,
-        "path": "./Data/mess_2_data.csv",
-        "headers": [
-          {
-            "Name": "Sale_ID",
-            "Type": "INT"
-          },
-          {
-            "Name": "Sale_Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Coupon_Type",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Phone_Number",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Roll_NO",
-            "Type": "INT"
-          },
-          {
-            "Name": "Paytm",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "Cash",
-            "Type": "DECIMAL(10, 2)"
-          },
-          {
-            "Name": "Total_Amount",
-            "Type": "DECIMAL(10, 2)"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "Sale_ID"
-        ]
-      },
-      {
-        "table": "mess_3_data",
-        "insert": false,
-        "path": "./Data/mess_3_data.csv",
-        "headers": [
-          {
-            "Name": "Sr_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Sr_No"
-        ]
-      }
-    ]
-  },
-  {
-    "db_name": "HostelDB",
-    "tables": [
-      {
-        "table": "home_leave_data",
-        "insert": true,
-        "path": "./Data/home_leave_data.csv",
-        "headers": [
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Contact",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Out_Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Room_No",
-            "Type": "VARCHAR(10)"
-          },
-          {
-            "Name": "To_Address",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Return_Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Return_Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Signature",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Security_Signature",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "Out_Time",
-          "Date"
-        ]
-      },
-      {
-        "table": "hostel_data",
-        "insert": true,
-        "path": "./Data/hostel_data.csv",
-        "headers": [
-          {
-            "Name": "Sr_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Room_Type",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Floor",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Room_No",
-            "Type": "VARCHAR(10)"
-          },
-          {
-            "Name": "Student_Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Course_Type",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Year",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Email_ID",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Fees",
-            "Type": "INT"
-          },
-          {
-            "Name": "Security_Amt",
-            "Type": "INT"
-          },
-          {
-            "Name": "Bank_ID",
-            "Type": "INT"
-          },
-          {
-            "Name": "Contact",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Remarks",
-            "Type": "TEXT"
-          },
-          {
-            "Name": "From_Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "To_Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name_Share",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Roll_No_Share",
-            "Type": "INT"
-          },
-          {
-            "Name": "Course_Share",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Year_Share",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Email_ID_Share",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Roll_No",
-          "Sr_No"
-        ]
-      },
-      {
-        "table": "medicine_data",
-        "insert": true,
-        "path": "./Data/medicine_data.csv",
-        "headers": [
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Contact",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Medicine_Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Quantity",
-            "Type": "INT"
-          },
-          {
-            "Name": "Room_No",
-            "Type": "VARCHAR(10)"
-          },
-          {
-            "Name": "Time",
-            "Type": "TIME"
-          },
-          {
-            "Name": "Roll_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Signature",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Purpose",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Security_Signature",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Contact",
-          "Time",
-          "Date"
-        ]
-      },
-      {
-        "table": "package_collection_data",
-        "insert": true,
-        "path": "./Data/package_collection_data.csv",
-        "headers": [
-          {
-            "Name": "Sr_No",
-            "Type": "INT"
-          },
-          {
-            "Name": "Date",
-            "Type": "DATE"
-          },
-          {
-            "Name": "Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Room",
-            "Type": "VARCHAR(50)"
-          },
-          {
-            "Name": "Delivery_Driver_Name",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Driver_Contact",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Company",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Quantity",
-            "Type": "INT"
-          },
-          {
-            "Name": "Pick_Up_Student",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Pick_Up_Student_Number",
-            "Type": "BIGINT"
-          },
-          {
-            "Name": "Signature",
-            "Type": "VARCHAR(255)"
-          },
-          {
-            "Name": "Security_Signature",
-            "Type": "VARCHAR(255)"
-          }
-        ],
-        "primary_key": [
-          "Pick_Up_Student_Number",
-          "Driver_Contact",
-          "Sr_No"
-        ]
-      }
-    ]
-  }
+    }
 ]
