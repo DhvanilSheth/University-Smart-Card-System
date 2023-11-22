@@ -11,9 +11,9 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-IP = os.getenv("IP")
-USER = os.getenv("USERNAME")
-PASS = os.getenv("PASSWORD")
+IP = os.getenv("DB_IP")
+USER = os.getenv("DB_USERNAME")
+PASS = os.getenv("DB_PASSWORD")
 
 DYNAMIC_DATA = 'dynamic-data.py'
 ETL_EXTRACT = 'extract.py'

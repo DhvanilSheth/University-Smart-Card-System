@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-IP = os.getenv("IP")
-USER = os.getenv("USERNAME")
-PASS = os.getenv("PASSWORD")
+IP = os.getenv("DB_IP")
+USER = os.getenv("DB_USERNAME")
+PASS = os.getenv("DB_PASSWORD")
 
 def insert_data_from_csv(table_name, csv_path, connection):
     df = pd.read_csv(csv_path)
