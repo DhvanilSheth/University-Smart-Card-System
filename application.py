@@ -751,39 +751,37 @@ def sip():
     connection = mysql.connector.connect(**db_config)
 
     try:
-        connection = mysql.connector.connect(**db_config)
         cursor = connection.cursor()
 
-        # Define queries for different sources
-        queries = {
-            "Student Information": "SELECT * FROM student_data WHERE Roll_No = %s",
-            "Hostel Information": "SELECT * FROM hostel_data WHERE Roll_No = %s",
-            "Mess Information": "SELECT * FROM Mess_Global WHERE Roll_No = %s",
-            "Sports Facility Access": "SELECT * FROM Pool_Global WHERE Roll_No = %s",
-            "Sports Equipment Usage": "SELECT * FROM Equipment_Global WHERE Roll_No = %s",
-            "Medicine Usage": "SELECT * FROM Medicine_Global WHERE Roll_No = %s"
-        }
-
-        # Consolidate all results
-        consolidated_results = {}
-        for title, query in queries.items():
-            cursor.execute(query, (roll_no,))
+        # Function to execute query and return results as DataFrame
+        def fetch_data(query, params):
+            cursor.execute(query, params)
             rows = cursor.fetchall()
             if rows:
                 headers = [desc[0] for desc in cursor.description]
-                consolidated_results[title] = {"headers": headers, "rows": rows}
+                return pd.DataFrame(rows, columns=headers)
+            return pd.DataFrame()
 
-        # Display the consolidated results
-        if consolidated_results:
-            for category, data in consolidated_results.items():
-                print(f"{category}:")
-                print(tabulate(data["rows"], headers=data["headers"], tablefmt="pretty"))
-                print("\n")
+        # Fetch data for each relevant table/view
+        student_info_df = fetch_data("SELECT * FROM student_data WHERE Roll_No = %s", (roll_no,))
+        hostel_info_df = fetch_data("SELECT * FROM hostel_data WHERE Roll_No = %s", (roll_no,))
+        mess_info_df = fetch_data("SELECT * FROM Mess_Global WHERE Roll_No = %s", (roll_no,))
+        pool_info_df = fetch_data("SELECT * FROM Pool_Global WHERE Roll_No = %s", (roll_no,))
+        equipment_info_df = fetch_data("SELECT * FROM Equipment_Global WHERE Roll_No = %s", (roll_no,))
+        medicine_info_df = fetch_data("SELECT * FROM Medicine_Global WHERE Roll_No = %s", (roll_no,))
+
+        # Combine all DataFrames into one
+        combined_df = pd.concat([student_info_df, hostel_info_df, mess_info_df, pool_info_df, equipment_info_df, medicine_info_df], axis=0, ignore_index=True)
+        combined_df.fillna('', inplace=True)
+
+        # Display the final combined table
+        if not combined_df.empty:
+            print(tabulate(combined_df, headers='keys', tablefmt="pretty", showindex=False))
         else:
             print("No data found for the provided roll number.")
 
     except mysql.connector.Error as e:
-        print(f"Database Error: {e}")
+        print(f"Error: {e}")
 
     finally:
         if connection.is_connected():
@@ -1011,14 +1009,14 @@ def sfu():
         connection = mysql.connector.connect(**db_config)
         try:
             cursor = connection.cursor()
-            table_query = f"SELECT Roll_No, Name, 'Gym Data' AS Type, In_Time, Out_Time, Date AS In_Date, NULL AS Out_Date FROM gym_data WHERE Roll_No = {roll_no}"
+            table_query = f"SELECT Roll_No, Name, 'Gym Data' AS Type, In_Time, Out_Time, Date AS In_Date FROM gym_data WHERE Roll_No = {roll_no}"
             cursor.execute(table_query)
             gym_data_result = cursor.fetchall()
-            view_query = f"SELECT Roll_No, Name, 'Pool View' AS Type, InTime, NULL AS Out_Time, Date AS In_Date, NULL AS Out_Date FROM PoolGlobalView WHERE Roll_No = {roll_no}"
+            view_query = f"SELECT Roll_No, Name, 'Pool View' AS Type, InTime, NULL AS Out_Time, Date AS In_Date FROM Pool_Global WHERE Roll_No = {roll_no}"
             cursor.execute(view_query)
             pool_view_result = cursor.fetchall()
             common_table = gym_data_result + pool_view_result
-            common_headers = ["Roll_No", "Name", "Type", "In_Time", "Out_Time", "In_Date", "Out_Date"]
+            common_headers = ["Roll_No", "Name", "Type", "In_Time", "Out_Time", "Date"]
             print(tabulate(common_table, headers=common_headers, tablefmt="pretty"))
 
         finally:
