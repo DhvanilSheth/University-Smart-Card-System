@@ -273,15 +273,14 @@ def display_application_menu(char1='*', margin=5):
     left_margin = margin
 
     menu = [
-        "* 1. Student Performance and Wellness Analysis",
-        "* 2. Financial Management and Billing",
-        "* 3. Student Identity Profile",
-        "* 4. Mess Meal Tracking",
-        "* 5. Student Sports Inventory Management",
-        "* 6. Hostel Facilities Usage",
-        "* 7. Sports Facility Usage",
-        "* 8. Student Access Tracking",
-        "* 9. Exit"
+        "* 1. Financial Management Analytics",
+        "* 2. Student Identity Profile",
+        "* 3. Mess Meal Tracking",
+        "* 4. Sports Inventory Management",
+        "* 5. Hostel Facilities Usage",
+        "* 6. Sports Facilities Usage",
+        "* 7. Student Access Tracking",
+        "* 8. Exit"
     ]
 
     for item in menu:
@@ -737,30 +736,27 @@ def application():
     display_application_menu(margin=-1)
     choice = input("Enter your choice: ")
     if choice == "1":
-        display_title_card("Student Performance and Wellness Analysis selected")
-        spwa()
-    elif choice == "2":
-        display_title_card("Financial Management and Billin selected")
+        display_title_card("Financial Management Analytics selected")
         fmb()
-    elif choice == "3":
+    elif choice == "2":
         display_title_card("Student Identity Profile selected")
         sip()
-    elif choice == "4":
+    elif choice == "3":
         display_title_card("Mess Meal Tracking selected")
         mmt()
-    elif choice == "5":
+    elif choice == "4":
         display_title_card("Sports Inventory Management selected")
         sim()
-    elif choice == "6":
-        display_title_card("Hostel Facilties Usage selected")
+    elif choice == "5":
+        display_title_card("Hostel Facilities Usage selected")
         hfu()
-    elif choice == "7":
-        display_title_card("Sports Facility Usage selected")
+    elif choice == "6":
+        display_title_card("Sports Facilities Usage selected")
         sfu()
-    elif choice == "8":
+    elif choice == "7":
         display_title_card("Student Access Tracking selected")
         sat()
-    elif choice == "9":
+    elif choice == "8":
         display_title_card("Exiting the application")
         return
           
