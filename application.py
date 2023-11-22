@@ -952,9 +952,36 @@ def hfu():
             connection.close()
 
 def sfu():
-    roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+    try:
+        roll_no = input("Enter the roll number of the student: ")
+        db_config = {
+            'host': IP,
+            'user': USER,
+            'password': PASS,
+            'database': 'UniDB'
+        }
+        connection = mysql.connector.connect(**db_config)
+        try:
+            cursor = connection.cursor()
+            table_query = f"SELECT Roll_No, Name, 'Gym Data' AS Type, In_Time, Out_Time, Date AS In_Date, NULL AS Out_Date FROM gym_data WHERE Roll_No = {roll_no}"
+            cursor.execute(table_query)
+            gym_data_result = cursor.fetchall()
+            view_query = f"SELECT Roll_No, Name, 'Pool View' AS Type, InTime, NULL AS Out_Time, Date AS In_Date, NULL AS Out_Date FROM PoolGlobalView WHERE Roll_No = {roll_no}"
+            cursor.execute(view_query)
+            pool_view_result = cursor.fetchall()
+            common_table = gym_data_result + pool_view_result
+            common_headers = ["Roll_No", "Name", "Type", "In_Time", "Out_Time", "In_Date", "Out_Date"]
+            print(tabulate(common_table, headers=common_headers, tablefmt="pretty"))
+
+        finally:
+            cursor.close()
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        if connection:
+            connection.close()
 
 def sat():
     try:
