@@ -9,6 +9,7 @@ from tabulate import tabulate
 import mysql.connector
 from dotenv import load_dotenv
 import os
+import pandas as pd
 
 load_dotenv()
 IP = os.getenv("DB_IP")
@@ -739,8 +740,57 @@ def fma():
 
 def sip():
     roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+
+    db_config = {
+        'host': IP,          # Replace with your actual database host
+        'user': USER,        # Replace with your actual database user
+        'password': PASS,    # Replace with your actual database password
+        'database': 'UniDB'  # Replace with your actual database name
+    }
+    connection = mysql.connector.connect(**db_config)
+
+    try:
+        cursor = connection.cursor()
+
+        # Initialize an empty DataFrame for consolidated data
+        consolidated_data = pd.DataFrame()
+
+        # Define queries for different data sources
+        queries = {
+            "student_data": f"SELECT * FROM student_data WHERE Roll_No = '{roll_no}'",
+            "hostel_data": f"SELECT * FROM hostel_data WHERE Roll_No = '{roll_no}'",
+            "Mess_Global": f"SELECT * FROM Mess_Global WHERE Roll_No = '{roll_no}'",
+            "Pool_Global": f"SELECT * FROM Pool_Global WHERE Roll_No = '{roll_no}'",
+            "Equipment_Global": f"SELECT * FROM Equipment_Global WHERE Roll_No = '{roll_no}'",
+            "Medicine_Global": f"SELECT * FROM Medicine_Global WHERE Roll_No = '{roll_no}'"
+        }
+
+        # Execute each query and add data to the consolidated DataFrame
+        for source, query in queries.items():
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            headers = [desc[0] for desc in cursor.description]
+
+            # Convert query results to a DataFrame
+            df = pd.DataFrame(rows, columns=headers)
+            df['Source'] = source  # Add a column to identify the source table/view
+
+            # Concatenate with the consolidated DataFrame
+            consolidated_data = pd.concat([consolidated_data, df], ignore_index=True)
+
+        # Display the consolidated data
+        if not consolidated_data.empty:
+            print(tabulate(consolidated_data, headers='keys', tablefmt='pretty'))
+        else:
+            print("No data found for the provided roll number.")
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
 
 def mmt():
     roll_no = input("Enter the roll number of the student: ")
