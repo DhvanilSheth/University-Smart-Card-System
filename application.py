@@ -37,6 +37,43 @@ GREEN = "\033[92m"
 NORMAL = "\033[0m"
 BLUE = "\033[94m"
 
+def deleteRow(table_name, serial_number):
+    db_config = {
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': 'UniDB'
+    }
+
+    connection = mysql.connector.connect(**db_config)
+    try:
+        cursor = connection.cursor()
+        query = f"DELETE FROM {table_name} WHERE Sr_No = {serial_number}"
+        cursor.execute(query)
+        connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
+
+def getRows(table_name):
+    db_config = {
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': 'UniDB'
+    }
+
+    connection = mysql.connector.connect(**db_config)
+    try:
+        cursor = connection.cursor()
+        query = f"SELECT * FROM {table_name}"
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        return rows
+    finally:
+        cursor.close()
+        connection.close()
+        
 def getRollNo():
     db_config = {
         'host': IP,
@@ -563,9 +600,53 @@ def insertEntry():
     except:
         display_error_card("Error in Inserting Data")   
 
-
 def deleteEntry():
-    return
+    try:
+        with open('data_sources_config.json', 'r') as config_file:
+            config_data = json.load(config_file)
+
+        databases = [db_config["db_name"] for db_config in config_data if db_config["db_name"] != "AccessDB"]
+        
+        # Select a Database
+        print("Select a Database:")
+        for i, db_name in enumerate(databases):
+            print(f"{i + 1}. {db_name}")
+
+        selected_db_index = int(input("Enter the index of the Database you want to edit: ")) - 1
+        selected_db = databases[selected_db_index]
+        
+        # Get tables for the selected database
+        table_mapping = {db_config["db_name"]: [table["table"] for table in db_config["tables"]] for db_config in config_data}
+        tables = table_mapping[selected_db]
+        
+        # Select a Table
+        print(f"\nTables in {selected_db}:")
+        for i, table_name in enumerate(tables):
+            print(f"{i + 1}. {table_name}")
+
+        selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
+        selected_table = tables[selected_table_index]
+
+        # Get headers and types using getTableData
+        headers, types = getTableData(selected_table)
+
+        # Display data in the table using getRows
+        rows = getRows(selected_table)
+        print("\nExisting Data in the Table:")
+        print(tabulate(rows, headers=headers, tablefmt="pretty"))
+
+        # Ask the user for the serial number of the row to delete
+        try:
+            serial_to_delete = int(input("Enter the serial number of the row you want to delete: "))
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+            return
+        # Delete the selected row
+        deleteRow(selected_table, serial_to_delete)
+        print("\nRow Deleted Successfully")
+
+    except Exception as e:
+        display_error_card("Error in Deleting Data")
 
 def runDGDI():
     print_progress_bar(2,0)

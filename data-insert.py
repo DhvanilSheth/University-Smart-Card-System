@@ -37,8 +37,8 @@ def makeSportsDB(host, user, password):
     cursor.execute("USE SportsDB")
 
     create_commands = {
-        "pool_non_membership": """
-        CREATE TABLE IF NOT EXISTS pool_non_membership (
+        "swimming_pool_non_membership_data": """
+        CREATE TABLE IF NOT EXISTS swimming_pool_non_membership_data (
             Date DATE,
             Name VARCHAR(255),
             Tax_ID INT,
@@ -48,8 +48,8 @@ def makeSportsDB(host, user, password):
             Sign VARCHAR(255)
         )
         """,
-        "pool": """
-        CREATE TABLE IF NOT EXISTS pool (
+        "swimming_pool_data": """
+        CREATE TABLE IF NOT EXISTS swimming_pool_data (
             Sr_No INT,
             Card_Number INT,
             Membership_Expiry DATE,
@@ -60,8 +60,8 @@ def makeSportsDB(host, user, password):
             Presence BOOLEAN
         )
         """,
-        "gym": """
-        CREATE TABLE IF NOT EXISTS gym (
+        "gym_data": """
+        CREATE TABLE IF NOT EXISTS gym_data (
             Date DATE,
             Name VARCHAR(255),
             Roll_No INT,
@@ -72,8 +72,8 @@ def makeSportsDB(host, user, password):
             Signature VARCHAR(255)
         )
         """,
-        "equipment_requests": """
-        CREATE TABLE IF NOT EXISTS equipment_requests (
+        "equipment_requests_data": """
+        CREATE TABLE IF NOT EXISTS equipment_requests_data (
             Date DATE,
             Name VARCHAR(255),
             Roll_No INT,
@@ -87,8 +87,8 @@ def makeSportsDB(host, user, password):
             Remarks TEXT
         )
         """,
-        "equipment_loss": """
-        CREATE TABLE IF NOT EXISTS equipment_loss (
+        "equipment_loss_data": """
+        CREATE TABLE IF NOT EXISTS equipment_loss_data (
             Date DATE,
             Name VARCHAR(255),
             Roll_No INT,
@@ -99,8 +99,8 @@ def makeSportsDB(host, user, password):
             Remarks TEXT
         )
         """,
-        "medicine_sports": """
-        CREATE TABLE IF NOT EXISTS medicine_sports (
+        "medicine_sports_data": """
+        CREATE TABLE IF NOT EXISTS medicine_sports_data (
             Date DATE,
             Time TIME,
             Name VARCHAR(255),
@@ -116,12 +116,12 @@ def makeSportsDB(host, user, password):
     execute_create_commands(cursor, create_commands)
 
     csv_files = {
-        "pool_non_membership": "./Data/pool_non_membership.csv",
-        "pool": "./Data/pool.csv",
-        "gym": "./Data/gym.csv",
-        "equipment_requests": "./Data/equipment_requests.csv",
-        "equipment_loss": "./Data/equipment_loss.csv",
-        "medicine_sports": "./Data/medicine_sports.csv"
+        "swimming_pool_non_membership_data": "./Data/swimming_pool_non_membership_data.csv",
+        "swimming_pool_data": "./Data/swimming_pool_data.csv",
+        "gym_data": "./Data/gym_data.csv",
+        "equipment_requests_data": "./Data/equipment_requests_data.csv",
+        "equipment_loss_data": "./Data/equipment_loss_data.csv",
+        "medicine_sports_data": "./Data/medicine_sports_data.csv"
     }
 
     try:
