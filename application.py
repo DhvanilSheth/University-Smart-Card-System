@@ -716,13 +716,13 @@ def fma():
             table_result = cursor.fetchall()
 
             # Query the view for specific columns
-            view_query = f"SELECT Roll_No, Name, Cash, Date_of_Purchase FROM Mess_Global WHERE Roll_No = {roll_no}"
+            view_query = f"SELECT Roll_No, Name, Cash, TransactionDate FROM Mess_Global WHERE Roll_No = {roll_no}"
             cursor.execute(view_query)
             view_result = cursor.fetchall()
 
             # Combine the results into a common table
             common_table = []
-            common_headers = ["Roll_No", "Name", "Cash", "Date_of_Purchase", "Fees", "From_Date"]
+            common_headers = ["Roll_No", "Name", "Cash", "TransactionDate", "Fees", "From_Date"]
 
             for row in table_result:
                 common_table.append(list(row) + [None, None])  # Add placeholders for view columns
@@ -731,7 +731,7 @@ def fma():
                 existing_row = next((item for item in common_table if item[0] == row[0]), None)
                 if existing_row:
                     existing_row[2] = row[2]  # Update Cash column
-                    existing_row[3] = row[3]  # Update Date_of_Purchase column
+                    existing_row[3] = row[3]  # Update TransactionDate column
                 else:
                     common_table.append([row[0], row[1], row[2], row[3], None, None])  # Add placeholders for table columns
 
