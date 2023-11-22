@@ -18,9 +18,9 @@ def load(dfs, host, user, password, database="UniDB"):
 
     # Load data into the new table
     # table_names = {0:"integrated_data"}
-    table_names = {0:"sports_data", 1:"hostel_data", 2:"mess_data", 3:"admin_data", 4:"access_data", 
-                   5:"sports_data1", 6:"hostel_data1", 7:"mess_data1", 8:"admin_data1", 9:"access_data1",
-                   10:"sports_data2", 11:"hostel_data2", 12:"mess_data2", 13:"admin_data2", 14:"access_data2"}
+    table_names = {0:"swimming_pool_data", 1:"swimming_pool_non_membership_data", 2:"gym_data", 3:"equipment_data", 4:"equipment_loss_data", 
+                   5:"sports_medicine_data", 6:"home_leave_data", 7:"hostel_data", 8:"hostel_medicine_data", 9:"courier_data",
+                   10:"mess_1_data", 11:"mess_2_data", 12:"student_data", 13:"home_leave_data", 14:"empty_data"}
     for df in range(len(dfs)):
         dfs[df].to_sql(name=table_names[df], con=engine, if_exists='replace', index=False)
 
