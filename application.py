@@ -969,7 +969,7 @@ def hfu():
                 Date, 
                 NULL 
             FROM 
-                package_collection_data 
+                courier_data 
             WHERE 
                 Name = (SELECT Student_Name FROM hostel_data WHERE Roll_No = '{roll_no}')
             ORDER BY 
