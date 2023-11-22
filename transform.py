@@ -30,7 +30,6 @@ def transform(sports_data, hostel_data, mess_data, admin_data, access_data):
 
         return df
 
-
     # Process each DataFrame in the dictionaries
     for data_dict in [sports_data, hostel_data, mess_data, admin_data, access_data]:
         for table_name, df in data_dict.items():
@@ -39,6 +38,3 @@ def transform(sports_data, hostel_data, mess_data, admin_data, access_data):
 
     print("Data Integration Complete")
     return integrated_data_list
-
-# Example usage
-# integrated_df_list = transform(sports_dfs, hostel_dfs, mess_dfs, admin_dfs, access_dfs)
