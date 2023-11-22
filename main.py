@@ -1,6 +1,6 @@
 from extract import *
-from transform import *
-from load import *
+from transform2 import *
+from load2 import *
 
 import mysql.connector
 import json
