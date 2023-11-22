@@ -751,6 +751,7 @@ def sip():
     connection = mysql.connector.connect(**db_config)
 
     try:
+        connection = mysql.connector.connect(**db_config)
         cursor = connection.cursor()
 
         # Define queries for different sources
@@ -764,27 +765,25 @@ def sip():
         }
 
         # Consolidate all results
-        consolidated_results = []
-        common_headers = None
+        consolidated_results = {}
         for title, query in queries.items():
             cursor.execute(query, (roll_no,))
             rows = cursor.fetchall()
-
-            # Combine the results into a common table format
             if rows:
-                if not common_headers:
-                    common_headers = ["Category"] + [desc[0] for desc in cursor.description]
-                for row in rows:
-                    consolidated_results.append([title] + list(row))
+                headers = [desc[0] for desc in cursor.description]
+                consolidated_results[title] = {"headers": headers, "rows": rows}
 
         # Display the consolidated results
         if consolidated_results:
-            print(tabulate(consolidated_results, headers=common_headers, tablefmt="pretty"))
+            for category, data in consolidated_results.items():
+                print(f"{category}:")
+                print(tabulate(data["rows"], headers=data["headers"], tablefmt="pretty"))
+                print("\n")
         else:
             print("No data found for the provided roll number.")
 
     except mysql.connector.Error as e:
-        print(f"Error: {e}")
+        print(f"Database Error: {e}")
 
     finally:
         if connection.is_connected():
