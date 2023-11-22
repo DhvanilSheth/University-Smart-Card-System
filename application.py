@@ -136,7 +136,28 @@ def display_settings_menu(char1='*', margin=5):
         item_with_margin = f"{item.ljust(box_width - 2 * left_margin - 4)} *"
         print(item_with_margin) 
     print() 
+    
+def display_application_menu(char1='*', margin=5):
+    terminal_width, _ = shutil.get_terminal_size()
+    box_width = terminal_width
+    left_margin = margin
 
+    menu = [
+        "* 1. Student Performance and Wellness Analysis",
+        "* 2. Financial Management and Billing",
+        "* 3. Student Identity Profile",
+        "* 4. Mess Meal Tracking",
+        "* 5. Student Sports Inventory Management",
+        "* 6. Hostel Facilities Usage",
+        "* 7. Sports Facility Usage",
+        "* 8. Exit"
+    ]
+
+    for item in menu:
+        item_with_margin = f"{item.ljust(box_width - 2 * left_margin - 4)} *"
+        print(item_with_margin) 
+    print() 
+    
 def insert_new_data(json_data, json_file_path):
     completed = 0
     segments = 5
@@ -418,10 +439,69 @@ def setting():
         exit(0)
     else:
         display_title_card("Invalid choice. Try again")
+        
+def spwa():
+    roll_no = input("Enter the roll number of the student: ")
+    name = input("Enter the name of the student: ")
+
+def fmb():
+    roll_no = input("Enter the roll number of the student: ")
+    name = input("Enter the name of the student: ")
+    return
+
+def sip():
+    roll_no = input("Enter the roll number of the student: ")
+    name = input("Enter the name of the student: ")
+    return
+
+def mmt():
+    roll_no = input("Enter the roll number of the student: ")
+    name = input("Enter the name of the student: ")
+    return
+
+def sim():
+    start = input("Enter the start time of the query: ")
+    end = input("Enter the end time of the query: ")
+    return
+
+def hfu():
+    roll_no = input("Enter the roll number of the student: ")
+    name = input("Enter the name of the student: ")
+    return
+
+def sfu():
+    roll_no = input("Enter the roll number of the student: ")
+    name = input("Enter the name of the student: ")
+    return
 
 def application():
-    return
-      
+    display_application_menu(margin=-1)
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        display_title_card("Student Performance and Wellness Analysis selected")
+        spwa()
+    elif choice == "2":
+        display_title_card("Financial Management and Billin selected")
+        fmb()
+    elif choice == "3":
+        display_title_card("Student Identity Profile selected")
+        sip()
+    elif choice == "4":
+        display_title_card("Mess Meal Tracking selected")
+        mmt()
+    elif choice == "5":
+        display_title_card("Sports Inventory Management selected")
+        sim()
+    elif choice == "6":
+        display_title_card("Hostel Facilties Usage selected")
+        hfu()
+    elif choice == "7":
+        display_title_card("Sports Facility Usage selected")
+        sfu()
+    elif choice == "8":
+        display_title_card("Exiting the application")
+        return
+          
 def dynamic():
     print_progress_bar(2,0)
     subprocess.run(['python', DYNAMIC_DATA])
