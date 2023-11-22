@@ -79,12 +79,12 @@ def getRollNo():
         'host': IP,
         'user': USER,
         'password': PASS,
-        'database': 'AdminDB'
+        'database': 'UniDB'
     }
     connection = mysql.connector.connect(**db_config)
     try:
         cursor = connection.cursor()
-        query = "SELECT Roll_No FROM Student_Information"
+        query = "SELECT Roll_No FROM student_data"
         cursor.execute(query)
         roll_numbers = [result[0] for result in cursor.fetchall()]
         return roll_numbers
@@ -144,12 +144,12 @@ def getStudentInfo(roll_no):
         'host': IP,
         'user': USER,
         'password': PASS,
-        'database': 'AdminDB'
+        'database': 'UniDB'
     }
     connection = mysql.connector.connect(**db_config)
     try:
         cursor = connection.cursor(dictionary=True)
-        query = f"SELECT * FROM Student_Information WHERE Roll_No = {roll_no}"
+        query = f"SELECT * FROM student_data WHERE Roll_No = {roll_no}"
         cursor.execute(query)
         student_info = cursor.fetchone()
         return student_info

@@ -4,7 +4,7 @@ import pandas as pd
 
 def transform(sports_data, hostel_data, mess_data, admin_data, access_data):
     integrated_data_list = []
-    student_info_df = admin_data['Student_Information'].copy()
+    student_info_df = admin_data['student_data'].copy()
     student_info_df['Name'] = student_info_df['Name'].astype(str)
     student_info_df['Contact_No'] = student_info_df['Contact_No'].astype(str)
 

@@ -96,7 +96,7 @@ roll_no_mobile_mapping = generate_mapping_roll_no_to_mobile(roll_numbers, mobile
 roll_no_gender_mapping = generate_mapping_roll_no_to_gender(roll_numbers, genders)
 
 def generate_student_data():
-    filename = './Data/Student_Information.csv'
+    filename = './Data/student_data.csv'
 
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
@@ -298,7 +298,7 @@ def generate_pool_non_membership(num_records):
             writer.writerow([fake.date(), name, fake.random_number(digits=4), fake.random_number(digits=3), roll_number, fake.time()[:-3], name])
             
 def generate_access_log_records(num_records):
-    with open('./Data/Access_Logs.csv', mode='w', newline='') as file:
+    with open('./Data/access_logs_data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Sr_No", "Roll_No", "Name", "Building", "Room", "In_Time", "Out_Time", "In_Date", "Out_Date"])
         for i in range(num_records):

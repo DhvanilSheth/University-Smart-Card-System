@@ -301,7 +301,7 @@ def makeAdminDB(host, user, password):
     cursor.execute("USE AdminDB")
 
     create_student_information_table = """
-    CREATE TABLE IF NOT EXISTS Student_Information (
+    CREATE TABLE IF NOT EXISTS student_data (
         Name VARCHAR(255),
         Roll_No VARCHAR(255) PRIMARY KEY,
         Contact_No VARCHAR(255),
@@ -314,7 +314,7 @@ def makeAdminDB(host, user, password):
     cursor.execute(create_student_information_table)
 
     try:
-        insert_data_from_csv("Student_Information", "./Data/student_information.csv", connection)
+        insert_data_from_csv("student_data", "./Data/student_data.csv", connection)
     except Exception as e:
         print(f"An error occurred while inserting data into Student_Information: {str(e)}")
     finally:
@@ -331,7 +331,7 @@ def makeAccessDB(host, user, password):
     cursor.execute("USE AccessDB")
 
     create_access_logs_table = """
-    CREATE TABLE IF NOT EXISTS Access_Logs (
+    CREATE TABLE IF NOT EXISTS access_logs_data (
         Sr_No INT,
         Roll_No VARCHAR(255),
         Name VARCHAR(255),
@@ -347,7 +347,7 @@ def makeAccessDB(host, user, password):
     cursor.execute(create_access_logs_table)
 
     try:
-        insert_data_from_csv("Access_Logs", "./Data/access_logs.csv", connection)
+        insert_data_from_csv("access_logs_data", "./Data/access_logs_data.csv", connection)
     except Exception as e:
         print(f"An error occurred while inserting data into Access_Logs: {str(e)}")
     finally:
