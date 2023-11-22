@@ -695,15 +695,14 @@ def setting():
         
 def fma():
     try:
-        # Get Roll_No from user input
         roll_no = input("Enter the roll number of the student: ")
 
         # Connect to the database
         db_config = {
-            'host': 'your_host',
-            'user': 'your_user',
-            'password': 'your_password',
-            'database': 'your_database'
+            'host': IP,
+            'user': USER,
+            'password': PASS,
+            'database': 'UniDB'
         }
 
         connection = mysql.connector.connect(**db_config)
