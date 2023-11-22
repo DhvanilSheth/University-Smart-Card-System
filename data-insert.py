@@ -18,18 +18,17 @@ def insert_data_from_csv(table_name, csv_path, connection):
     finally:
         cursor.close()
 
-def insert_transformation_columns(connection, table_name, create_command):
-    cursor = connection.cursor()
-    cursor.execute(create_command)
-    cursor.execute(f"ALTER TABLE `{table_name}` ADD COLUMN Unique_Key VARCHAR(255) DEFAULT '', ADD COLUMN LookUp_Count INT, ADD COLUMN Update_Count INT, ADD COLUMN Key_Combination VARCHAR(255), ADD PRIMARY KEY (Unique_Key)")
-    
+def execute_create_commands(cursor, create_commands):
+    for create_command in create_commands.values():
+        cursor.execute(create_command)
+
 def makeSportsDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
     
     cursor.execute("CREATE DATABASE IF NOT EXISTS SportsDB")
     cursor.execute("USE SportsDB")
-    
+
     create_commands = {
         "pool_non_membership": """
         CREATE TABLE IF NOT EXISTS pool_non_membership (
@@ -106,10 +105,9 @@ def makeSportsDB(host, user, password):
         )
         """
     }
-    
-    for table_name, create_command in create_commands.items():
-        insert_transformation_columns(connection, table_name, create_command)
-    
+
+    execute_create_commands(cursor, create_commands)
+
     csv_files = {
         "pool_non_membership": "./Data/pool_non_membership.csv",
         "pool": "./Data/pool.csv",
@@ -118,7 +116,7 @@ def makeSportsDB(host, user, password):
         "equipment_loss": "./Data/equipment_loss.csv",
         "medicine_sports": "./Data/medicine_sports.csv"
     }
-    
+
     try:
         for table_name, csv_file in csv_files.items():
             insert_data_from_csv(table_name, csv_file, connection)
@@ -211,8 +209,7 @@ def makeHostelDB(host, user, password):
         """
     }
 
-    for table_name, create_command in create_commands.items():
-        insert_transformation_columns(connection, table_name, create_command)
+    execute_create_commands(cursor, create_commands)
 
     csv_files = {
         "home_leave_data": "./Data/home_leave_data.csv",
@@ -271,8 +268,7 @@ def makeMessDB(host, user, password):
         """
     }
 
-    for table_name, create_command in create_commands.items():
-        insert_transformation_columns(connection, table_name, create_command)
+    execute_create_commands(cursor, create_commands)
 
     csv_files = {
         "mess_1_data": "./Data/mess_1_data.csv",
@@ -290,10 +286,40 @@ def makeMessDB(host, user, password):
 
     return "MessDB and tables created successfully and data inserted!"
 
+def makeAdminDB(host, user, password):
+    connection = mysql.connector.connect(host=host, user=user, password=password)
+    cursor = connection.cursor()
+
+    cursor.execute("CREATE DATABASE IF NOT EXISTS AdminDB")
+    cursor.execute("USE AdminDB")
+
+    create_student_information_table = """
+    CREATE TABLE IF NOT EXISTS Student_Information (
+        Name VARCHAR(255),
+        Roll_No VARCHAR(255) PRIMARY KEY,
+        Contact_No VARCHAR(255),
+        Email VARCHAR(255),
+        Course VARCHAR(255)
+    )
+    """
+
+    cursor.execute(create_student_information_table)
+
+    try:
+        insert_data_from_csv("Student_Information", "./Data/student_information.csv", connection)
+    except Exception as e:
+        print(f"An error occurred while inserting data into Student_Information: {str(e)}")
+    finally:
+        cursor.close()
+        connection.close()
+
+    return "AdminDB and Student_Information table created successfully and data inserted!"
+
 def run(localhost, username, password):
     makeSportsDB(localhost, username, password)
     makeHostelDB(localhost, username, password)
     makeMessDB(localhost, username, password)
+    makeAdminDB(localhost, username, password)
     print("Data Loading Complete")
     
 run('localhost', 'root', 'root')
