@@ -848,8 +848,118 @@ def sim():
 
 def hfu():
     roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+
+    # Database configuration
+    db_config = {
+        'host': IP,
+        'user': USER,
+        'password': PASS,
+        'database': 'UniDB'
+    }
+
+    try:
+        # Establishing the database connection
+        connection = mysql.connector.connect(**db_config)
+
+        try:
+            # Creating a cursor object to execute SQL queries
+            cursor = connection.cursor()
+
+            # SQL Query to fetch hostel facilities usage data for a specific roll number
+            query = f"""
+            SELECT 
+                'Hostel Stay' AS Facility_Type, 
+                Room_Type, 
+                Floor, 
+                Room_No, 
+                Course_Type, 
+                Year, 
+                Fees, 
+                Security_Amt, 
+                From_Date, 
+                To_Date 
+            FROM 
+                hostel_data 
+            WHERE 
+                Roll_No = '{roll_no}'
+
+            UNION ALL
+
+            SELECT 
+                'Home Leave' AS Facility_Type, 
+                NULL AS Room_Type, 
+                NULL AS Floor, 
+                Room_No, 
+                NULL AS Course_Type, 
+                NULL AS Year, 
+                NULL AS Fees, 
+                NULL AS Security_Amt, 
+                Date AS From_Date, 
+                Return_Date AS To_Date 
+            FROM 
+                home_leave_data 
+            WHERE 
+                Roll_No = '{roll_no}'
+
+            UNION ALL
+
+            SELECT 
+                'Medicine Collection' AS Facility_Type, 
+                NULL, 
+                NULL, 
+                Room_No, 
+                NULL, 
+                NULL, 
+                NULL, 
+                NULL, 
+                Date, 
+                NULL 
+            FROM 
+                medicine_data 
+            WHERE 
+                Roll_No = '{roll_no}'
+
+            UNION ALL
+
+            SELECT 
+                'Package Collection' AS Facility_Type, 
+                NULL, 
+                NULL, 
+                Room, 
+                NULL, 
+                NULL, 
+                NULL, 
+                NULL, 
+                Date, 
+                NULL 
+            FROM 
+                package_collection_data 
+            WHERE 
+                Name = (SELECT Student_Name FROM hostel_data WHERE Roll_No = '{roll_no}')
+            ORDER BY 
+                From_Date DESC;
+            """
+
+            # Executing the query
+            cursor.execute(query)
+            rows = cursor.fetchall()
+
+            # Checking if any rows are returned
+            if rows:
+                headers = [desc[0] for desc in cursor.description]
+                print(tabulate(rows, headers=headers, tablefmt="pretty"))
+            else:
+                print(f"No hostel facility usage data found for Roll_No: {roll_no}")
+
+        finally:
+            cursor.close()
+
+    except mysql.connector.Error as e:
+        print(f"Database Error: {e}")
+
+    finally:
+        if connection.is_connected():
+            connection.close()
 
 def sfu():
     roll_no = input("Enter the roll number of the student: ")
