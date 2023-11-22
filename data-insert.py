@@ -32,7 +32,7 @@ def execute_create_commands(cursor, create_commands):
 def makeSportsDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-    
+    cursor.execute("DROP DATABASE IF EXISTS SportsDB")
     cursor.execute("CREATE DATABASE IF NOT EXISTS SportsDB")
     cursor.execute("USE SportsDB")
 
@@ -138,7 +138,7 @@ def makeSportsDB(host, user, password):
 def makeHostelDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-
+    cursor.execute("DROP DATABASE IF EXISTS HostelDB")
     cursor.execute("CREATE DATABASE IF NOT EXISTS HostelDB")
     cursor.execute("USE HostelDB")
 
@@ -239,7 +239,7 @@ def makeHostelDB(host, user, password):
 def makeMessDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-
+    cursor.execute("DROP DATABASE IF EXISTS MessDB")
     cursor.execute("CREATE DATABASE IF NOT EXISTS MessDB")
     cursor.execute("USE MessDB")
 
@@ -296,7 +296,7 @@ def makeMessDB(host, user, password):
 def makeAdminDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-
+    cursor.execute("DROP DATABASE IF EXISTS AdminDB")
     cursor.execute("CREATE DATABASE IF NOT EXISTS AdminDB")
     cursor.execute("USE AdminDB")
 
@@ -326,7 +326,7 @@ def makeAdminDB(host, user, password):
 def makeAccessDB(host, user, password):
     connection = mysql.connector.connect(host=host, user=user, password=password)
     cursor = connection.cursor()
-
+    cursor.execute("DROP DATABASE IF EXISTS AccessDB")
     cursor.execute("CREATE DATABASE IF NOT EXISTS AccessDB")
     cursor.execute("USE AccessDB")
 
