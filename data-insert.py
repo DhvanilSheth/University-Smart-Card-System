@@ -8,10 +8,6 @@ IP = os.getenv("IP")
 USER = os.getenv("USERNAME")
 PASS = os.getenv("PASSWORD")
 
-print(f"IP: {IP}")
-print(f"USER: {USER}")
-print(f"PASS: {PASS}")
-
 def insert_data_from_csv(table_name, csv_path, connection):
     df = pd.read_csv(csv_path)
     df.columns = [col.replace(" ", "_") for col in df.columns]
