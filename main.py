@@ -14,8 +14,6 @@ SERVER_USER = os.getenv("DB_USERNAME")
 SERVER_PASSWORD = os.getenv("DB_PASSWORD")
 
 def main():
-
-	print(SERVER_IP, SERVER_USER, SERVER_PASSWORD)
 	with open('data_sources_config.json', 'r') as file:
 		data_config = json.load(file)
 
