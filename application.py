@@ -693,10 +693,6 @@ def setting():
     else:
         display_title_card("Invalid choice. Try again")
         
-def spwa():
-    roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-
 def fmb():
     roll_no = input("Enter the roll number of the student: ")
     name = input("Enter the name of the student: ")
