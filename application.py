@@ -92,12 +92,12 @@ def getRollNo():
         cursor.close()
         connection.close()
         
-def getTableData(table_name):
+def getTableData(database, table_name):
     db_config = {
         'host': IP,
         'user': USER,
         'password': PASS,
-        'database': 'UniDB'
+        'database': database
     }
 
     connection = mysql.connector.connect(**db_config)
@@ -552,7 +552,7 @@ def insertEntry():
         selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
         selected_table = table_mapping[selected_db][selected_table_index]
 
-        headers, types = getTableData(selected_table)
+        headers, types = getTableData(selected_db, selected_table)
 
         data = {}
 
@@ -628,7 +628,7 @@ def deleteEntry():
         selected_table = tables[selected_table_index]
 
         # Get headers and types using getTableData
-        headers, types = getTableData(selected_table)
+        headers, types = getTableData(selected_db, selected_table)
 
         # Display data in the table using getRows
         rows = getRows(selected_table)
