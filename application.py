@@ -693,10 +693,60 @@ def setting():
     else:
         display_title_card("Invalid choice. Try again")
         
-def fmb():
-    roll_no = input("Enter the roll number of the student: ")
-    name = input("Enter the name of the student: ")
-    return
+def fma():
+    try:
+        # Get Roll_No from user input
+        roll_no = input("Enter the roll number of the student: ")
+
+        # Connect to the database
+        db_config = {
+            'host': 'your_host',
+            'user': 'your_user',
+            'password': 'your_password',
+            'database': 'your_database'
+        }
+
+        connection = mysql.connector.connect(**db_config)
+
+        try:
+            cursor = connection.cursor()
+
+            # Query the table for specific columns
+            table_query = f"SELECT Roll_No, Student_Name, Fees, From_Date FROM hostel_data WHERE Roll_No = {roll_no}"
+            cursor.execute(table_query)
+            table_result = cursor.fetchall()
+
+            # Query the view for specific columns
+            view_query = f"SELECT Roll_No, Name, Cash, Date_of_Purchase FROM Mess_Global WHERE Roll_No = {roll_no}"
+            cursor.execute(view_query)
+            view_result = cursor.fetchall()
+
+            # Combine the results into a common table
+            common_table = []
+            common_headers = ["Roll_No", "Name", "Cash", "Date_of_Purchase", "Fees", "From_Date"]
+
+            for row in table_result:
+                common_table.append(list(row) + [None, None])  # Add placeholders for view columns
+
+            for row in view_result:
+                existing_row = next((item for item in common_table if item[0] == row[0]), None)
+                if existing_row:
+                    existing_row[2] = row[2]  # Update Cash column
+                    existing_row[3] = row[3]  # Update Date_of_Purchase column
+                else:
+                    common_table.append([row[0], row[1], row[2], row[3], None, None])  # Add placeholders for table columns
+
+            # Display the combined table
+            print(tabulate(common_table, headers=common_headers, tablefmt="pretty"))
+
+        finally:
+            cursor.close()
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        connection.close()
 
 def sip():
     roll_no = input("Enter the roll number of the student: ")
@@ -843,7 +893,7 @@ def application():
     choice = input("Enter your choice: ")
     if choice == "1":
         display_title_card("Financial Management Analytics selected")
-        fmb()
+        fma()
     elif choice == "2":
         display_title_card("Student Identity Profile selected")
         sip()
