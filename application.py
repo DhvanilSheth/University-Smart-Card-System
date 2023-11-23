@@ -809,7 +809,6 @@ def mmt():
 
 def sim():
     try:
-        # Get Roll_No from user input
         roll_no = input("Enter the roll number of the student: ")
 
         db_config = {
@@ -844,7 +843,6 @@ def sim():
 def hfu():
     roll_no = input("Enter the roll number of the student: ")
 
-    # Database configuration
     db_config = {
         'host': IP,
         'user': USER,
@@ -853,14 +851,10 @@ def hfu():
     }
 
     try:
-        # Establishing the database connection
         connection = mysql.connector.connect(**db_config)
 
         try:
-            # Creating a cursor object to execute SQL queries
             cursor = connection.cursor()
-
-            # SQL Query to fetch hostel facilities usage data for a specific roll number
             query = f"""
             SELECT 
                 'Hostel Stay' AS Facility_Type, 
@@ -935,11 +929,8 @@ def hfu():
                 From_Date DESC;
             """
 
-            # Executing the query
             cursor.execute(query)
             rows = cursor.fetchall()
-
-            # Checking if any rows are returned
             if rows:
                 headers = [desc[0] for desc in cursor.description]
                 print(tabulate(rows, headers=headers, tablefmt="pretty"))
