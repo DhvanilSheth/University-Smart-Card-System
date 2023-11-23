@@ -555,32 +555,51 @@ def insertEntry():
         headers, types = getTableData(selected_table)
 
         data = {}
+        if(selected_db != 'AdminDB'):
+            while True:
+                try:
+                    roll_no = input(f"Enter value for Roll_No: ")
+                    if roll_no in db_roll_no:
+                        data["Roll_No"] = roll_no
+                        student_info = getStudentInfo(data["Roll_No"])
+                        student_data = [(key, student_info[key]) for key in student_info]
+                        print("Student Information:")
+                        print(tabulate(student_data, headers=["Attribute", "Value"], tablefmt="pretty"))
+                        break
+                    else:
+                        print("Roll_No does not exist. You need to create a user for the Roll Number.")
+                except ValueError:
+                    print("Roll_No must be an integer. Please enter a valid integer.")
 
-        while True:
-            try:
-                roll_no = input(f"Enter value for Roll_No: ")
-                if roll_no in db_roll_no:
-                    data["Roll_No"] = roll_no
-                    student_info = getStudentInfo(data["Roll_No"])
-                    student_data = [(key, student_info[key]) for key in student_info]
-                    print("Student Information:")
-                    print(tabulate(student_data, headers=["Attribute", "Value"], tablefmt="pretty"))
-                    break
-                else:
-                    print("Roll_No does not exist. You need to create a user for the Roll Number.")
-            except ValueError:
-                print("Roll_No must be an integer. Please enter a valid integer.")
+        if(selected_db != 'AdminDB'):
+            for header, data_type in zip(headers, types):
+                if header != "Roll_No" and header != "Sr_No":
+                    value = input(
+                        f"Enter value for {header} ({data_type}) (press Enter to keep it NULL): "
+                    )
 
-        for header, data_type in zip(headers, types):
-            if header != "Roll_No" and header != "Sr_No":
-                value = input(
-                    f"Enter value for {header} ({data_type}) (press Enter to keep it NULL): "
-                )
-
-                if header in student_info and str(value) != str(student_info[header]):
-                    print(f"Error: {header} value does not match the existing data.")
-                    return
-                data[header] = value if value != "" else None
+                    if header in student_info and str(value) != str(student_info[header]):
+                        print(f"Error: {header} value does not match the existing data.")
+                        return
+                    data[header] = value if value != "" else None
+        else:
+            for header, data_type in zip(headers, types):
+                if header == "Roll_No":
+                    while True:
+                        try:
+                            roll_no = input(f"Enter value for Roll_No: ")
+                            if roll_no in db_roll_no:
+                                print("Roll_No already exist. Enter a new one.")
+                            else:
+                                data[header] = roll_no if roll_no != "" else None
+                                break
+                        except ValueError:
+                            print("Roll_No must be an integer. Please enter a valid integer.")
+                elif header != "Roll_No" and header != "Sr_No":
+                    value = input(
+                        f"Enter value for {header} ({data_type}) (press Enter to keep it NULL): "
+                    )
+                    data[header] = value if value != "" else None
 
         print("\nThe Final Information to be added will be:")
         print(f"Database: {selected_db}")
@@ -605,7 +624,7 @@ def deleteEntry():
         with open('data_sources_config.json', 'r') as config_file:
             config_data = json.load(config_file)
 
-        databases = [db_config["db_name"] for db_config in config_data if db_config["db_name"] != "AccessDB"]
+        databases = [db_config["db_name"] for db_config in config_data if db_config["db_name"] != "AdminDB"]
         
         print("Select a Database:")
         for i, db_name in enumerate(databases):
