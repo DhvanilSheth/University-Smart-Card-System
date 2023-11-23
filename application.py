@@ -981,7 +981,6 @@ def sfu():
 
 def sat():
     try:
-        # Get Roll_No from user input
         roll_no = input("Enter the roll number of the student: ")
         db_config = {
             'host': IP,
