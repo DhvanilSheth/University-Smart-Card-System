@@ -68,7 +68,7 @@ def getRows(table_name):
     connection = mysql.connector.connect(**db_config)
     try:
         cursor = connection.cursor()
-        query = f"SELECT * FROM {table_name}"
+        query = f"SELECT * FROM {table_name} ORDER BY Sr_No"
         cursor.execute(query)
         rows = cursor.fetchall()
         return rows
@@ -94,12 +94,12 @@ def getRollNo():
         cursor.close()
         connection.close()
         
-def getTableData(database, table_name):
+def getTableData(table_name):
     db_config = {
         'host': IP,
         'user': USER,
         'password': PASS,
-        'database': database
+        'database': 'UniDB'
     }
 
     connection = mysql.connector.connect(**db_config)
@@ -552,7 +552,7 @@ def insertEntry():
         selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
         selected_table = table_mapping[selected_db][selected_table_index]
 
-        headers, types = getTableData(selected_db, selected_table)
+        headers, types = getTableData(selected_table)
 
         data = {}
 
@@ -572,7 +572,7 @@ def insertEntry():
                 print("Roll_No must be an integer. Please enter a valid integer.")
 
         for header, data_type in zip(headers, types):
-            if header != "Roll_No" and header != "Sr_No":  # Exclude "Sr_No"
+            if header != "Roll_No" and header != "Sr_No":
                 value = input(
                     f"Enter value for {header} ({data_type}) (press Enter to keep it NULL): "
                 )
@@ -624,7 +624,7 @@ def deleteEntry():
         selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
         selected_table = tables[selected_table_index]
 
-        headers, types = getTableData(selected_db, selected_table)
+        headers, types = getTableData(selected_table)
         rows = getRows(selected_table)
         print("\nExisting Data in the Table:")
         print(tabulate(rows, headers=headers, tablefmt="pretty"))
@@ -726,7 +726,6 @@ def sip():
     try:
         cursor = connection.cursor()
 
-        # Function to execute query and return results as DataFrame
         def fetch_data(query, params):
             cursor.execute(query, params)
             rows = cursor.fetchall()
@@ -759,8 +758,6 @@ def sip():
 
 def mmt():
     roll_no = input("Enter the roll number of the student: ")
-    
-    # Database configuration
     db_config = {
         'host': IP,
         'user': USER,
@@ -769,14 +766,10 @@ def mmt():
     }
 
     try:
-        # Establishing the database connection
         connection = mysql.connector.connect(**db_config)
 
         try:
-            # Creating a cursor object to execute SQL queries
             cursor = connection.cursor()
-
-            # SQL Query to fetch meal consumption data for a specific roll number
             query = f"""
             SELECT 
                 Roll_No,
@@ -796,11 +789,8 @@ def mmt():
                 Roll_No, Name
             """
 
-            # Executing the query
             cursor.execute(query)
             rows = cursor.fetchall()
-
-            # Checking if any rows are returned
             if rows:
                 headers = [desc[0] for desc in cursor.description]
                 print(tabulate(rows, headers=headers, tablefmt="pretty"))
