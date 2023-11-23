@@ -21,6 +21,7 @@ ETL_EXTRACT = 'extract.py'
 ETL_LOAD = 'load.py'
 ETL_TRANSFORM = 'transform.py'
 ETL_GLOBAL = 'etl-global.py'
+ETL_FINAL = 'main.py'
 SYNC_DB = 'sync-databases.py'
 DATA_GEN = 'data-gen.py'
 DATA_INSERT = 'data-insert.py'
@@ -255,12 +256,13 @@ def display_settings_menu(char1='*', margin=5):
     menu = [
         "* 1. Insert New Entry to Table",
         "* 2. Delete Entry from Table",
-        "* 3. Insert Table to Database",
-        "* 4. Delete Table from Database",
-        "* 5. Insert New Database",
-        "* 6. Delete New Database",
-        "* 7. Run Data-Gen and Data-Insert",
-        "* 10. Exit",
+        # "* 3. Insert Table to Database",
+        # "* 4. Delete Table from Database",
+        # "* 5. Insert New Database",
+        # "* 6. Delete New Database",
+        "* 3. Run Data-Gen and Data-Insert",
+        "* 4. Run ETL",
+        "* 5. Exit",
     ]
 
     for item in menu:
@@ -661,25 +663,14 @@ def setting():
         display_title_card("Delete Row option selected")
         deleteEntry()
     elif choice == "3":
-        display_title_card("Insert Table option selected")
-    elif choice == "4":
-        display_title_card("Delete Table option selected")
-    elif choice == "5":
-        display_title_card("Insert Database options selected")
-        addDB()
-    elif choice == "6":
-        display_title_card("Delete Database options selected")
-        deleteDB()
-    elif choice == "7":
         display_title_card("Running Data-Gen and Data-Insert")
         runDGDI()
-    elif choice == "8":
-        display_title_card("")
-    elif choice == "9":
-        display_title_card("")
-    elif choice == "10":
+    elif choice == "4":
+        display_title_card("Running ETL")
+        etl()
+    elif choice == "5":
         display_title_card("Exiting the application")
-        exit(0)
+        return
     else:
         display_title_card("Invalid choice. Try again")
         
@@ -1069,15 +1060,9 @@ def dynamic():
     display_success_card("Data Updation Completed")
     
 def etl():
-    print_progress_bar(4,0)
-    subprocess.run(['python', ETL_EXTRACT])
-    print_progress_bar(4,1)
-    subprocess.run(['python', ETL_TRANSFORM])
-    print_progress_bar(4,2)
-    subprocess.run(['python', ETL_LOAD])
-    print_progress_bar(4,3)
-    subprocess.run(['python', ETL_GLOBAL])
-    print_progress_bar(4,4)
+    print_progress_bar(1,0)
+    subprocess.run(['python', ETL_FINAL])
+    print_progress_bar(1,1)
     display_success_card("ETL Process Completed")
        
 while True:

@@ -21,5 +21,4 @@ def main():
 	integrated_dfs = transform(sports_dfs, hostel_dfs, mess_dfs, admin_dfs, access_dfs)
 	load(integrated_dfs, SERVER_IP, SERVER_USER, SERVER_PASSWORD)
 
-if __name__ == "__main__":
-    main()
+main()
