@@ -275,13 +275,11 @@ def display_application_menu(char1='*', margin=5):
 
     menu = [
         "* 1. Financial Management Analytics",
-        "* 2. Student Identity Profile",
-        "* 3. Mess Meal Tracking",
-        "* 4. Sports Inventory Management",
-        "* 5. Hostel Facilities Usage",
-        "* 6. Sports Facilities Usage",
-        "* 7. Student Access Tracking",
-        "* 8. Exit"
+        "* 2. Mess Meal Tracking",
+        "* 3. Sports Inventory Management",
+        "* 4. Sports Facilities Usage",
+        "* 5. Student Access Tracking",
+        "* 6. Exit"
     ]
 
     for item in menu:
@@ -607,7 +605,6 @@ def deleteEntry():
 
         databases = [db_config["db_name"] for db_config in config_data if db_config["db_name"] != "AccessDB"]
         
-        # Select a Database
         print("Select a Database:")
         for i, db_name in enumerate(databases):
             print(f"{i + 1}. {db_name}")
@@ -615,11 +612,9 @@ def deleteEntry():
         selected_db_index = int(input("Enter the index of the Database you want to edit: ")) - 1
         selected_db = databases[selected_db_index]
         
-        # Get tables for the selected database
         table_mapping = {db_config["db_name"]: [table["table"] for table in db_config["tables"]] for db_config in config_data}
         tables = table_mapping[selected_db]
         
-        # Select a Table
         print(f"\nTables in {selected_db}:")
         for i, table_name in enumerate(tables):
             print(f"{i + 1}. {table_name}")
@@ -627,21 +622,15 @@ def deleteEntry():
         selected_table_index = int(input("Enter the index of the Table you want to edit: ")) - 1
         selected_table = tables[selected_table_index]
 
-        # Get headers and types using getTableData
         headers, types = getTableData(selected_db, selected_table)
-
-        # Display data in the table using getRows
         rows = getRows(selected_table)
         print("\nExisting Data in the Table:")
         print(tabulate(rows, headers=headers, tablefmt="pretty"))
-
-        # Ask the user for the serial number of the row to delete
         try:
             serial_to_delete = int(input("Enter the serial number of the row you want to delete: "))
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
             return
-        # Delete the selected row
         deleteRow(selected_table, serial_to_delete)
         print("\nRow Deleted Successfully")
 
@@ -698,7 +687,6 @@ def fma():
     try:
         roll_no = input("Enter the roll number of the student: ")
 
-        # Connect to the database
         db_config = {
             'host': IP,
             'user': USER,
@@ -710,22 +698,16 @@ def fma():
 
         try:
             cursor = connection.cursor()
-
-            # Query the hostel_data table
             table_query = "SELECT Roll_No, Student_Name, 'Hostel Fees', From_Date, Fees FROM hostel_data WHERE Roll_No = %s"
             cursor.execute(table_query, (roll_no,))
             hostel_data_result = cursor.fetchall()
 
-            # Query the Mess_Global view
             view_query = "SELECT Roll_No, Name, 'Mess Fees', TransactionDate, Cash FROM Mess_Global WHERE Roll_No = %s"
             cursor.execute(view_query, (roll_no,))
             mess_global_result = cursor.fetchall()
 
-            # Combine the results into a common table
             common_table = hostel_data_result + mess_global_result
             common_headers = ["Roll_No", "Name", "Type", "Transaction Date", "Amount"]
-
-            # Display the combined table
             print(tabulate(common_table, headers=common_headers, tablefmt="pretty"))
 
         finally:
@@ -762,7 +744,6 @@ def sip():
                 return pd.DataFrame(rows, columns=headers)
             return pd.DataFrame()
 
-        # Fetch data for each relevant table/view
         student_info_df = fetch_data("SELECT * FROM student_data WHERE Roll_No = %s", (roll_no,))
         hostel_info_df = fetch_data("SELECT * FROM hostel_data WHERE Roll_No = %s", (roll_no,))
         mess_info_df = fetch_data("SELECT * FROM Mess_Global WHERE Roll_No = %s", (roll_no,))
@@ -770,11 +751,8 @@ def sip():
         equipment_info_df = fetch_data("SELECT * FROM Equipment_Global WHERE Roll_No = %s", (roll_no,))
         medicine_info_df = fetch_data("SELECT * FROM Medicine_Global WHERE Roll_No = %s", (roll_no,))
 
-        # Combine all DataFrames into one
         combined_df = pd.concat([student_info_df, hostel_info_df, mess_info_df, pool_info_df, equipment_info_df, medicine_info_df], axis=0, ignore_index=True)
         combined_df.fillna('', inplace=True)
-
-        # Display the final combined table
         if not combined_df.empty:
             print(tabulate(combined_df, headers='keys', tablefmt="pretty", showindex=False))
         else:
@@ -1067,24 +1045,18 @@ def application():
         display_title_card("Financial Management Analytics selected")
         fma()
     elif choice == "2":
-        display_title_card("Student Identity Profile selected")
-        sip()
-    elif choice == "3":
         display_title_card("Mess Meal Tracking selected")
         mmt()
-    elif choice == "4":
+    elif choice == "3":
         display_title_card("Sports Inventory Management selected")
         sim()
-    elif choice == "5":
-        display_title_card("Hostel Facilities Usage selected")
-        hfu()
-    elif choice == "6":
+    elif choice == "4":
         display_title_card("Sports Facilities Usage selected")
         sfu()
-    elif choice == "7":
+    elif choice == "5":
         display_title_card("Student Access Tracking selected")
         sat()
-    elif choice == "8":
+    elif choice == "6":
         display_title_card("Exiting the application")
         return
           
